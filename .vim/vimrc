@@ -1,4 +1,16 @@
-syntax on
+call plug#begin('~/.vim/bundle')
+
+Plug 'https://github.com/terryma/vim-multiple-cursors.git'
+Plug 'https://github.com/airblade/vim-gitgutter'
+Plug 'https://github.com/altercation/vim-colors-solarized.git'
+Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
+
+call plug#end()
+
+" Auto executed by plug#end, copied here for completeness
+filetype plugin indent on
+syntax enable
+
 let g:solarized_termcolors=256
 set t_Co=256
 set background=dark
