@@ -19,5 +19,8 @@ set cursorline
 
 highlight LineNr ctermfg=DarkGrey
 highlight CursorLineNr ctermfg=DarkGrey
+
 set ignorecase
+set backupcopy=yes
+
 set wildignore+=*/node_modules/*
