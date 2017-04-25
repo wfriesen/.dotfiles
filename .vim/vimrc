@@ -4,6 +4,7 @@ Plug 'https://github.com/terryma/vim-multiple-cursors.git'
 Plug 'https://github.com/airblade/vim-gitgutter'
 Plug 'https://github.com/altercation/vim-colors-solarized.git'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
+Plug 'https://github.com/ervandew/supertab.git'
 
 call plug#end()
 
