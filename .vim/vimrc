@@ -11,3 +11,9 @@ set softtabstop=0
 set expandtab
 set shiftwidth=2
 set smarttab
+
+set relativenumber
+set number
+
+highlight LineNr ctermfg=DarkGrey
+highlight CursorLineNr ctermfg=DarkGrey
