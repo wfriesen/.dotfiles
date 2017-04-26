@@ -38,3 +38,4 @@ set ignorecase
 set backupcopy=yes
 
 set wildignore+=*/node_modules/*
+set wildignore+=*/$tf/*
