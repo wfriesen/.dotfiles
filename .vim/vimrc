@@ -39,3 +39,6 @@ set backupcopy=yes
 
 set wildignore+=*/node_modules/*
 set wildignore+=*/$tf/*
+
+" Make backspace work like expected. See :h 'backspace'
+set backspace=indent,eol,start
