@@ -49,5 +49,6 @@ set guioptions-=r "scrollbar
 set guioptions-=T "toolbar
 set guioptions-=L "Left-hand scrollbar
 
-" start gvim maximized
-au GUIEnter * simalt ~x
+" start gvim maximized. Simulates pressing Alt+Space x
+autocmd GUIEnter * simalt ~x
+
