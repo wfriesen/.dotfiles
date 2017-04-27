@@ -40,6 +40,9 @@ set backupcopy=yes
 set wildignore+=*/node_modules/*
 set wildignore+=*/$tf/*
 
+nmap <silent> <leader>nt :NERDTreeToggle<CR>
+nmap <silent> <leader>ut :UndotreeToggle<CR>
+
 " Make backspace work like expected. See :h 'backspace'
 set backspace=indent,eol,start
 
