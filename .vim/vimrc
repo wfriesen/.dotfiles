@@ -35,6 +35,11 @@ nmap <silent> <leader>ut :UndotreeToggle<CR>
 " can then jump to the next/previous column with ; and ,
 nmap <silent> <leader>H gg/-<CR>f<Space>
 
+:nnoremap n nzz
+:nnoremap N Nzz
+:nnoremap * *zz
+:nnoremap # #zz
+
 " Make backspace work like expected. See :h 'backspace'
 set backspace=indent,eol,start
 
