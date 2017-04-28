@@ -1,0 +1,11 @@
+BoldAsFont=no
+FontHeight=10
+FontSmoothing=full
+Locale=en_US
+Charset=UTF-8
+RightClickAction=paste
+Columns=100
+Rows=35
+ScrollbackLines=99000
+PgUpDnScroll=yes
+Term=xterm-256color
