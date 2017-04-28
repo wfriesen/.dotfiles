@@ -31,6 +31,10 @@ set wildignore+=*/$tf/*
 nmap <silent> <leader>nt :NERDTreeToggle<CR>
 nmap <silent> <leader>ut :UndotreeToggle<CR>
 
+" VORAX. Jump to the header row of the output window
+" can then jump to the next/previous column with ; and ,
+nmap <silent> <leader>H gg/-<CR>f<Space>
+
 " Make backspace work like expected. See :h 'backspace'
 set backspace=indent,eol,start
 
