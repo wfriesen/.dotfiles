@@ -54,4 +54,4 @@ set guioptions-=L "Left-hand scrollbar
 " start gvim maximized. Simulates pressing Alt+Space x
 autocmd GUIEnter * simalt ~x
 
-set guifont=Inconsolata:h12
+set guifont=Inconsolata\ Bold\ 15
