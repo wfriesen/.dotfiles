@@ -1,0 +1,7 @@
+[options]
+font = Inconsolata 15
+
+[colors]
+foreground=#839496
+background=#002b36
+cursor=#dc322f
