@@ -23,6 +23,7 @@ highlight LineNr ctermfg=DarkGrey
 highlight CursorLineNr ctermfg=DarkGrey
 highlight LineNr guifg=DarkGrey
 highlight CursorLineNr guifg=DarkGrey
+highlight Cursor guibg=#dc322f
 
 set ignorecase
 set backupcopy=yes
