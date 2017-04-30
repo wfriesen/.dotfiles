@@ -42,3 +42,12 @@ set wildignore+=*/$tf/*
 
 " Make backspace work like expected. See :h 'backspace'
 set backspace=indent,eol,start
+
+" remove some gvim clutter
+set guioptions-=m "menubar
+set guioptions-=r "scrollbar
+set guioptions-=T "toolbar
+set guioptions-=L "Left-hand scrollbar
+
+" start gvim maximized
+au GUIEnter * simalt ~x
