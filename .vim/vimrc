@@ -21,6 +21,8 @@ set cursorline
 
 highlight LineNr ctermfg=DarkGrey
 highlight CursorLineNr ctermfg=DarkGrey
+highlight LineNr guifg=DarkGrey
+highlight CursorLineNr guifg=DarkGrey
 
 set ignorecase
 set backupcopy=yes
