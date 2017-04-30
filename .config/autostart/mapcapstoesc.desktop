@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Map caps lock key to Escape
+GenericName=Map caps lock key to Escape
+Comment=Map caps lock key to Escape
+Exec=gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enabled=true
