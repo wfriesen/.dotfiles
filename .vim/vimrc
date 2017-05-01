@@ -66,3 +66,5 @@ if has('win32')
 else
   set guifont=Inconsolata\ Bold\ 15
 endif
+
+let g:SuperTabCrMapping=1
