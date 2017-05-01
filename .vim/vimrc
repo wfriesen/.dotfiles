@@ -67,4 +67,5 @@ else
   set guifont=Inconsolata\ Bold\ 15
 endif
 
+let g:SuperTabDefaultCompletionType="<c-n>"
 let g:SuperTabCrMapping=1
