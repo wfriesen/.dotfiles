@@ -46,6 +46,10 @@ let NERDTreeMinimalUI = 1
 " can then jump to the next/previous column with ; and ,
 nmap <silent> <leader>H gg/-<CR>f<Space>
 
+" Set VORAX output window to TOP mode, with full headings
+let g:vorax_output_cursor_on_top=1
+let g:vorax_output_full_heading=1
+
 " Make backspace work like expected. See :h 'backspace'
 set backspace=indent,eol,start
 
