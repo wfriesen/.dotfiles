@@ -34,6 +34,9 @@ set wildignore+=*/$tf/*
 nmap <silent> <leader>nt :NERDTreeToggle<CR>
 nmap <silent> <leader>ut :UndotreeToggle<CR>
 
+nmap <silent> <leader>\| :vsplit<CR>
+nmap <silent> <leader>_ :split<CR>
+
 " Change vim cwd when changing NERDTree root
 let g:NERDTreeChDirMode=2
 
