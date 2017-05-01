@@ -50,6 +50,18 @@ nmap <silent> <leader>H gg/-<CR>f<Space>
 let g:vorax_output_cursor_on_top=1
 let g:vorax_output_full_heading=1
 
+let g:vorax_plsql_associations=
+\ {'FUNCTION' : 'fnc',
+\  'PROCEDURE' : 'prc',
+\  'TRIGGER' : 'trg',
+\  'PACKAGE_SPEC' : 'spc',
+\  'PACKAGE_BODY' : 'bdy',
+\  'PACKAGE' : 'pkg',
+\  'TYPE_SPEC' : 'tps',
+\  'TYPE_BODY' : 'tpb',
+\  'TYPE' : 'typ',
+\  'JAVA_SOURCE' : 'jsp'}
+
 " Make backspace work like expected. See :h 'backspace'
 set backspace=indent,eol,start
 
