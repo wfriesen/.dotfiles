@@ -27,6 +27,7 @@ highlight Cursor guibg=#dc322f
 
 set ignorecase
 set backupcopy=yes
+set showmode
 
 set wildignore+=*/node_modules/*
 set wildignore+=*/$tf/*
