@@ -19,6 +19,7 @@ set number
 set relativenumber
 set cursorline
 
+set laststatus=2
 set incsearch
 
 nnoremap <Space> <Nop>
