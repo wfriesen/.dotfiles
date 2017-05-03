@@ -73,6 +73,9 @@ let g:vorax_plsql_associations=
 \  'TYPE' : 'typ',
 \  'JAVA_SOURCE' : 'jsp'}
 
+" Always start ctrlp from the cwd
+let g:ctrlp_working_path_mode='w'
+
 " Make backspace work like expected. See :h 'backspace'
 set backspace=indent,eol,start
 
