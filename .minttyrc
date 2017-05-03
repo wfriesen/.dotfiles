@@ -35,5 +35,5 @@ White=           238, 232, 213
 BoldWhite=       253, 246, 227
 
 # Other
-Font=Inconsolata
-FontHeight=12
+Font=Hack
+FontHeight=11
