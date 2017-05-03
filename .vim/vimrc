@@ -19,6 +19,9 @@ set number
 set relativenumber
 set cursorline
 
+nnoremap <Space> <Nop>
+let mapleader = "\<Space>"
+
 highlight LineNr ctermfg=DarkGrey
 highlight CursorLineNr ctermfg=DarkGrey
 highlight LineNr guifg=#666666
