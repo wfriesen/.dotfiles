@@ -31,6 +31,7 @@ highlight CursorLineNr guifg=#666666
 highlight Cursor guibg=#dc322f
 
 set ignorecase
+set smartcase
 set backupcopy=yes
 set showmode
 
