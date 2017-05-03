@@ -19,7 +19,7 @@ set number
 set relativenumber
 set cursorline
 
-set hlsearch
+set incsearch
 
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
