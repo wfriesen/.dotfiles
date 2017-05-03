@@ -1,5 +1,5 @@
 [options]
-font = Inconsolata 15
+font = Hack 12
 
 [colors]
 foreground=#839496

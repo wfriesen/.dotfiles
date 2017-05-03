@@ -91,9 +91,9 @@ set guioptions-=L "Left-hand scrollbar
 if has('win32')
   " start gvim maximized. Simulates pressing Alt+Space x
   autocmd GUIEnter * simalt ~x
-  set guifont=Inconsolata:h12
+  set guifont=Hack:h12
 else
-  set guifont=Inconsolata\ Bold\ 15
+  set guifont=Hack\ 12
 endif
 
 let g:SuperTabDefaultCompletionType="<c-n>"
