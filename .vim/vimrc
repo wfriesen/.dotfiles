@@ -125,3 +125,11 @@ function! g:ResizeAllPluginWindows()
 endfunction
 
 nmap <silent> <leader>r :call g:ResizeAllPluginWindows()<CR>
+
+function! g:CloseBufferAfterSwitch()
+  let currentBuffer = bufnr('%')
+  :bprevious
+  :execute 'bd' . currentBuffer
+endfunction
+
+nmap <silent> <leader>w :call g:CloseBufferAfterSwitch()<CR>
