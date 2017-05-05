@@ -104,3 +104,24 @@ let g:SuperTabCrMapping=1
 let g:airline_theme='tomorrow'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+
+" Reset NERDTree and VORAX windows to their defined sizes.
+function! g:ResizeAllPluginWindows()
+
+  function! s:ResizePluginWindows()
+    if &ft == 'nerdtree'
+      :execute 'vertical resize ' . g:NERDTreeWinSize
+    elseif &ft == 'connvorax'
+      :execute 'vertical resize ' . g:vorax_cmanager_size
+    elseif &ft == 'outputvorax'
+      :execute 'resize ' . g:vorax_output_window_size
+    endif
+  endfunction
+
+  let currentWindow = winnr()
+  :windo call s:ResizePluginWindows()
+  :execute currentWindow . 'wincmd w'
+
+endfunction
+
+nmap <silent> <leader>r :call g:ResizeAllPluginWindows()<CR>
