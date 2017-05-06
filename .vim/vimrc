@@ -133,3 +133,15 @@ function! g:CloseBufferAfterSwitch()
 endfunction
 
 nmap <silent> <leader>wq :call g:CloseBufferAfterSwitch()<CR>
+
+function! g:LoadWorkspace()
+  :execute ':vsplit'
+  :execute ':only'
+  :execute ':VORAXOutputToggle'
+  :execute ':VORAXConnectionsToggle'
+  :execute ':NERDTree home'
+  :execute 'wincmd l'
+  :call g:ResizeAllPluginWindows()
+endfunction
+
+nmap <silent> <leader>ws :call g:LoadWorkspace()<CR>
