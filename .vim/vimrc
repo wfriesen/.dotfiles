@@ -132,4 +132,4 @@ function! g:CloseBufferAfterSwitch()
   :execute 'bd' . currentBuffer
 endfunction
 
-nmap <silent> <leader>w :call g:CloseBufferAfterSwitch()<CR>
+nmap <silent> <leader>wq :call g:CloseBufferAfterSwitch()<CR>
