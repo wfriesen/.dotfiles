@@ -127,9 +127,13 @@ endfunction
 nmap <silent> <leader>r :call g:ResizeAllPluginWindows()<CR>
 
 function! g:CloseBufferAfterSwitch()
-  let currentBuffer = bufnr('%')
-  :bprevious
-  :execute 'bd' . currentBuffer
+  if &mod
+    echo "Buffer has unsaved changes!"
+  else
+    let currentBuffer = bufnr('%')
+    :bprevious
+    :execute 'bd' . currentBuffer
+  endif
 endfunction
 
 nmap <silent> <leader>wq :call g:CloseBufferAfterSwitch()<CR>
