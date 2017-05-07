@@ -47,6 +47,8 @@ nmap <silent> <leader>ut :UndotreeToggle<CR>:UndotreeFocus<CR>
 
 nmap <silent> <C-Tab> :bnext!<CR>
 nmap <silent> <C-S-Tab> :bprevious!<CR>
+nmap <silent> <leader>k :bnext!<CR>
+nmap <silent> <leader>j :bprevious!<CR>
 
 " Change vim cwd when changing NERDTree root
 let g:NERDTreeChDirMode=2
@@ -59,6 +61,8 @@ nmap <silent> <leader>H gg/^-<CR>f<Space>
 
 nmap <silent> <C-Enter> :VORAXExecCurrent<CR>
 imap <silent> <C-Enter> <Esc>:VORAXExecCurrent<CR>
+
+let g:vorax_key_doc_search='<leader>vds'
 
 let g:vorax_key_describe='<F4>'
 
