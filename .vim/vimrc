@@ -99,8 +99,10 @@ if has('win32')
   " start gvim maximized. Simulates pressing Alt+Space x
   autocmd GUIEnter * simalt ~x
   set guifont=Hack:h12
+  let g:vorax_output_window_size=20
 else
   set guifont=Hack\ 15
+  let g:vorax_output_window_size=10
 endif
 
 let g:SuperTabDefaultCompletionType="<c-n>"
