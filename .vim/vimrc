@@ -65,6 +65,7 @@ imap <silent> <C-Enter> <Esc>:VORAXExecCurrent<CR>
 let g:vorax_key_doc_search='<leader>vds'
 
 let g:vorax_output_window_size=10
+let g:vorax_dbexplorer_size=30
 
 let g:vorax_key_describe='<F4>'
 let g:vorax_key_describe_verbose='<S-F4>'
@@ -123,6 +124,8 @@ function! g:ResizeAllPluginWindows()
       :execute 'vertical resize ' . g:NERDTreeWinSize
     elseif &ft == 'connvorax'
       :execute 'vertical resize ' . g:vorax_cmanager_size
+    elseif &ft == 'explorervorax'
+      :execute 'vertical resize ' . g:vorax_dbexplorer_size
     elseif &ft == 'outputvorax'
       :execute 'resize ' . g:vorax_output_window_size
     endif
