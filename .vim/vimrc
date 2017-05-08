@@ -64,6 +64,8 @@ imap <silent> <C-Enter> <Esc>:VORAXExecCurrent<CR>
 
 let g:vorax_key_doc_search='<leader>vds'
 
+let g:vorax_output_window_size=10
+
 let g:vorax_key_describe='<F4>'
 
 " Set VORAX output window to show full headings
@@ -99,10 +101,8 @@ if has('win32')
   " start gvim maximized. Simulates pressing Alt+Space x
   autocmd GUIEnter * simalt ~x
   set guifont=Hack:h12
-  let g:vorax_output_window_size=20
 else
   set guifont=Hack\ 15
-  let g:vorax_output_window_size=10
 endif
 
 let g:SuperTabDefaultCompletionType="<c-n>"
