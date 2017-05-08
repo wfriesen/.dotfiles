@@ -149,10 +149,11 @@ function! g:LoadWorkspace()
   if winnr('$') > 1
     :execute ':only'
   endif
-  :execute ':VORAXOutputToggle'
   :execute ':VORAXConnectionsToggle'
   :execute ':NERDTreeToggle'
-  :execute 'wincmd l'
+  :execute ':VORAXOutputToggle'
+  :execute "wincmd k"
+  :execute "wincmd l"
   :call g:ResizeAllPluginWindows()
 endfunction
 
