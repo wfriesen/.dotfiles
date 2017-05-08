@@ -38,3 +38,4 @@ BoldWhite=       253, 246, 227
 Font=Hack
 FontHeight=11
 CursorType=block
+ScrollBar=None
