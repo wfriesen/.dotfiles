@@ -146,7 +146,9 @@ endfunction
 nmap <silent> <leader>wq :call g:CloseBufferAfterSwitch()<CR>
 
 function! g:LoadWorkspace()
-  :execute ':only'
+  if winnr('$') > 1
+    :execute ':only'
+  endif
   :execute ':VORAXOutputToggle'
   :execute ':VORAXConnectionsToggle'
   :execute ':NERDTreeToggle'
