@@ -37,3 +37,4 @@ BoldWhite=       253, 246, 227
 # Other
 Font=Hack
 FontHeight=11
+CursorType=block
