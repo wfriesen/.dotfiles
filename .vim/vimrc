@@ -67,6 +67,7 @@ let g:vorax_key_doc_search='<leader>vds'
 let g:vorax_output_window_size=10
 
 let g:vorax_key_describe='<F4>'
+let g:vorax_key_describe_verbose='<S-F4>'
 
 " Set VORAX output window to show full headings
 let g:vorax_output_full_heading=1
