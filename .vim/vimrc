@@ -144,7 +144,9 @@ nmap <silent> <leader>r :call g:ResizeAllPluginWindows()<CR>
 
 function! g:CloseBufferAfterSwitch()
   if &mod
-    echoerr "Buffer has unsaved changes!"
+    echohl WarningMsg
+    echo "Buffer has unsaved changes!"
+    echohl None
   else
     let currentBuffer = bufnr('%')
     :bprevious
