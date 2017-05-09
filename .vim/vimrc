@@ -94,6 +94,8 @@ let g:ctrlp_working_path_mode='w'
 let g:ctrlp_clear_cache_on_exit=0
 " Open multiple files in hidden buffers, rather than new splits
 let g:ctrlp_open_multiple_files='i'
+" Re-order modes. After opening CtrlP, <C-b> now jumps to 'Buffers'
+let g:ctrlp_types = ['fil', 'mru', 'buf']
 
 " Make backspace work like expected. See :h 'backspace'
 set backspace=indent,eol,start
