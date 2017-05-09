@@ -60,7 +60,7 @@ let NERDTreeMinimalUI = 1
 
 " VORAX. Jump to the header row of the output window
 " can then jump to the next/previous column with ; and ,
-nmap <silent> <leader>H gg/^-<CR>kztjf<Space>
+nmap <silent> <leader>H gg/^\( \)\?-<CR>kztjf<Space>
 
 nmap <silent> <C-Enter> :VORAXExecCurrent<CR>
 imap <silent> <C-Enter> <Esc>:VORAXExecCurrent<CR>
