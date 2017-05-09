@@ -50,6 +50,9 @@ nmap <silent> <C-S-Tab> :bprevious!<CR>
 nmap <silent> <leader>k :bnext!<CR>
 nmap <silent> <leader>j :bprevious!<CR>
 
+nmap [c <Plug>GitGutterPrevHunk
+nmap ]c <Plug>GitGutterNextHunk
+
 " Change vim cwd when changing NERDTree root
 let g:NERDTreeChDirMode=2
 " Don't show the 'Bookmarks' or 'Press ? for help' text
