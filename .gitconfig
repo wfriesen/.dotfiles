@@ -3,3 +3,7 @@
 	name = William Friesen
 [diff]
 	tool = diffmerge
+[color "grep"]
+  linenumber = green
+  match = bold red
+  filename = magenta

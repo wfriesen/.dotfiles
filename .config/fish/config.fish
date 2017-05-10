@@ -14,6 +14,10 @@ end
 
 alias dit "git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
+function gg
+  git grep --color=auto -in $argv
+end
+
 if [ $TERM != screen-256color ]
 	if tmux has-session
 		tmux a
