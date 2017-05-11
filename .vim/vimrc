@@ -156,24 +156,26 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 " Reset NERDTree and VORAX windows to their defined sizes.
+let g:plugin_window_types_resize_cmd = {
+\ 'nerdtree': 'vertical resize' . g:NERDTreeWinSize,
+\ 'connvorax': 'vertical resize' . g:vorax_cmanager_size,
+\ 'explorervorax': 'vertical resize' . g:vorax_dbexplorer_size,
+\ 'outputvorax': 'resize' . g:vorax_output_window_size,
+\ 'tagbar': 'vertical resize' . g:tagbar_width
+\ }
 function! g:ResizeAllPluginWindows()
-  let s:plugin_window_types_resize_cmd = {
-  \ 'nerdtree': 'vertical resize' . g:NERDTreeWinSize,
-  \ 'connvorax': 'vertical resize' . g:vorax_cmanager_size,
-  \ 'explorervorax': 'vertical resize' . g:vorax_dbexplorer_size,
-  \ 'outputvorax': 'resize' . g:vorax_output_window_size,
-  \ 'tagbar': 'vertical resize' . g:tagbar_width
-  \ }
 
   function! s:ResizePluginWindows()
-    if has_key(s:plugin_window_types_resize_cmd, &ft)
-      :execute s:plugin_window_types_resize_cmd[&ft]
+    if has_key(g:plugin_window_types_resize_cmd, &ft)
+      :execute g:plugin_window_types_resize_cmd[&ft]
     endif
   endfunction
 
+  let g:resizing_plugin_windows=1
   let currentWindow = winnr()
   :windo call s:ResizePluginWindows()
   :execute currentWindow . 'wincmd w'
+  unlet g:resizing_plugin_windows
 
 endfunction
 
@@ -236,13 +238,17 @@ if v:version >= 700
 endif
 
 function! WinLeaveRememberWinCount()
-  let t:WinCount = winnr('$')
+  if !exists("g:resizing_plugin_windows")
+    let t:WinCount = winnr('$')
+  endif
 endfunction
 
 function! RestoreWinSizesIfClosing()
-  if exists("t:WinCount")
-    if t:WinCount > winnr('$')
-      call g:ResizeAllPluginWindows()
+  if !exists("g:resizing_plugin_windows")
+    if exists("t:WinCount")
+      if t:WinCount > winnr('$')
+        call g:ResizeAllPluginWindows()
+      endif
       unlet t:WinCount
     endif
   endif
