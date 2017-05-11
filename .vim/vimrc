@@ -87,6 +87,7 @@ nmap <silent> <C-t> :TagbarToggle<CR>
 nmap [c <Plug>GitGutterPrevHunk
 nmap ]c <Plug>GitGutterNextHunk
 
+let g:NERDTreeWinSize=30
 " Change vim cwd when changing NERDTree root
 let g:NERDTreeChDirMode=2
 " Don't show the 'Bookmarks' or 'Press ? for help' text
@@ -103,6 +104,7 @@ let g:vorax_key_doc_search='<leader>vds'
 
 let g:vorax_output_window_size=10
 let g:vorax_dbexplorer_size=30
+let g:vorax_cmanager_size=30
 
 let g:vorax_key_describe='<F4>'
 let g:vorax_key_describe_verbose='<S-F4>'
