@@ -50,6 +50,40 @@ nmap <silent> <C-S-Tab> :bprevious!<CR>
 nmap <silent> <leader>k :bnext!<CR>
 nmap <silent> <leader>j :bprevious!<CR>
 
+" Change order to put variables at the top, since that's usually where they are
+" defined anyway
+let g:tagbar_type_sql = {
+    \ 'kinds' : [
+        \ 'P:packages:1',
+        \ 'v:variables',
+        \ 'd:prototypes',
+        \ 'c:cursors',
+        \ 'f:functions',
+        \ 'F:record fields',
+        \ 'L:block label',
+        \ 'p:procedures',
+        \ 's:subtypes',
+        \ 't:tables',
+        \ 'T:triggers',
+        \ 'i:indexes',
+        \ 'e:events',
+        \ 'U:publications',
+        \ 'R:services',
+        \ 'D:domains',
+        \ 'V:views',
+        \ 'n:synonyms',
+        \ 'x:MobiLink Table Scripts',
+        \ 'y:MobiLink Conn Scripts',
+        \ 'z:MobiLink Properties',
+    \ ],
+\ }
+let g:tagbar_compact=1
+let g:tagbar_autofocus=1
+" Sort by file position, not alphabetically
+let g:tagbar_sort=0
+let g:tagbar_width=30
+nmap <silent> <C-t> :TagbarToggle<CR>
+
 nmap [c <Plug>GitGutterPrevHunk
 nmap ]c <Plug>GitGutterNextHunk
 
@@ -127,7 +161,8 @@ function! g:ResizeAllPluginWindows()
   \ 'nerdtree': 'vertical resize' . g:NERDTreeWinSize,
   \ 'connvorax': 'vertical resize' . g:vorax_cmanager_size,
   \ 'explorervorax': 'vertical resize' . g:vorax_dbexplorer_size,
-  \ 'outputvorax': 'resize' . g:vorax_output_window_size
+  \ 'outputvorax': 'resize' . g:vorax_output_window_size,
+  \ 'tagbar': 'vertical resize' . g:tagbar_width
   \ }
 
   function! s:ResizePluginWindows()
