@@ -234,3 +234,19 @@ if v:version >= 700
     autocmd BufLeave * call AutoSaveWinView()
     autocmd BufEnter * call AutoRestoreWinView()
 endif
+
+function! WinLeaveRememberWinCount()
+  let t:WinCount = winnr('$')
+endfunction
+
+function! RestoreWinSizesIfClosing()
+  if exists("t:WinCount")
+    if t:WinCount > winnr('$')
+      call g:ResizeAllPluginWindows()
+      unlet t:WinCount
+    endif
+  endif
+endfunction
+
+autocmd WinLeave * call WinLeaveRememberWinCount()
+autocmd WinEnter * call RestoreWinSizesIfClosing()
