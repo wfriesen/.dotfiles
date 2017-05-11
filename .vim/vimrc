@@ -123,16 +123,16 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Reset NERDTree and VORAX windows to their defined sizes.
 function! g:ResizeAllPluginWindows()
+  let s:plugin_window_types_resize_cmd = {
+  \ 'nerdtree': 'vertical resize' . g:NERDTreeWinSize,
+  \ 'connvorax': 'vertical resize' . g:vorax_cmanager_size,
+  \ 'explorervorax': 'vertical resize' . g:vorax_dbexplorer_size,
+  \ 'outputvorax': 'resize' . g:vorax_output_window_size
+  \ }
 
   function! s:ResizePluginWindows()
-    if &ft == 'nerdtree'
-      :execute 'vertical resize ' . g:NERDTreeWinSize
-    elseif &ft == 'connvorax'
-      :execute 'vertical resize ' . g:vorax_cmanager_size
-    elseif &ft == 'explorervorax'
-      :execute 'vertical resize ' . g:vorax_dbexplorer_size
-    elseif &ft == 'outputvorax'
-      :execute 'resize ' . g:vorax_output_window_size
+    if has_key(s:plugin_window_types_resize_cmd, &ft)
+      :execute s:plugin_window_types_resize_cmd[&ft]
     endif
   endfunction
 
