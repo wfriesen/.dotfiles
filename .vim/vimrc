@@ -157,7 +157,7 @@ let g:airline_theme='tomorrow'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-" Reset NERDTree and VORAX windows to their defined sizes.
+" Reset some plugin windows to their defined sizes.
 let g:plugin_window_types_resize_cmd = {
 \ 'nerdtree': 'vertical resize' . g:NERDTreeWinSize,
 \ 'connvorax': 'vertical resize' . g:vorax_cmanager_size,
