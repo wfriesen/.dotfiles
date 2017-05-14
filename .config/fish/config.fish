@@ -14,6 +14,17 @@ end
 
 alias dit "git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
+function dit-update-remotes
+  pushd $HOME
+  for remotename in (grep -A1 "^\[remote \"vim-" .dotfiles/config \
+    | grep "url = " \
+    | sed -e "s/^\s*url = https:\/\/github\.com\/.*\/\(.*\)\.git/\1/g")
+    echo Updating $remotename
+    eval dit subtree pull --prefix .vim/bundle/$remotename vim-$remotename master --squash
+  end
+  popd
+end
+
 function gg
   git grep --color=auto -in $argv
 end
