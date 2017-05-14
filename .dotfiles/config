@@ -9,3 +9,42 @@
 [branch "master"]
 	remote = origin
 	merge = refs/heads/master
+[remote "vim-ctrlp.vim"]
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+	fetch = +refs/heads/*:refs/remotes/vim-ctrlp.vim/*
+[remote "vim-nerdcommenter"]
+	url = https://github.com/scrooloose/nerdcommenter.git
+	fetch = +refs/heads/*:refs/remotes/vim-nerdcommenter/*
+[remote "vim-nerdtree"]
+	url = https://github.com/scrooloose/nerdtree.git
+	fetch = +refs/heads/*:refs/remotes/vim-nerdtree/*
+[remote "vim-supertab"]
+	url = https://github.com/ervandew/supertab.git
+	fetch = +refs/heads/*:refs/remotes/vim-supertab/*
+[remote "vim-tagbar"]
+	url = https://github.com/majutsushi/tagbar.git
+	fetch = +refs/heads/*:refs/remotes/vim-tagbar/*
+[remote "vim-undotree"]
+	url = https://github.com/mbbill/undotree.git
+	fetch = +refs/heads/*:refs/remotes/vim-undotree/*
+[remote "vim-vim-airline"]
+	url = https://github.com/vim-airline/vim-airline.git
+	fetch = +refs/heads/*:refs/remotes/vim-vim-airline/*
+[remote "vim-vim-airline-themes"]
+	url = https://github.com/vim-airline/vim-airline-themes.git
+	fetch = +refs/heads/*:refs/remotes/vim-vim-airline-themes/*
+[remote "vim-vim-colors-solarized"]
+	url = https://github.com/altercation/vim-colors-solarized.git
+	fetch = +refs/heads/*:refs/remotes/vim-vim-colors-solarized/*
+[remote "vim-vim-gitgutter"]
+	url = https://github.com/airblade/vim-gitgutter.git
+	fetch = +refs/heads/*:refs/remotes/vim-vim-gitgutter/*
+[remote "vim-vim-multiple-cursors"]
+	url = https://github.com/terryma/vim-multiple-cursors.git
+	fetch = +refs/heads/*:refs/remotes/vim-vim-multiple-cursors/*
+[remote "vim-vim-surround"]
+	url = https://github.com/tpope/vim-surround.git
+	fetch = +refs/heads/*:refs/remotes/vim-vim-surround/*
+[remote "vim-vorax4"]
+	url = https://github.com/talek/vorax4.git
+	fetch = +refs/heads/*:refs/remotes/vim-vorax4/*
