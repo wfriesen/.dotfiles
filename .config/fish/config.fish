@@ -1,3 +1,11 @@
+if [ $TERM != "screen-256color" ]
+	if tmux has-session
+		tmux a
+	else
+		tmux
+	end
+end
+
 if not type vi 1>/dev/null 2>&1; and type vim 1>/dev/null 2>&1
   alias vi "vim"
 end
@@ -29,10 +37,4 @@ function gg
   git grep --color=auto -in $argv
 end
 
-if [ $TERM != screen-256color ]
-	if tmux has-session
-		tmux a
-	else
-		tmux
-	end
 end
