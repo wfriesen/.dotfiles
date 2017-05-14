@@ -36,5 +36,3 @@ end
 function gg
   git grep --color=auto -in $argv
 end
-
-end
