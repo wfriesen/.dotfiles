@@ -47,6 +47,7 @@ nmap <silent> <leader>ut :UndotreeToggle<CR>:UndotreeFocus<CR>
 
 nmap <silent> <C-Tab> :bnext<CR>
 nmap <silent> <C-S-Tab> :bprevious<CR>
+nmap <silent> <C-F4> :call g:CloseBufferAfterSwitch()<CR>
 nmap <silent> <leader>k :bnext<CR>
 nmap <silent> <leader>j :bprevious<CR>
 
