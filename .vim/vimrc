@@ -28,10 +28,8 @@ set incsearch
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
 
-highlight LineNr ctermfg=DarkGrey
-highlight CursorLineNr ctermfg=DarkGrey
-highlight LineNr guifg=#666666
-highlight CursorLineNr guifg=#666666
+highlight LineNr ctermfg=DarkGrey guifg=#666666
+highlight CursorLineNr ctermfg=DarkGrey guifg=#666666
 highlight Cursor guibg=#dc322f
 
 set ignorecase
