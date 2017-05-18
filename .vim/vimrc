@@ -45,11 +45,11 @@ set wildignore+=*/$tf/*
 nmap <silent> <leader>nt :NERDTreeToggle<CR>
 nmap <silent> <leader>ut :UndotreeToggle<CR>:UndotreeFocus<CR>
 
-nmap <silent> <C-Tab> :bnext<CR>
-nmap <silent> <C-S-Tab> :bprevious<CR>
-nmap <silent> <C-F4> :call g:CloseBufferAfterSwitch()<CR>
-nmap <silent> <leader>k :bnext<CR>
-nmap <silent> <leader>j :bprevious<CR>
+nmap <silent> <C-Tab> :tabnext<CR>
+nmap <silent> <C-S-Tab> :tabprevious<CR>
+nmap <silent> <C-F4> :tabclose<CR>
+nmap <silent> <leader>k :tabnext<CR>
+nmap <silent> <leader>j :tabprevious<CR>
 
 " Change order to put variables at the top, since that's usually where they are
 " defined anyway
