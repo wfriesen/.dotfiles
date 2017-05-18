@@ -25,6 +25,8 @@ set laststatus=2
 set hidden
 set incsearch
 
+set wildmenu
+
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
 
