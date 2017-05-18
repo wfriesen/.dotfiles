@@ -223,23 +223,3 @@ function! g:LoadWorkspace()
 endfunction
 
 nmap <silent> <leader>ws :call g:LoadWorkspace()<CR>
-
-function! WinLeaveRememberWinCount()
-  if !exists("g:resizing_plugin_windows")
-    let t:WinCount = winnr('$')
-  endif
-endfunction
-
-function! RestoreWinSizesIfClosing()
-  if !exists("g:resizing_plugin_windows")
-    if exists("t:WinCount")
-      if t:WinCount > winnr('$')
-        call g:ResizeAllPluginWindows()
-      endif
-      unlet t:WinCount
-    endif
-  endif
-endfunction
-
-autocmd WinLeave * call WinLeaveRememberWinCount()
-autocmd WinEnter * call RestoreWinSizesIfClosing()
