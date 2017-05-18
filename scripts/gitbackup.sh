@@ -44,7 +44,7 @@ function restore()
     exit 4
   fi
 
-  git apply $DIFF
+  git apply --whitespace=fix $DIFF
   tar xvf $UNTRACKED_TAR
 
   popd
