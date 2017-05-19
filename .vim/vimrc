@@ -226,17 +226,3 @@ function! g:CloseBufferAfterSwitch()
 endfunction
 
 nmap <silent> <leader>wq :call g:CloseBufferAfterSwitch()<CR>
-
-function! g:LoadWorkspace()
-  if winnr('$') > 1
-    :execute ':only'
-  endif
-  :execute ':VORAXConnectionsToggle'
-  :execute ':NERDTreeToggle'
-  :execute ':VORAXOutputToggle'
-  :execute "wincmd k"
-  :execute "wincmd l"
-  :call g:ResizeAllPluginWindows()
-endfunction
-
-nmap <silent> <leader>ws :call g:LoadWorkspace()<CR>
