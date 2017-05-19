@@ -81,7 +81,7 @@ let g:tagbar_autofocus=1
 " Sort by file position, not alphabetically
 let g:tagbar_sort=0
 let g:tagbar_width=30
-nmap <silent> <C-t> :TagbarToggle<CR>
+nmap <silent> <leader>t :TagbarToggle<CR>
 
 nmap [c <Plug>GitGutterPrevHunk
 nmap ]c <Plug>GitGutterNextHunk
