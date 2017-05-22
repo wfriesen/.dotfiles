@@ -99,6 +99,8 @@ nmap <silent> <leader>H gg/^\( \)\?-<CR>kztjf<Space>
 nmap <silent> <C-Enter> :VORAXExecCurrent<CR>
 imap <silent> <C-Enter> <Esc>:VORAXExecCurrent<CR>
 
+nmap <silent> <F5> :VORAXCompile<CR>
+
 " Re-point some default mappings so they are overridden with the custom ones
 " defined here
 let g:vorax_key_doc_search='<leader>vds'
