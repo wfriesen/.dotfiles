@@ -28,8 +28,8 @@ set wildmenu
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
 
-highlight LineNr ctermfg=DarkGrey guifg=#666666
-highlight CursorLineNr ctermfg=DarkGrey guifg=#666666
+highlight LineNr guifg=#586e75 ctermfg=10
+highlight CursorLineNr guifg=#839496 ctermfg=12
 highlight Cursor guibg=#dc322f
 
 set ignorecase
