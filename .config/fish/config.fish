@@ -1,9 +1,9 @@
 if [ $TERM != "screen-256color" ]
-	if tmux has-session
-		tmux a
-	else
-		tmux
-	end
+  if tmux has-session
+    tmux a
+  else
+    tmux
+  end
 end
 
 if not type vi 1>/dev/null 2>&1; and type vim 1>/dev/null 2>&1
