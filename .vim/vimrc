@@ -30,7 +30,7 @@ let mapleader = "\<Space>"
 
 highlight LineNr guifg=#586e75 ctermfg=10
 highlight CursorLineNr guifg=#839496 ctermfg=12
-highlight Cursor guibg=#dc322f
+highlight Cursor guibg=#93a1a1
 
 set ignorecase
 set smartcase
