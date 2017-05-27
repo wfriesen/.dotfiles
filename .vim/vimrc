@@ -166,7 +166,7 @@ if has('win32')
   autocmd GUIEnter * simalt ~x
   set guifont=Hack:h12
 else
-  set guifont=Hack\ 15
+  set guifont=Hack\ 16
 endif
 
 let g:SuperTabDefaultCompletionType="<c-n>"
