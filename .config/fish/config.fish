@@ -1,8 +1,8 @@
 if [ $TERM != "screen-256color" ]
   if tmux has-session
-    tmux a
+    exec tmux a
   else
-    tmux
+    exec tmux
   end
 end
 
