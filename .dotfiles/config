@@ -12,9 +12,6 @@
 [remote "vim-ctrlp.vim"]
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
 	fetch = +refs/heads/*:refs/remotes/vim-ctrlp.vim/*
-[remote "vim-nerdcommenter"]
-	url = https://github.com/scrooloose/nerdcommenter.git
-	fetch = +refs/heads/*:refs/remotes/vim-nerdcommenter/*
 [remote "vim-nerdtree"]
 	url = https://github.com/scrooloose/nerdtree.git
 	fetch = +refs/heads/*:refs/remotes/vim-nerdtree/*
@@ -45,6 +42,9 @@
 [remote "vim-vim-surround"]
 	url = https://github.com/tpope/vim-surround.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-surround/*
+[remote "vim-vim-commentary"]
+	url = https://github.com/tpope/vim-commentary.git
+	fetch = +refs/heads/*:refs/remotes/vim-vim-commentary/*
 [remote "vim-vorax4"]
 	url = https://github.com/talek/vorax4.git
 	fetch = +refs/heads/*:refs/remotes/vim-vorax4/*
