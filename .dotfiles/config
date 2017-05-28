@@ -51,3 +51,6 @@
 [remote "vim-vorax4"]
 	url = https://github.com/talek/vorax4.git
 	fetch = +refs/heads/*:refs/remotes/vim-vorax4/*
+[remote "vim-vim-javascript"]
+	url = https://github.com/pangloss/vim-javascript.git
+	fetch = +refs/heads/*:refs/remotes/vim-vim-javascript/*
