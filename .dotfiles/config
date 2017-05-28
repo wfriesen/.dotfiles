@@ -54,3 +54,6 @@
 [remote "vim-vim-jsx"]
 	url = https://github.com/mxw/vim-jsx.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-jsx/*
+[remote "vim-vim-javascript"]
+	url = https://github.com/pangloss/vim-javascript.git
+	fetch = +refs/heads/*:refs/remotes/vim-vim-javascript/*
