@@ -125,7 +125,7 @@ endfunction
 nmap <silent> <leader>pr :call g:ToggleVORAXConnections()<CR>
 
 let g:vorax_output_window_size=20
-let g:vorax_dbexplorer_size=30
+let g:vorax_dbexplorer_size=32
 let g:vorax_cmanager_size=30
 
 let g:vorax_key_describe='<F4>'
