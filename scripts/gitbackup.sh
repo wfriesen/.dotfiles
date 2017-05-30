@@ -23,12 +23,11 @@ function backup()
   # Get the HEAD log message, so we know where these changes came from
   git log -1 HEAD > "$THIS_BACKUP_LOCATION"/HEAD.log
 
-  # Write out a diff of any changes
-  git diff > "$THIS_BACKUP_LOCATION"/diff
-
-  # Tar up any untracked files, so that they can retain their full path
-  git ls-files --others --exclude-standard | \
-    tar -cvf "$THIS_BACKUP_LOCATION"/untracked.tar -T -
+  # Tar up all changed files, retaining their full path
+  # Get unique paths, since a file may be listed twice if it has both
+  # staged and unstaged changes.
+  git status --porcelain=v1 | cut -c4- | sort -u | \
+    tar -cvf "$THIS_BACKUP_LOCATION"/changedfiles.tar -T -
 
   popd
 }
@@ -36,16 +35,14 @@ function backup()
 function restore()
 {
   pushd $GIT_LOCATION
-  DIFF="$BACKUP_LOCATION/diff"
-  UNTRACKED_TAR="$BACKUP_LOCATION/untracked.tar"
+  CHANGED_FILES_TAR="$BACKUP_LOCATION/changedfiles.tar"
 
-  if [ ! -f $DIFF ] || [ ! -f $UNTRACKED_TAR ]; then
+  if [ ! -f $CHANGED_FILES_TAR ]; then
     usage
     exit 4
   fi
 
-  git apply --whitespace=fix $DIFF
-  tar xvf $UNTRACKED_TAR
+  tar xvf $CHANGED_FILES_TAR
 
   popd
 }
