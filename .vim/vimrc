@@ -215,11 +215,9 @@ function! g:ResizeAllPluginWindows()
     endif
   endfunction
 
-  let g:resizing_plugin_windows=1
   let currentWindow = winnr()
   :windo call s:ResizePluginWindows()
   :execute currentWindow . 'wincmd w'
-  unlet g:resizing_plugin_windows
 
 endfunction
 
