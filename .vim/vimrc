@@ -57,7 +57,7 @@ nmap <silent> <leader>k :tabnext<CR>
 nmap <silent> <leader>j :tabprevious<CR>
 
 " vim.commentary settings
-autocmd FileType sql setlocal commentstring=--\ %s
+autocmd FileType sql setlocal commentstring=/\*\ %s\ \*/
 
 " Change order to put variables at the top, since that's usually where they are
 " defined anyway
