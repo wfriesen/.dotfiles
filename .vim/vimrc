@@ -180,7 +180,7 @@ else
   set guifont=Hack\ 16
 endif
 
-let g:SuperTabDefaultCompletionType="<c-n>"
+let g:SuperTabDefaultCompletionType="context"
 let g:SuperTabCrMapping=1
 
 let g:airline_theme='tomorrow'
