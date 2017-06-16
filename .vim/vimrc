@@ -139,6 +139,9 @@ let g:vorax_key_describe_verbose='<S-F4>'
 " Set VORAX output window to show full headings
 let g:vorax_output_full_heading=1
 
+" Show marker in status line when in an open transaction
+let g:vorax_output_show_open_txn=1
+
 let g:vorax_plsql_associations=
 \ {'FUNCTION' : 'fnc',
 \  'PROCEDURE' : 'prc',
