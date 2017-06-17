@@ -57,3 +57,6 @@
 [remote "vim-vim-javascript"]
 	url = https://github.com/pangloss/vim-javascript.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-javascript/*
+[remote "vim-auto-pairs"]
+	url = https://github.com/jiangmiao/auto-pairs.git
+	fetch = +refs/heads/*:refs/remotes/vim-auto-pangloss/*
