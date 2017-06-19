@@ -102,6 +102,8 @@ let g:NERDTreeChDirMode=2
 " Don't show the 'Bookmarks' or 'Press ? for help' text
 let NERDTreeMinimalUI = 1
 
+let g:AutoPairsCenterLine=0
+
 " VORAX. Jump to the header row of the output window
 " can then jump to the next/previous column with ; and ,
 nmap <silent> <leader>H gg/^\( \)\?-<CR>kztjf<Space>
