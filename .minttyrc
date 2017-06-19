@@ -38,3 +38,4 @@ BoldWhite=253,246,227
 Font=Hack
 CursorType=block
 Scrollbar=none
+CopyOnSelect=no
