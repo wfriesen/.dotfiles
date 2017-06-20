@@ -185,6 +185,10 @@ endif
 let g:SuperTabClosePreviewOnPopupClose=1
 let g:SuperTabDefaultCompletionType="context"
 let g:SuperTabCrMapping=1
+autocmd FileType *
+  \ if &omnifunc != '' |
+  \   call SuperTabChain(&omnifunc, "<c-p>") |
+  \ endif
 
 let g:airline_theme='tomorrow'
 let g:airline_powerline_fonts = 1
