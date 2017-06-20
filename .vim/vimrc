@@ -182,6 +182,7 @@ else
   set guifont=Hack\ 16
 endif
 
+let g:SuperTabClosePreviewOnPopupClose=1
 let g:SuperTabDefaultCompletionType="context"
 let g:SuperTabCrMapping=1
 
