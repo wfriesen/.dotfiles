@@ -27,6 +27,8 @@ set incsearch
 
 set wildmenu
 
+set completeopt=menu,menuone,preview
+
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
 
