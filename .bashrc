@@ -13,4 +13,8 @@ export VISUAL="vim"
 export OSTYPE
 
 eval `dircolors ~/.dircolors`
+
+ps | grep -q /usr/bin/XWin || startxwin >/dev/null 2>&1 &
+export DISPLAY=:0.0
+
 exec fish
