@@ -7,3 +7,5 @@
   linenumber = green
   match = bold red
   filename = magenta
+[log]
+  date = iso-local
