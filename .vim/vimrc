@@ -111,7 +111,7 @@ let g:AutoPairsCenterLine=0
 nmap <silent> <leader>H gg/^\( \)\?-<CR>kztjf<Space>
 
 " Wrap a paragraph in an inline view, limiting with "where rownum <= 10".
-nmap <silent> <leader>lr {owith q as (<Del><Esc>j>/\/<CR>nO<Esc>I<C-v>)<CR><Esc>Iselect<CR><Tab>*<CR><BS>from q<CR>where rownum <= 10<Esc>?)<CR>%<CR>
+nmap <silent> <leader>lr mz{owith q as (<Del><Esc>j>/\/<CR>nO<Esc>I<C-v>)<CR><Esc>Iselect<CR><Tab>*<CR><BS>from q<CR>where rownum <= 10<Esc>`zll
 
 nmap <silent> <C-Enter> :VORAXExecCurrent<CR>
 imap <silent> <C-Enter> <Esc>:VORAXExecCurrent<CR>
