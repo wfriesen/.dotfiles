@@ -6,6 +6,8 @@ filetype plugin indent on
 set background=dark
 colorscheme solarized
 
+set shortmess+=I
+
 set fileformats=unix,dos
 
 set tabstop=2
