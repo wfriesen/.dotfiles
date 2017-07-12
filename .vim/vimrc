@@ -29,6 +29,8 @@ set incsearch
 set virtualedit=block
 
 set wildmenu
+set wildignore+=*/node_modules/*
+set wildignore+=*/$tf/*
 
 set completeopt=menu,menuone,preview
 
@@ -43,9 +45,6 @@ set ignorecase
 set smartcase
 set backupcopy=yes
 set showmode
-
-set wildignore+=*/node_modules/*
-set wildignore+=*/$tf/*
 
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
