@@ -9,3 +9,5 @@
   filename = magenta
 [log]
   date = iso-local
+[alias]
+  diffone = "!git difftool \"$1\"^..\"$1\""
