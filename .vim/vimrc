@@ -34,6 +34,9 @@ set wildmenu
 set wildignore+=*/node_modules/*
 set wildignore+=*/$tf/*
 
+" Strip out @ from file names. Useful for sqlplus files that call others with @@filename.sql
+set isfname-=@-@
+
 set completeopt=menu,menuone,preview
 
 nnoremap <Space> <Nop>
