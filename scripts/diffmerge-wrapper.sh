@@ -14,4 +14,4 @@ if [ "$REMOTE" == '/dev/null' ]; then
   REMOTE=$NULL_FILE
 fi
 
-sgdm $(cygpath -aw "$LOCAL") $(cygpath -aw "$REMOTE")
+sgdm "$(cygpath -aw "$LOCAL")" "$(cygpath -aw "$REMOTE")"
