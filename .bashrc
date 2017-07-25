@@ -8,7 +8,7 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-export VISUAL="vim"
+export VISUAL="vim.exe"
 
 export OSTYPE
 
