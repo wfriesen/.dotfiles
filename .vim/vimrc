@@ -1,15 +1,36 @@
 execute pathogen#infect()
 
+" Pretty colors
 syntax on
 filetype plugin indent on
-
 set background=dark
 colorscheme solarized
 
+highlight LineNr guifg=#586e75 ctermfg=10
+highlight CursorLineNr guifg=#839496 ctermfg=12
+highlight Cursor guibg=#dc322f
+
+set number
+set relativenumber
+set cursorline
+
+" remove some gvim clutter
+set guioptions-=m "menubar
+set guioptions-=r "scrollbar
+set guioptions-=T "toolbar
+set guioptions-=L "Left-hand scrollbar
+
+" Make backspace work like expected. See :h 'backspace'
+set backspace=indent,eol,start
+
+set hidden
+
+" Turn off intro message. I know what vim is.
 set shortmess+=I
 
+" Formatting options
 set fileformats=unix,dos
-
+set encoding=utf-8
 set tabstop=2
 set softtabstop=0
 set expandtab
@@ -17,18 +38,16 @@ set shiftwidth=2
 set smarttab
 set autoindent
 
-set encoding=utf-8
-
-set number
-set relativenumber
-set cursorline
-
-set laststatus=2
-set hidden
+set ignorecase
+set smartcase
 set incsearch
 set gdefault
-
 set virtualedit=block
+set backupcopy=yes
+set showmode
+
+" Always show status line
+set laststatus=2
 
 set wildmenu
 set wildignore+=*/node_modules/*
@@ -39,23 +58,74 @@ set isfname-=@-@
 
 set completeopt=menu,menuone,preview
 
+" Use space as leader
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
 
-highlight LineNr guifg=#586e75 ctermfg=10
-highlight CursorLineNr guifg=#839496 ctermfg=12
-highlight Cursor guibg=#dc322f
-
-set ignorecase
-set smartcase
-set backupcopy=yes
-set showmode
-
+" Copy/paste
 vnoremap <silent> <C-c> "*y
 inoremap <silent> <C-v> <C-R>*
 
+" Wrap a paragraph in an inline view, limiting with "where rownum <= 10".
+nmap <silent> <leader>lr mz{owith q as (<Del><Esc>j>/\/<CR>nO<Esc>I)<CR><Esc>Iselect<CR>  *<CR><BS>from q<CR>where rownum <= 10<Esc>`zll
+
 nmap <silent> <leader>nt :NERDTreeToggle<CR>
 nmap <silent> <leader>u :UndotreeToggle<CR>:UndotreeFocus<CR>
+nmap <silent> <leader>t :TagbarToggle<CR>
+nmap [c <Plug>GitGutterPrevHunk
+nmap ]c <Plug>GitGutterNextHunk
+
+" VORAX. Jump to the header row of the output window
+" can then jump to the next/previous column with ; and ,
+nmap <silent> <leader>H gg/^\( \)\?-<CR>kztjf<Space>
+
+nmap <silent> <C-Enter> :VORAXExecCurrent<CR>
+nmap <silent> <F5> :VORAXCompile<CR>
+imap <silent> <C-Enter> <Esc>:VORAXExecCurrent<CR>
+
+" Reset some plugin windows to their defined sizes.
+let g:plugin_window_types_resize_cmd = {
+\ 'nerdtree': 'vertical resize' . g:NERDTreeWinSize,
+\ 'connvorax': 'vertical resize' . g:vorax_cmanager_size,
+\ 'explorervorax': 'vertical resize' . g:vorax_dbexplorer_size,
+\ 'outputvorax': 'resize' . g:vorax_output_window_size,
+\ 'tagbar': 'vertical resize' . g:tagbar_width
+\ }
+function! g:ResizeAllPluginWindows()
+
+  function! s:ResizePluginWindows()
+    if has_key(g:plugin_window_types_resize_cmd, &ft)
+      :execute g:plugin_window_types_resize_cmd[&ft]
+    endif
+  endfunction
+
+  let currentWindow = winnr()
+  :windo call s:ResizePluginWindows()
+  :execute currentWindow . 'wincmd w'
+
+endfunction
+nmap <silent> <leader>r :call g:ResizeAllPluginWindows()<CR>
+
+" Temporarily switch to the home directory when opening the VORAX connections
+" window, so that it can find profiles.xml
+function! g:ToggleVORAXConnections()
+  if bufwinnr('__VORAX_CONNECTIONS__') == -1
+    :execute ':cd ~'
+    :execute ':VORAXConnectionsToggle'
+    :execute ':cd -'
+  else
+    :execute ':VORAXConnectionsToggle'
+  endif
+endfunction
+nmap <silent> <leader>pr :call g:ToggleVORAXConnections()<CR>
+
+if has('win32')
+  " start gvim maximized. Simulates pressing Alt+Space x
+  autocmd GUIEnter * simalt ~x
+  set guifont=Hack:h12
+else
+  set guifont=Hack\ 16
+endif
 
 " vim.commentary settings
 autocmd FileType sql setlocal commentstring=/\*\ %s\ \*/
@@ -92,10 +162,6 @@ let g:tagbar_autofocus=1
 " Sort by file position, not alphabetically
 let g:tagbar_sort=0
 let g:tagbar_width=30
-nmap <silent> <leader>t :TagbarToggle<CR>
-
-nmap [c <Plug>GitGutterPrevHunk
-nmap ]c <Plug>GitGutterNextHunk
 
 let g:NERDTreeWinSize=30
 " Change vim cwd when changing NERDTree root
@@ -105,35 +171,10 @@ let NERDTreeMinimalUI = 1
 
 let g:AutoPairsCenterLine=0
 
-" VORAX. Jump to the header row of the output window
-" can then jump to the next/previous column with ; and ,
-nmap <silent> <leader>H gg/^\( \)\?-<CR>kztjf<Space>
-
-" Wrap a paragraph in an inline view, limiting with "where rownum <= 10".
-nmap <silent> <leader>lr mz{owith q as (<Del><Esc>j>/\/<CR>nO<Esc>I)<CR><Esc>Iselect<CR>  *<CR><BS>from q<CR>where rownum <= 10<Esc>`zll
-
-nmap <silent> <C-Enter> :VORAXExecCurrent<CR>
-imap <silent> <C-Enter> <Esc>:VORAXExecCurrent<CR>
-
-nmap <silent> <F5> :VORAXCompile<CR>
-
 " Re-point some default mappings so they are overridden with the custom ones
 " defined here
 let g:vorax_key_doc_search='<leader>vds'
 let g:vorax_key_connections_toggle='<leader>vpr'
-
-" Temporarily switch to the home directory when opening the VORAX connections
-" window, so that it can find profiles.xml
-function! g:ToggleVORAXConnections()
-  if bufwinnr('__VORAX_CONNECTIONS__') == -1
-    :execute ':cd ~'
-    :execute ':VORAXConnectionsToggle'
-    :execute ':cd -'
-  else
-    :execute ':VORAXConnectionsToggle'
-  endif
-endfunction
-nmap <silent> <leader>pr :call g:ToggleVORAXConnections()<CR>
 
 let g:vorax_output_window_size=20
 let g:vorax_dbexplorer_size=32
@@ -169,23 +210,6 @@ let g:ctrlp_open_multiple_files='t'
 " Re-order modes. After opening CtrlP, <C-b> now jumps to 'Buffers'
 let g:ctrlp_types = ['fil', 'mru', 'buf']
 
-" Make backspace work like expected. See :h 'backspace'
-set backspace=indent,eol,start
-
-" remove some gvim clutter
-set guioptions-=m "menubar
-set guioptions-=r "scrollbar
-set guioptions-=T "toolbar
-set guioptions-=L "Left-hand scrollbar
-
-if has('win32')
-  " start gvim maximized. Simulates pressing Alt+Space x
-  autocmd GUIEnter * simalt ~x
-  set guifont=Hack:h12
-else
-  set guifont=Hack\ 16
-endif
-
 let g:SuperTabClosePreviewOnPopupClose=1
 let g:SuperTabDefaultCompletionType="context"
 let g:SuperTabCrMapping=1
@@ -203,27 +227,3 @@ let g:airline#extensions#tabline#show_splits = 1
 let g:airline#extensions#tabline#tab_nr_type = 2
 
 let g:airline#extensions#tabline#buffer_idx_mode = 1
-
-" Reset some plugin windows to their defined sizes.
-let g:plugin_window_types_resize_cmd = {
-\ 'nerdtree': 'vertical resize' . g:NERDTreeWinSize,
-\ 'connvorax': 'vertical resize' . g:vorax_cmanager_size,
-\ 'explorervorax': 'vertical resize' . g:vorax_dbexplorer_size,
-\ 'outputvorax': 'resize' . g:vorax_output_window_size,
-\ 'tagbar': 'vertical resize' . g:tagbar_width
-\ }
-function! g:ResizeAllPluginWindows()
-
-  function! s:ResizePluginWindows()
-    if has_key(g:plugin_window_types_resize_cmd, &ft)
-      :execute g:plugin_window_types_resize_cmd[&ft]
-    endif
-  endfunction
-
-  let currentWindow = winnr()
-  :windo call s:ResizePluginWindows()
-  :execute currentWindow . 'wincmd w'
-
-endfunction
-
-nmap <silent> <leader>r :call g:ResizeAllPluginWindows()<CR>
