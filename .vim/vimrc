@@ -10,6 +10,8 @@ highlight LineNr guifg=#586e75 ctermfg=10
 highlight CursorLineNr guifg=#839496 ctermfg=12
 highlight Cursor guibg=#dc322f
 
+set lazyredraw
+
 set number
 set relativenumber
 set cursorline
