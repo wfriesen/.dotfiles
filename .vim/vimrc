@@ -83,29 +83,6 @@ nmap <silent> <C-Enter> :VORAXExecCurrent<CR>
 nmap <silent> <F5> :VORAXCompile<CR>
 imap <silent> <C-Enter> <Esc>:VORAXExecCurrent<CR>
 
-" Reset some plugin windows to their defined sizes.
-let g:plugin_window_types_resize_cmd = {
-\ 'nerdtree': 'vertical resize' . g:NERDTreeWinSize,
-\ 'connvorax': 'vertical resize' . g:vorax_cmanager_size,
-\ 'explorervorax': 'vertical resize' . g:vorax_dbexplorer_size,
-\ 'outputvorax': 'resize' . g:vorax_output_window_size,
-\ 'tagbar': 'vertical resize' . g:tagbar_width
-\ }
-function! g:ResizeAllPluginWindows()
-
-  function! s:ResizePluginWindows()
-    if has_key(g:plugin_window_types_resize_cmd, &ft)
-      :execute g:plugin_window_types_resize_cmd[&ft]
-    endif
-  endfunction
-
-  let currentWindow = winnr()
-  :windo call s:ResizePluginWindows()
-  :execute currentWindow . 'wincmd w'
-
-endfunction
-nmap <silent> <leader>r :call g:ResizeAllPluginWindows()<CR>
-
 " Temporarily switch to the home directory when opening the VORAX connections
 " window, so that it can find profiles.xml
 function! g:ToggleVORAXConnections()
@@ -227,3 +204,26 @@ let g:airline#extensions#tabline#show_splits = 1
 let g:airline#extensions#tabline#tab_nr_type = 2
 
 let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+" Reset some plugin windows to their defined sizes.
+let g:plugin_window_types_resize_cmd = {
+\ 'nerdtree': 'vertical resize' . g:NERDTreeWinSize,
+\ 'connvorax': 'vertical resize' . g:vorax_cmanager_size,
+\ 'explorervorax': 'vertical resize' . g:vorax_dbexplorer_size,
+\ 'outputvorax': 'resize' . g:vorax_output_window_size,
+\ 'tagbar': 'vertical resize' . g:tagbar_width
+\ }
+function! g:ResizeAllPluginWindows()
+
+  function! s:ResizePluginWindows()
+    if has_key(g:plugin_window_types_resize_cmd, &ft)
+      :execute g:plugin_window_types_resize_cmd[&ft]
+    endif
+  endfunction
+
+  let currentWindow = winnr()
+  :windo call s:ResizePluginWindows()
+  :execute currentWindow . 'wincmd w'
+
+endfunction
+nmap <silent> <leader>r :call g:ResizeAllPluginWindows()<CR>
