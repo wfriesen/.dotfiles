@@ -106,6 +106,18 @@ else
   set guifont=Hack\ 16
 endif
 
+let g:startify_enable_special = 0
+let g:startify_session_sort = 1
+let g:startify_fortune_use_unicode = 1
+let g:startify_list_order = [
+        \ ['   Sessions'],
+        \ 'sessions',
+        \ ['   MRU Files'],
+        \ 'files',
+        \ ['   MRU in CWD'],
+        \ 'dir',
+        \ ]
+
 " vim.commentary settings
 autocmd FileType sql setlocal commentstring=/\*\ %s\ \*/
 
