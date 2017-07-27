@@ -66,3 +66,6 @@
 [remote "vim-gv.vim"]
 	url = https://github.com/junegunn/gv.vim.git
 	fetch = +refs/heads/*:refs/remotes/vim-gv.vim/*
+[remote "vim-vim-startify"]
+	url = https://github.com/mhinz/vim-startify.git
+	fetch = +refs/heads/*:refs/remotes/vim-vim-startify/*
