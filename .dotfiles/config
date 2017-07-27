@@ -15,9 +15,6 @@
 [remote "vim-vim-fish"]
 	url = https://github.com/dag/vim-fish.git
 	fetch = +refs/heads/*:refs/remotes/vim-fish/*
-[remote "vim-nerdtree"]
-	url = https://github.com/scrooloose/nerdtree.git
-	fetch = +refs/heads/*:refs/remotes/vim-nerdtree/*
 [remote "vim-supertab"]
 	url = https://github.com/ervandew/supertab.git
 	fetch = +refs/heads/*:refs/remotes/vim-supertab/*
@@ -69,3 +66,6 @@
 [remote "vim-vim-startify"]
 	url = https://github.com/mhinz/vim-startify.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-startify/*
+[remote "vim-vim-vinegar"]
+	url = https://github.com/tpope/vim-vinegar.git
+	fetch = +refs/heads/*:refs/remotes/vim-vim-vinegar/*
