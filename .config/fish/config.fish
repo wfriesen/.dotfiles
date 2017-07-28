@@ -13,13 +13,6 @@ end
 
 alias dotfiles "git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
-if [ (uname -o) = 'Cygwin' ];
-and not type diffmerge 1>/dev/null 2>&1;
-and which sgdm 1>/dev/null 2>&1;
-and [ ! -f /usr/local/bin/diffmerge ]
-  ln -s $HOME/scripts/diffmerge-wrapper.sh /usr/local/bin/diffmerge
-end
-
 function dotfiles-update-remotes
   pushd $HOME
   for remotename in (awk '/^\[remote "vim-/ {while ($0 !~ /\s*url\s*=\s*.*/) {getline;} print $0}' .dotfiles/config \
