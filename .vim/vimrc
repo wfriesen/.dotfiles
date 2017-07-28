@@ -68,8 +68,15 @@ nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
 
 " Copy/paste
-vnoremap <silent> <C-c> "*y
-inoremap <silent> <C-v> <C-R>*
+if has('win32')
+  let g:clipboard_register="*"
+else
+  let g:clipboard_register="+"
+endif
+execute "vnoremap <silent> <C-c> \"" . g:clipboard_register . "y"
+execute "inoremap <silent> <C-v> <C-R>" . g:clipboard_register
+" Yank to the system clipboard, can be used like <C-c>i( or <C-c>t$ etc.
+execute "nmap <silent> <C-c> \"" . g:clipboard_register . "y"
 
 " Wrap a paragraph in an inline view, limiting with "where rownum <= 10".
 nmap <silent> <leader>lr mz{owith q as (<Del><Esc>j>/\/<CR>nO<Esc>I)<CR><Esc>Iselect<CR>  *<CR><BS>from q<CR>where rownum <= 10<Esc>`zll
