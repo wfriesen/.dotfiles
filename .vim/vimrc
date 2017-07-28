@@ -58,6 +58,9 @@ set wildignore+=*/$tf/*
 " Strip out @ from file names. Useful for sqlplus files that call others with @@filename.sql
 set isfname-=@-@
 
+" Keeping this on seems to break loading sessions when using plugins
+set sessionoptions-=options
+
 set completeopt=menu,menuone,preview
 
 " Use space as leader
