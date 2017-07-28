@@ -39,3 +39,4 @@ Font=Hack
 CursorType=block
 Scrollbar=none
 CopyOnSelect=no
+CtrlShiftShortcuts=yes
