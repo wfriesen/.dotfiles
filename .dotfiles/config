@@ -56,7 +56,7 @@
 	fetch = +refs/heads/*:refs/remotes/vim-vim-javascript/*
 [remote "vim-auto-pairs"]
 	url = https://github.com/jiangmiao/auto-pairs.git
-	fetch = +refs/heads/*:refs/remotes/vim-auto-pangloss/*
+	fetch = +refs/heads/*:refs/remotes/vim-auto-pairs/*
 [remote "vim-vim-fugitive"]
 	url = https://github.com/tpope/vim-fugitive.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-fugitive/*
