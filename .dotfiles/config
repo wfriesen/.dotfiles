@@ -69,3 +69,6 @@
 [remote "vim-vim-vinegar"]
 	url = https://github.com/tpope/vim-vinegar.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-vinegar/*
+[remote "vim-tabular"]
+	url = https://github.com/godlygeek/tabular.git
+	fetch = +refs/heads/*:refs/remotes/vim-tabular/*
