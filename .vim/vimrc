@@ -131,10 +131,6 @@ let g:startify_list_order = [
 " vim.commentary settings
 autocmd FileType sql setlocal commentstring=/\*\ %s\ \*/
 
-let g:Gitv_OpenPreviewOnLaunch = 0
-let g:Gitv_DoNotMapCtrlKey = 1
-let g:Gitv_PreviewOptions = '--date=iso-local'
-
 " Change order to put variables at the top, since that's usually where they are
 " defined anyway
 let g:tagbar_type_sql = {
