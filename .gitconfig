@@ -1,8 +1,8 @@
 [user]
-	email = wfriesen@gmail.com
-	name = William Friesen
+  email = wfriesen@gmail.com
+  name = William Friesen
 [diff]
-	tool = diffmerge
+  tool = diffmerge
 [color "grep"]
   linenumber = green
   match = bold red
