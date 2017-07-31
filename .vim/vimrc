@@ -284,8 +284,6 @@ let g:vorax_key_describe_verbose='<S-F4>'
 
 let g:vorax_output_full_heading=1 " Set VORAX output window to show full headings
 
-let g:vorax_oradoc_open_cmd='D:\software\cygwin\bin\bash -c "/bin/w3m -dump %u > /tmp/voraxw3moutput && /cygdrive/c/Program\ Files\ \(x86\)/vim/vim73/gvim.exe --remote D:/software/cygwin/tmp/voraxw3moutput"'
-
 let g:vorax_output_show_open_txn=1 " Show marker in status line when in an open transaction
 
 let g:vorax_plsql_associations=
