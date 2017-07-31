@@ -71,6 +71,11 @@ let mapleader = "\<Space>"
 vnoremap <silent> * "zy/<C-R>z<CR>
 vnoremap <silent> # "zy?<C-R>z<CR>
 
+nnoremap <A-l> zl
+nnoremap <A-h> zh
+nnoremap <A-L> 100zl
+nnoremap <A-H> 100zh
+
 " Copy/paste
 if has('win32')
   let g:clipboard_register="*"
