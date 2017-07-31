@@ -67,6 +67,10 @@ set completeopt=menu,menuone,preview
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
 
+" Make * and # in visual mode work like in normal mode
+vnoremap <silent> * "zy/<C-R>z<CR>
+vnoremap <silent> # "zy?<C-R>z<CR>
+
 " Copy/paste
 if has('win32')
   let g:clipboard_register="*"
