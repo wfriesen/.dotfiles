@@ -70,6 +70,9 @@ set sessionoptions-=options
 
 set completeopt=menu,menuone,preview
 
+" Show file size and modification times
+let g:netrw_liststyle=1
+
 " Use space as leader
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
