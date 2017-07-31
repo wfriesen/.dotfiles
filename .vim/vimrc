@@ -16,8 +16,7 @@ else
   set guifont=Hack\ 16
 endif
 
-" Execute macros faster by not redrawing the screen constantly
-set lazyredraw
+set lazyredraw " Execute macros faster by not redrawing the screen constantly
 
 set number
 set relativenumber
@@ -29,10 +28,9 @@ set guioptions-=r "scrollbar
 set guioptions-=T "toolbar
 set guioptions-=L "Left-hand scrollbar
 
-" Make backspace work like expected
-set backspace=indent,eol,start
+set backspace=indent,eol,start " Make backspace work like expected
 
-set hidden
+set hidden " Allow hidden buffers with unsaved changes
 
 " Turn off intro message. I know what vim is.
 set shortmess+=I
@@ -47,31 +45,34 @@ set shiftwidth=2
 set smarttab
 set autoindent
 
+" Ignore case, except if the entered search pattern contains upper case chars
 set ignorecase
 set smartcase
-set incsearch
-set gdefault
-set virtualedit=block
-set backupcopy=yes
-set showmode
 
-" Always show status line
-set laststatus=2
+set incsearch " Search as you type. <Esc> still cancels and returns
+set gdefault " Always use /g for :s commands
+set virtualedit=block " In visual block mode, allow the cursor to move anywhere
+set backupcopy=yes " Let's webpack pick up changes
+set showmode " Show the mode in command line. Airline shows it anyway, but it's just be empty otherwise
 
-set wildmenu
+set laststatus=2 " Always show status line
+
+set wildmenu " Show matches when invoking command line completion
+
+" Exclude these folders from ctrlp
 set wildignore+=*/node_modules/*
 set wildignore+=*/$tf/*
 
-" Strip out @ from file names. Useful for sqlplus files that call others with @@filename.sql
-set isfname-=@-@
+set isfname-=@-@ " Strip out @ from file names. Useful for sqlplus files that call others with @@filename.sql
 
-" Keeping this on seems to break loading sessions when using plugins
-set sessionoptions-=options
+set sessionoptions-=options " Keeping this on seems to break loading sessions when using plugins
 
-set completeopt=menu,menuone,preview
+set completeopt=
+set completeopt+=menu " Use popup menu, even if there's only one match
+set completeopt+=menuone " Show even when there's only one match
+set completeopt+=preview " Show some extra info (types, filenames, etc)
 
-" Show file size and modification times
-let g:netrw_liststyle=1
+let g:netrw_liststyle=1 " Show file size and modification times
 
 " Use space as leader
 nnoremap <Space> <Nop>
