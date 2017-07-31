@@ -75,6 +75,10 @@ nnoremap <A-l> zl
 nnoremap <A-h> zh
 nnoremap <A-L> 100zl
 nnoremap <A-H> 100zh
+nnoremap <A-j> <C-e>
+nnoremap <A-k> <C-y>
+nnoremap <A-J> <C-d>
+nnoremap <A-K> <C-u>
 
 " Copy/paste
 if has('win32')
