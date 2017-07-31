@@ -94,9 +94,9 @@ execute "nmap <silent> <C-c> \"" . g:clipboard_register . "y"
 " Wrap a paragraph in an inline view, limiting with "where rownum <= 10".
 function! g:WrapInRowLimiter()
   :execute ":normal! mz{owith q as ("
-  :normal j>//
-  :normal! nO)select	*from qwhere rownum <= 10
-  :normal `zll
+  :normal! j>/^\/
+  :normal! /^/nO)select	*from qwhere rownum <= 10
+  :normal! `zll
 endfunction
 nmap <silent> <leader>lr :call g:WrapInRowLimiter()<CR>
 
