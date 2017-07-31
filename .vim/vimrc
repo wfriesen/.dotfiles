@@ -109,7 +109,7 @@ function! g:WrapInRowLimiter()
 endfunction
 nmap <silent> <leader>lr :call g:WrapInRowLimiter()<CR>
 
-nmap <silent> <leader>u :UndotreeToggle<CR>:UndotreeFocus<CR>
+nmap <silent> <leader>u :UndotreeToggle<CR>
 nmap <silent> <leader>t :TagbarToggle<CR>
 nmap [c <Plug>GitGutterPrevHunk
 nmap ]c <Plug>GitGutterNextHunk
@@ -121,6 +121,8 @@ nmap <silent> <leader>H gg/^\( \)\?-<CR>kztjf<Space>
 nmap <silent> <C-Enter> :VORAXExecCurrent<CR>
 nmap <silent> <F5> :VORAXCompile<CR>
 imap <silent> <C-Enter> <Esc>:VORAXExecCurrent<CR>
+
+let g:undotree_SetFocusWhenToggle=1 " Focus the undotree window when opening
 
 " Don't let vorax clobber this mapping
 let g:vorax_key_connections_toggle='<leader>vpr'
