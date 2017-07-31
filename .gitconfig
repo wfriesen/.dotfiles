@@ -3,8 +3,6 @@
 	name = William Friesen
 [diff]
 	tool = diffmerge
-[difftool "diffmerge"]
-  cmd = ~/scripts/diffmerge-wrapper.sh $LOCAL $REMOTE
 [color "grep"]
   linenumber = green
   match = bold red
