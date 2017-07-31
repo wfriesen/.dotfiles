@@ -242,8 +242,6 @@ let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#show_splits = 1
 let g:airline#extensions#tabline#tab_nr_type = 2 " Show # of splits and tab number
 
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-
 " Reset some plugin windows to their defined sizes.
 let g:plugin_window_types_resize_cmd = {
 \ 'connvorax': 'vertical resize' . g:vorax_cmanager_size,
