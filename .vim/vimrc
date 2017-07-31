@@ -10,6 +10,13 @@ highlight LineNr guifg=#586e75 ctermfg=10
 highlight CursorLineNr guifg=#839496 ctermfg=12
 highlight Cursor guibg=#dc322f
 
+if has('win32')
+  set guifont=Hack:h12
+else
+  set guifont=Hack\ 16
+endif
+
+" Execute macros faster by not redrawing the screen constantly
 set lazyredraw
 
 set number
@@ -22,7 +29,7 @@ set guioptions-=r "scrollbar
 set guioptions-=T "toolbar
 set guioptions-=L "Left-hand scrollbar
 
-" Make backspace work like expected. See :h 'backspace'
+" Make backspace work like expected
 set backspace=indent,eol,start
 
 set hidden
@@ -71,6 +78,7 @@ let mapleader = "\<Space>"
 vnoremap <silent> * "zy/<C-R>z<CR>
 vnoremap <silent> # "zy?<C-R>z<CR>
 
+" Use Alt- for scrolling
 nnoremap <A-l> zl
 nnoremap <A-h> zh
 nnoremap <A-L> 100zl
@@ -80,7 +88,7 @@ nnoremap <A-k> <C-y>
 nnoremap <A-J> <C-d>
 nnoremap <A-K> <C-u>
 
-" Copy/paste
+" Copy/paste to system clipboard with <C-c>
 if has('win32')
   let g:clipboard_register="*"
 else
@@ -114,6 +122,8 @@ nmap <silent> <C-Enter> :VORAXExecCurrent<CR>
 nmap <silent> <F5> :VORAXCompile<CR>
 imap <silent> <C-Enter> <Esc>:VORAXExecCurrent<CR>
 
+" Don't let vorax clobber this mapping
+let g:vorax_key_connections_toggle='<leader>vpr'
 " Temporarily switch to the home directory when opening the VORAX connections
 " window, so that it can find profiles.xml
 function! g:ToggleVORAXConnections()
@@ -127,17 +137,17 @@ function! g:ToggleVORAXConnections()
 endfunction
 nmap <silent> <leader>pr :call g:ToggleVORAXConnections()<CR>
 
+" start gvim maximized. Simulates pressing Alt+Space x
 if has('win32')
-  " start gvim maximized. Simulates pressing Alt+Space x
   autocmd GUIEnter * simalt ~x
-  set guifont=Hack:h12
-else
-  set guifont=Hack\ 16
 endif
 
-let g:startify_enable_special = 0
-let g:startify_session_sort = 1
-let g:startify_fortune_use_unicode = 1
+let g:startify_enable_special = 0 " Show <empty buffer> and <quit>
+let g:startify_session_sort = 1 " Sort sessions by modification time
+let g:startify_fortune_use_unicode = 1 " Nicer border than the default ASCII
+
+" Show sessions at the top. Pressing CR immediately after starting loads the
+" latest session
 let g:startify_list_order = [
         \ ['   Sessions'],
         \ 'sessions',
@@ -147,7 +157,7 @@ let g:startify_list_order = [
         \ 'dir',
         \ ]
 
-" vim.commentary settings
+" Use /*..*/ style comments instead of --
 autocmd FileType sql setlocal commentstring=/\*\ %s\ \*/
 
 " Change order to put variables at the top, since that's usually where they are
@@ -177,10 +187,9 @@ let g:tagbar_type_sql = {
         \ 'z:MobiLink Properties',
     \ ],
 \ }
-let g:tagbar_compact=1
-let g:tagbar_autofocus=1
-" Sort by file position, not alphabetically
-let g:tagbar_sort=0
+let g:tagbar_compact=1 " Don't show help, just tags
+let g:tagbar_autofocus=1 " Focus tagbar when opening
+let g:tagbar_sort=0 " Sort by file position, not alphabetically
 let g:tagbar_width=30
 
 let g:NERDTreeWinSize=30
@@ -189,12 +198,7 @@ let g:NERDTreeChDirMode=2
 " Don't show the 'Bookmarks' or 'Press ? for help' text
 let NERDTreeMinimalUI = 1
 
-let g:AutoPairsCenterLine=0
-
-" Re-point some default mappings so they are overridden with the custom ones
-" defined here
-let g:vorax_key_doc_search='<leader>vds'
-let g:vorax_key_connections_toggle='<leader>vpr'
+let g:AutoPairsCenterLine=0 " Don't do zz after CR
 
 let g:vorax_output_window_size=20
 let g:vorax_dbexplorer_size=32
@@ -203,11 +207,9 @@ let g:vorax_cmanager_size=30
 let g:vorax_key_describe='<F4>'
 let g:vorax_key_describe_verbose='<S-F4>'
 
-" Set VORAX output window to show full headings
-let g:vorax_output_full_heading=1
+let g:vorax_output_full_heading=1 " Set VORAX output window to show full headings
 
-" Show marker in status line when in an open transaction
-let g:vorax_output_show_open_txn=1
+let g:vorax_output_show_open_txn=1 " Show marker in status line when in an open transaction
 
 let g:vorax_plsql_associations=
 \ {'FUNCTION' : 'fnc',
@@ -221,18 +223,16 @@ let g:vorax_plsql_associations=
 \  'TYPE' : 'typ',
 \  'JAVA_SOURCE' : 'jsp'}
 
-" Always start ctrlp from the cwd
-let g:ctrlp_working_path_mode='w'
-" Keep the cache across sessions
-let g:ctrlp_clear_cache_on_exit=0
-" Open multiple files in tabs, rather than new splits
-let g:ctrlp_open_multiple_files='t'
-" Re-order modes. After opening CtrlP, <C-b> now jumps to 'Buffers'
-let g:ctrlp_types = ['fil', 'mru', 'buf']
+let g:ctrlp_working_path_mode='w' " Always start ctrlp from the cwd
+let g:ctrlp_clear_cache_on_exit=0 " Keep the cache across sessions
+let g:ctrlp_open_multiple_files='t' " Open multiple files in tabs, rather than new splits
+let g:ctrlp_types = ['fil', 'mru', 'buf'] " Re-order modes. After opening CtrlP, <C-b> now jumps to 'Buffers'
 
+let g:SuperTabCrMapping=1 " Finish completion with CR
 let g:SuperTabClosePreviewOnPopupClose=1
+"
+" Use omni-completion when possible
 let g:SuperTabDefaultCompletionType="context"
-let g:SuperTabCrMapping=1
 autocmd FileType *
   \ if &omnifunc != '' |
   \   call SuperTabChain(&omnifunc, "<c-p>") |
@@ -241,10 +241,10 @@ autocmd FileType *
 let g:airline_theme='tomorrow'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#show_close_button = 0 " Turn off the X to close a tab
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#show_splits = 1
-let g:airline#extensions#tabline#tab_nr_type = 2
+let g:airline#extensions#tabline#tab_nr_type = 2 " Show # of splits and tab number
 
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 
