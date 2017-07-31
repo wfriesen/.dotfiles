@@ -32,9 +32,6 @@ set backspace=indent,eol,start " Make backspace work like expected
 
 set hidden " Allow hidden buffers with unsaved changes
 
-" Turn off intro message. I know what vim is.
-set shortmess+=I
-
 " Formatting options
 set fileformats=unix,dos
 set encoding=utf-8
