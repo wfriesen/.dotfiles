@@ -79,5 +79,5 @@
 	url = https://github.com/vim-syntastic/syntastic.git
 	fetch = +refs/heads/*:refs/remotes/vim-syntastic/*
 [remote "vim-vim-pathogen"]
-	url = https://github.com/vim-pathogen/vim-pathogen.git
+	url = https://github.com/tpope/vim-pathogen.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-pathogen/*
