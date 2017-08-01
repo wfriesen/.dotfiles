@@ -126,6 +126,9 @@ nmap <silent> <C-Enter> :VORAXExecCurrent<CR>
 nmap <silent> <F5> :VORAXCompile<CR>
 imap <silent> <C-Enter> <Esc>:VORAXExecCurrent<CR>
 
+" Open CtrlP and put the current word in the prompt
+map <leader><C-P> <C-P><C-\>w
+
 let g:undotree_SetFocusWhenToggle=1 " Focus the undotree window when opening
 
 " Don't let vorax clobber this mapping
