@@ -11,3 +11,4 @@
   date = iso-local
 [alias]
   diffone = "!git difftool \"$1\"^..\"$1\""
+  tlog = "!git-tlog $@"
