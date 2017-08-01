@@ -223,7 +223,7 @@ let g:vorax_plsql_associations=
 \  'TYPE' : 'typ',
 \  'JAVA_SOURCE' : 'jsp'}
 
-let g:ctrlp_working_path_mode='w' " Always start ctrlp from the cwd
+let g:ctrlp_working_path_mode='ra' " Start ctrlp from the VCS root (r). Fallback to directory of current file (a)
 let g:ctrlp_clear_cache_on_exit=0 " Keep the cache across sessions
 let g:ctrlp_open_multiple_files='t' " Open multiple files in tabs, rather than new splits
 let g:ctrlp_types = ['fil', 'mru', 'buf'] " Re-order modes. After opening CtrlP, <C-b> now jumps to 'Buffers'
