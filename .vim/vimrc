@@ -154,6 +154,7 @@ endif
 let g:startify_enable_special = 0 " Show <empty buffer> and <quit>
 let g:startify_session_sort = 1 " Sort sessions by modification time
 let g:startify_fortune_use_unicode = 1 " Nicer border than the default ASCII
+let g:startify_session_dir = '~/.vim/session' " Don't let it override to $HOME\vimfiles\session for Windows
 
 " Show sessions at the top. Pressing CR immediately after starting loads the
 " latest session
