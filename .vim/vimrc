@@ -69,6 +69,10 @@ set completeopt+=menu " Use popup menu, even if there's only one match
 set completeopt+=menuone " Show even when there's only one match
 set completeopt+=preview " Show some extra info (types, filenames, etc)
 
+" Persistent undo history
+set undofile
+set undodir=~/.vim/undo
+
 let g:netrw_liststyle=1 " Show file size and modification times
 
 " Use space as leader
