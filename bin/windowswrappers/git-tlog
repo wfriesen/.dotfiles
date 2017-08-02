@@ -16,8 +16,8 @@ GIT_PATH_SIZE=`echo "$TOP_LEVEL" | wc -c`
 SUBTREE_REMOTE_SUFFIX=`pwd | cut -c$GIT_PATH_SIZE- | awk 'BEGIN {OFS="/"; FS=OFS} {print $2, $3}'`
 
 if [ "$SUBTREE_REMOTE_SUFFIX" == "/" ]; then
-  echo "Can't determine subtree suffix. Are you inside a subtree?"
-  exit 2
+  echo "Can't determine subtree suffix. This command must be run from a subtree."
+  exit 1
 fi
 
 if [ ! -z "$LOG_PATH" ]; then
