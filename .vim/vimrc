@@ -114,6 +114,12 @@ function! g:WrapInRowLimiter()
 endfunction
 nmap <silent> <leader>lr :call g:WrapInRowLimiter()<CR>
 
+" Fold operations on all windows in the current tab page
+nnoremap <leader>zR :windo :normal zR<CR>
+nnoremap <leader>zM :windo :normal zM<CR>
+nnoremap <leader>zr :windo :normal zr<CR>
+nnoremap <leader>zm :windo :normal zm<CR>
+
 nmap <silent> <leader>u :UndotreeToggle<CR>
 nmap <silent> <leader>t :TagbarToggle<CR>
 nmap [c <Plug>GitGutterPrevHunk
