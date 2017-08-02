@@ -85,6 +85,15 @@ let g:netrw_liststyle=1 " Show file size and modification times
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
 
+" Move cursor in command line mode just like in bash and others. C-e and C-k are
+" already mapped by default to move to, and delete until, the end of the line
+cnoremap <C-a> <Home>
+cnoremap <A-b> <C-Left>
+cnoremap <A-f> <C-Right>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-k> <C-\>estrpart(getcmdline(),0,getcmdpos()-1)<CR>
+
 " Make * and # in visual mode work like in normal mode
 vnoremap <silent> * "zy/<C-R>z<CR>
 vnoremap <silent> # "zy?<C-R>z<CR>
