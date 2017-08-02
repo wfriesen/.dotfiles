@@ -110,7 +110,7 @@ nnoremap <A-k> <C-y>
 nnoremap <A-J> <C-d>
 nnoremap <A-K> <C-u>
 
-" Copy/paste to system clipboard with <C-c>
+" Copy/paste to system clipboard with <C-c> and <C-v>
 if has('win32')
   let g:clipboard_register="*"
 else
