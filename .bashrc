@@ -17,5 +17,7 @@ else
   export VISUAL="vim"
 fi
 
+export OSTYPE
+
 eval `dircolors ~/.dircolors`
 exec fish
