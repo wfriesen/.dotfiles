@@ -87,6 +87,8 @@ let mapleader = "\<Space>"
 
 " Move cursor in command line mode just like in bash and others. C-e and C-k are
 " already mapped by default to move to, and delete until, the end of the line
+" C-f clobbers the default for opening the command-line window, but I never
+" use it anyway
 cnoremap <C-a> <Home>
 cnoremap <A-b> <C-Left>
 cnoremap <A-f> <C-Right>
