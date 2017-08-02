@@ -74,6 +74,11 @@ set completeopt+=preview " Show some extra info (types, filenames, etc)
 set undofile
 set undodir=~/.vim/undo
 
+" Make <C-n> for multiple cursors work like * does (using word boundaries)
+" g<C-n> then works like g*
+let g:multi_cursor_start_key='g<C-n>'
+let g:multi_cursor_start_word_key='<C-n>'
+
 let g:netrw_liststyle=1 " Show file size and modification times
 
 " Use space as leader
