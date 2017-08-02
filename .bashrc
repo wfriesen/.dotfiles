@@ -7,6 +7,10 @@
 
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
+
 export VISUAL="vim"
+
+export OSTYPE
+
 eval `dircolors ~/.dircolors`
 exec fish
