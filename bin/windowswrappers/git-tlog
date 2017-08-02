@@ -8,11 +8,22 @@
 # It is assumed that the root of the repo (the folder containing .git) holds only
 # directories, one per project, and below those one directory per branch.
 
+if [ -z "$1" ]; then
+  echo "Need an argument"
+  exit 1
+fi
+
 TOP_LEVEL=`git rev-parse --show-toplevel`
 GIT_PATH_SIZE=`echo "$TOP_LEVEL" | wc -c`
 FILE_ABSOLUTE_PATH=`realpath $1`
 
 SUBTREE_REMOTE_SUFFIX=`pwd | cut -c$GIT_PATH_SIZE- | awk 'BEGIN {OFS="/"; FS=OFS} {print $2, $3}'`
+
+if [ "$SUBTREE_REMOTE_SUFFIX" == "/" ]; then
+  echo "Can't determine subtree suffix. Are you inside a subtree?"
+  exit 2
+fi
+
 STRIP_CHARS_FROM_ABSOLUTE=`echo "$TOP_LEVEL/$FILE_RELATIVE_PATH/$SUBTREE_REMOTE_SUFFIX" | wc -c`
 FILE_RELATIVE_PATH=`echo "$FILE_ABSOLUTE_PATH" | cut -c$STRIP_CHARS_FROM_ABSOLUTE-`
 
