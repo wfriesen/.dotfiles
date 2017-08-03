@@ -28,6 +28,7 @@ set guioptions-=m "menubar
 set guioptions-=r "scrollbar
 set guioptions-=T "toolbar
 set guioptions-=L "Left-hand scrollbar
+set guioptions+=c "Use console dialogs for simple choices
 
 set backspace=indent,eol,start " Make backspace work like expected
 
@@ -70,9 +71,14 @@ set completeopt+=menu " Use popup menu, even if there's only one match
 set completeopt+=menuone " Show even when there's only one match
 set completeopt+=preview " Show some extra info (types, filenames, etc)
 
-" Persistent undo history
+" Store persistent undo history in the same place across gvim and cygwin vim
+" Requires Windows to have the $CYGWIN_PATH variable set manually
 set undofile
-set undodir=~/.vim/undo
+if has('win32') && has('gui_running')
+  let &undodir = expand('$CYGWIN_PATH/home/$USERNAME/.vim/undo')
+else
+  let &undodir = expand('$HOME/.vim/undo')
+endif
 
 " Make <C-n> for multiple cursors work like * does (using word boundaries)
 " g<C-n> then works like g*
@@ -85,10 +91,10 @@ let g:netrw_liststyle=1 " Show file size and modification times
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
 
+set cedit=<C-l> " Open the command-line window
+
 " Move cursor in command line mode just like in bash and others. C-e and C-k are
 " already mapped by default to move to, and delete until, the end of the line
-" C-f clobbers the default for opening the command-line window, but I never
-" use it anyway
 cnoremap <C-a> <Home>
 cnoremap <A-b> <C-Left>
 cnoremap <A-f> <C-Right>
@@ -101,16 +107,23 @@ vnoremap <silent> * "zy/<C-R>z<CR>
 vnoremap <silent> # "zy?<C-R>z<CR>
 
 " Use Alt- for scrolling
-nnoremap <A-l> zl
-nnoremap <A-h> zh
-nnoremap <A-L> 100zl
-nnoremap <A-H> 100zh
-nnoremap <A-j> <C-e>
-nnoremap <A-k> <C-y>
-nnoremap <A-J> <C-d>
-nnoremap <A-K> <C-u>
+if has('gui_running')
+  let g:alt_key_prefix="<A-"
+  let g:alt_key_suffix=">"
+else
+  let g:alt_key_prefix=""
+  let g:alt_key_suffix=""
+endif
+execute "nnoremap ".g:alt_key_prefix."l".g:alt_key_suffix." zl"
+execute "nnoremap ".g:alt_key_prefix."h".g:alt_key_suffix." zh"
+execute "nnoremap ".g:alt_key_prefix."L".g:alt_key_suffix." 100zl"
+execute "nnoremap ".g:alt_key_prefix."H".g:alt_key_suffix." 100zh"
+execute "nnoremap ".g:alt_key_prefix."j".g:alt_key_suffix." <C-e>"
+execute "nnoremap ".g:alt_key_prefix."k".g:alt_key_suffix." <C-y>"
+execute "nnoremap ".g:alt_key_prefix."J".g:alt_key_suffix." <C-d>"
+execute "nnoremap ".g:alt_key_prefix."K".g:alt_key_suffix." <C-u>"
 
-" Copy/paste to system clipboard with <C-c>
+" Copy/paste to system clipboard with <C-c> and <C-v>
 if has('win32')
   let g:clipboard_register="*"
 else
@@ -118,6 +131,7 @@ else
 endif
 execute "vnoremap <silent> <C-c> \"" . g:clipboard_register . "y"
 execute "inoremap <silent> <C-v> <C-R>" . g:clipboard_register
+execute "cnoremap <C-v> <C-R>" . g:clipboard_register
 " Yank to the system clipboard, can be used like <C-c>i( or <C-c>t$ etc.
 execute "nmap <silent> <C-c> \"" . g:clipboard_register . "y"
 
