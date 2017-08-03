@@ -101,14 +101,21 @@ vnoremap <silent> * "zy/<C-R>z<CR>
 vnoremap <silent> # "zy?<C-R>z<CR>
 
 " Use Alt- for scrolling
-nnoremap <A-l> zl
-nnoremap <A-h> zh
-nnoremap <A-L> 100zl
-nnoremap <A-H> 100zh
-nnoremap <A-j> <C-e>
-nnoremap <A-k> <C-y>
-nnoremap <A-J> <C-d>
-nnoremap <A-K> <C-u>
+if has('gui_running')
+  let g:alt_key_prefix="<A-"
+  let g:alt_key_suffix=">"
+else
+  let g:alt_key_prefix=""
+  let g:alt_key_suffix=""
+endif
+execute "nnoremap ".g:alt_key_prefix."l".g:alt_key_suffix." zl"
+execute "nnoremap ".g:alt_key_prefix."h".g:alt_key_suffix." zh"
+execute "nnoremap ".g:alt_key_prefix."L".g:alt_key_suffix." 100zl"
+execute "nnoremap ".g:alt_key_prefix."H".g:alt_key_suffix." 100zh"
+execute "nnoremap ".g:alt_key_prefix."j".g:alt_key_suffix." <C-e>"
+execute "nnoremap ".g:alt_key_prefix."k".g:alt_key_suffix." <C-y>"
+execute "nnoremap ".g:alt_key_prefix."J".g:alt_key_suffix." <C-d>"
+execute "nnoremap ".g:alt_key_prefix."K".g:alt_key_suffix." <C-u>"
 
 " Copy/paste to system clipboard with <C-c> and <C-v>
 if has('win32')
