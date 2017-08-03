@@ -70,9 +70,14 @@ set completeopt+=menu " Use popup menu, even if there's only one match
 set completeopt+=menuone " Show even when there's only one match
 set completeopt+=preview " Show some extra info (types, filenames, etc)
 
-" Persistent undo history
+" Store persistent undo history in the same place across gvim and cygwin vim
+" Requires Windows to have the $CYGWIN_PATH variable set manually
 set undofile
-set undodir=~/.vim/undo
+if has('win32') && has('gui_running')
+  let &undodir = expand('$CYGWIN_PATH/home/$USERNAME/.vim/undo')
+else
+  let &undodir = expand('$HOME/.vim/undo')
+endif
 
 " Make <C-n> for multiple cursors work like * does (using word boundaries)
 " g<C-n> then works like g*
