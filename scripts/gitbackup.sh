@@ -23,6 +23,9 @@ function backup()
   # Get the HEAD log message, so we know where these changes came from
   git log -1 HEAD > "$THIS_BACKUP_LOCATION"/HEAD.log
 
+  # Also get the status. Renames won't be recorded in the below "changed files" archive
+  git status > "$THIS_BACKUP_LOCATION"/status.log
+
   # Tar up all changed files, retaining their full path
   # Get unique paths, since a file may be listed twice if it has both
   # staged and unstaged changes.
