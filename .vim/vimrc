@@ -116,32 +116,32 @@ vnoremap <silent> # "zy?<C-R>z<CR>
 
 " Use Alt- for scrolling
 if has('gui_running')
-  let g:alt_key_prefix="<A-"
-  let g:alt_key_suffix=">"
+  let s:alt_key_prefix="<A-"
+  let s:alt_key_suffix=">"
 else
-  let g:alt_key_prefix=""
-  let g:alt_key_suffix=""
+  let s:alt_key_prefix=""
+  let s:alt_key_suffix=""
 endif
-execute "nnoremap ".g:alt_key_prefix."l".g:alt_key_suffix." zl"
-execute "nnoremap ".g:alt_key_prefix."h".g:alt_key_suffix." zh"
-execute "nnoremap ".g:alt_key_prefix."L".g:alt_key_suffix." 100zl"
-execute "nnoremap ".g:alt_key_prefix."H".g:alt_key_suffix." 100zh"
-execute "nnoremap ".g:alt_key_prefix."j".g:alt_key_suffix." <C-e>"
-execute "nnoremap ".g:alt_key_prefix."k".g:alt_key_suffix." <C-y>"
-execute "nnoremap ".g:alt_key_prefix."J".g:alt_key_suffix." <C-d>"
-execute "nnoremap ".g:alt_key_prefix."K".g:alt_key_suffix." <C-u>"
+execute "nnoremap ".s:alt_key_prefix."l".s:alt_key_suffix." zl"
+execute "nnoremap ".s:alt_key_prefix."h".s:alt_key_suffix." zh"
+execute "nnoremap ".s:alt_key_prefix."L".s:alt_key_suffix." 100zl"
+execute "nnoremap ".s:alt_key_prefix."H".s:alt_key_suffix." 100zh"
+execute "nnoremap ".s:alt_key_prefix."j".s:alt_key_suffix." <C-e>"
+execute "nnoremap ".s:alt_key_prefix."k".s:alt_key_suffix." <C-y>"
+execute "nnoremap ".s:alt_key_prefix."J".s:alt_key_suffix." <C-d>"
+execute "nnoremap ".s:alt_key_prefix."K".s:alt_key_suffix." <C-u>"
 
 " Copy/paste to system clipboard with <C-c> and <C-v>
 if has('win32')
-  let g:clipboard_register="*"
+  let s:clipboard_register="*"
 else
-  let g:clipboard_register="+"
+  let s:clipboard_register="+"
 endif
-execute "vnoremap <silent> <C-c> \"" . g:clipboard_register . "y"
-execute "inoremap <silent> <C-v> <C-R>" . g:clipboard_register
-execute "cnoremap <C-v> <C-R>" . g:clipboard_register
+execute "vnoremap <silent> <C-c> \"" . s:clipboard_register . "y"
+execute "inoremap <silent> <C-v> <C-R>" . s:clipboard_register
+execute "cnoremap <C-v> <C-R>" . s:clipboard_register
 " Yank to the system clipboard, can be used like <C-c>i( or <C-c>t$ etc.
-execute "nmap <silent> <C-c> \"" . g:clipboard_register . "y"
+execute "nmap <silent> <C-c> \"" . s:clipboard_register . "y"
 
 " Wrap a paragraph in an inline view, limiting with "where rownum <= 10".
 function! g:WrapInRowLimiter()
@@ -154,9 +154,9 @@ nmap <silent> <leader>lr :call g:WrapInRowLimiter()<CR>
 
 " execute docmd in all windows, then return cursor to the original window
 function! g:WindoReturn(docmd)
-  let g:current_winnr = winnr()
+  let l:current_winnr = winnr()
   execute ":windo ".a:docmd
-  execute g:current_winnr."wincmd w"
+  execute l:current_winnr."wincmd w"
 endfunction
 
 " Fold operations on all windows in the current tab page
@@ -303,15 +303,16 @@ let g:airline#extensions#tabline#show_splits = 1
 let g:airline#extensions#tabline#tab_nr_type = 2 " Show # of splits and tab number
 
 " Reset some plugin windows to their defined sizes.
-let g:plugin_window_types_resize_cmd = {
-\ 'connvorax': 'vertical resize' . g:vorax_cmanager_size,
-\ 'explorervorax': 'vertical resize' . g:vorax_dbexplorer_size,
-\ 'outputvorax': 'resize' . g:vorax_output_window_size,
-\ 'tagbar': 'vertical resize' . g:tagbar_width
-\ }
 function! g:ResizePluginWindow()
-  if has_key(g:plugin_window_types_resize_cmd, &ft)
-    :execute g:plugin_window_types_resize_cmd[&ft]
+  let l:plugin_window_types_resize_cmd = {
+  \ 'connvorax': 'vertical resize' . g:vorax_cmanager_size,
+  \ 'explorervorax': 'vertical resize' . g:vorax_dbexplorer_size,
+  \ 'outputvorax': 'resize' . g:vorax_output_window_size,
+  \ 'tagbar': 'vertical resize' . g:tagbar_width
+  \ }
+
+  if has_key(l:plugin_window_types_resize_cmd, &ft)
+    :execute l:plugin_window_types_resize_cmd[&ft]
   endif
 endfunction
 nmap <silent> <leader>r :call g:WindoReturn(":call g:ResizePluginWindow()")<CR>
