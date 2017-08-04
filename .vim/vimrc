@@ -58,6 +58,7 @@ set showmode " Show the mode in command line. Airline shows it anyway, but it's 
 set laststatus=2 " Always show status line
 
 set wildmenu " Show matches when invoking command line completion
+set wildignorecase " Case insensitive filename matching
 
 " Exclude these folders from ctrlp
 set wildignore+=*/node_modules/*
