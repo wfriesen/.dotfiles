@@ -77,7 +77,11 @@ set completeopt+=preview " Show some extra info (types, filenames, etc)
 " Requires Windows to have the $CYGWIN_PATH variable set manually
 set undofile
 if has('win32') && has('gui_running')
-  let &undodir = expand('$CYGWIN_PATH/home/$USERNAME/.vim/undo')
+  if expand('$CYGWIN_PATH') == '$CYGWIN_PATH'
+    echoerr "Cannot set undodir. $CYGWIN_PATH must be set."
+  else
+    let &undodir = expand('$CYGWIN_PATH/home/$USERNAME/.vim/undo')
+  endif
 else
   let &undodir = expand('$HOME/.vim/undo')
 endif
