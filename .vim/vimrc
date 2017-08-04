@@ -152,11 +152,18 @@ function! g:WrapInRowLimiter()
 endfunction
 nmap <silent> <leader>lr :call g:WrapInRowLimiter()<CR>
 
+" execute docmd in all windows, then return cursor to the original window
+function! g:WindoReturn(docmd)
+  let g:current_winnr = winnr()
+  execute ":windo ".a:docmd
+  execute g:current_winnr."wincmd w"
+endfunction
+
 " Fold operations on all windows in the current tab page
-nnoremap <leader>zR :windo :normal zR<CR>
-nnoremap <leader>zM :windo :normal zM<CR>
-nnoremap <leader>zr :windo :normal zr<CR>
-nnoremap <leader>zm :windo :normal zm<CR>
+nnoremap <silent> <leader>zR :call g:WindoReturn(":normal zR")<CR>
+nnoremap <silent> <leader>zM :call g:WindoReturn(":normal zM")<CR>
+nnoremap <silent> <leader>zr :call g:WindoReturn(":normal zr")<CR>
+nnoremap <silent> <leader>zm :call g:WindoReturn(":normal zm")<CR>
 
 nmap <silent> <leader>u :UndotreeToggle<CR>
 nmap <silent> <leader>t :TagbarToggle<CR>
@@ -302,17 +309,9 @@ let g:plugin_window_types_resize_cmd = {
 \ 'outputvorax': 'resize' . g:vorax_output_window_size,
 \ 'tagbar': 'vertical resize' . g:tagbar_width
 \ }
-function! g:ResizeAllPluginWindows()
-
-  function! s:ResizePluginWindows()
-    if has_key(g:plugin_window_types_resize_cmd, &ft)
-      :execute g:plugin_window_types_resize_cmd[&ft]
-    endif
-  endfunction
-
-  let currentWindow = winnr()
-  :windo call s:ResizePluginWindows()
-  :execute currentWindow . 'wincmd w'
-
+function! g:ResizePluginWindow()
+  if has_key(g:plugin_window_types_resize_cmd, &ft)
+    :execute g:plugin_window_types_resize_cmd[&ft]
+  endif
 endfunction
-nmap <silent> <leader>r :call g:ResizeAllPluginWindows()<CR>
+nmap <silent> <leader>r :call g:WindoReturn(":call g:ResizePluginWindow()")<CR>
