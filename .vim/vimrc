@@ -203,7 +203,7 @@ if has('win32')
   autocmd GUIEnter * simalt ~x
 endif
 
-let g:startify_enable_special = 0 " Show <empty buffer> and <quit>
+let g:startify_enable_special = 0 " Don't show <empty buffer> and <quit>
 let g:startify_session_sort = 1 " Sort sessions by modification time
 let g:startify_custom_header = [] " Turn off the cowsay fortune header
 let g:startify_session_dir = '~/.vim/session' " Don't let it override to $HOME\vimfiles\session for Windows
