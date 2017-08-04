@@ -86,11 +86,6 @@ else
   let &undodir = expand('$HOME/.vim/undo')
 endif
 
-" Make <C-n> for multiple cursors work like * does (using word boundaries)
-" g<C-n> then works like g*
-let g:multi_cursor_start_key='g<C-n>'
-let g:multi_cursor_start_word_key='<C-n>'
-
 let g:netrw_liststyle=1 " Show file size and modification times
 
 " Use space as leader
@@ -107,6 +102,13 @@ cnoremap <A-f> <C-Right>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-k> <C-\>estrpart(getcmdline(),0,getcmdpos()-1)<CR>
+
+" Don't use word boundaries for * and #
+nnoremap * g*
+nnoremap # g#
+" g* and g# for word boundaries
+nnoremap g* *
+nnoremap g# #
 
 " Make * and # in visual mode work like in normal mode
 vnoremap <silent> * "zy/<C-R>z<CR>
