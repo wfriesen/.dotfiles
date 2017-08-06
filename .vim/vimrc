@@ -147,6 +147,11 @@ execute "cnoremap <C-v> <C-R>" . s:clipboard_register
 " Yank to the system clipboard, can be used like <C-c>i( or <C-c>t$ etc.
 execute "nmap <silent> <C-c> \"" . s:clipboard_register . "y"
 
+nmap <silent> <leader>gs :Gstatus<CR>
+nmap <silent> <leader>ge :Gedit<CR>
+nmap <silent> <leader>gv :GV<CR>
+nmap <silent> <leader>gl :GV!<CR>
+
 " Wrap a paragraph in an inline view, limiting with "where rownum <= 10".
 function! g:WrapInRowLimiter()
   :execute ":normal! mz{owith q as ("
