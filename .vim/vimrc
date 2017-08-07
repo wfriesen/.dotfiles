@@ -149,6 +149,7 @@ execute "nmap <silent> <C-c> \"" . s:clipboard_register . "y"
 
 nmap <silent> <leader>gs :Gstatus<CR>
 nmap <silent> <leader>ge :Gedit<CR>
+nmap <silent> <leader>gd :Gdiff<CR>
 nmap <silent> <leader>gv :GV<CR>
 nmap <silent> <leader>gl :GV!<CR>
 
