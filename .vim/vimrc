@@ -49,6 +49,7 @@ set autoindent
 set ignorecase
 set smartcase
 
+set hlsearch " Highlight search matches
 set incsearch " Search as you type. <Esc> still cancels and returns
 set gdefault " Always use /g for :s commands
 set virtualedit=block " In visual block mode, allow the cursor to move anywhere
