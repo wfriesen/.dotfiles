@@ -108,6 +108,9 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-k> <C-\>estrpart(getcmdline(),0,getcmdpos()-1)<CR>
 
+" Toggle search highlighting
+nmap <silent> <leader>hl :set hlsearch!<CR>
+
 " Don't use word boundaries for * and #
 nnoremap * g*
 nnoremap # g#
