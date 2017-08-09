@@ -43,3 +43,8 @@ setopt hist_find_no_dups
 
 # save history incrementally (as soon as commands are entered), with timestamps
 setopt share_history
+
+bindkey -e
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+bindkey \^U backward-kill-line
