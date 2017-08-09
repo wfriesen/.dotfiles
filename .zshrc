@@ -11,6 +11,8 @@ compinit
 
 eval `dircolors ~/.dircolors`
 
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
