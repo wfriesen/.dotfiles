@@ -34,6 +34,8 @@ alias vi=$VISUAL
 
 export PS1="%n@%m %F{green}%1 %(5~|%-1~/…/%3~|%4~)%F{reset_color}> "
 
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
+
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
