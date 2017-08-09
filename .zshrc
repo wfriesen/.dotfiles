@@ -9,6 +9,10 @@ fi
 autoload -U compinit
 compinit
 
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+
 eval `dircolors ~/.dircolors`
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
