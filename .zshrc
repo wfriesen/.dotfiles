@@ -6,6 +6,9 @@ if [ $TERM != "screen-256color" ]; then
   fi
 fi
 
+autoload -U compinit
+compinit
+
 eval `dircolors ~/.dircolors`
 
 alias ls='ls --color=auto'
