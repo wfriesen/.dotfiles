@@ -31,3 +31,5 @@ else
   export VISUAL="vim"
 fi
 alias vi=$VISUAL
+
+export PS1="%n@%m %F{green}%1 %(5~|%-1~/…/%3~|%4~)%F{reset_color}> "
