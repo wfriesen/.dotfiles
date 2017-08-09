@@ -33,3 +33,11 @@ fi
 alias vi=$VISUAL
 
 export PS1="%n@%m %F{green}%1 %(5~|%-1~/…/%3~|%4~)%F{reset_color}> "
+
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000
+SAVEHIST=$HISTSIZE
+setopt hist_find_no_dups
+
+# save history incrementally (as soon as commands are entered), with timestamps
+setopt share_history
