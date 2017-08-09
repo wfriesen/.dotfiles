@@ -22,6 +22,7 @@ zstyle ':completion:*:warnings' format '%B%F{red}No matches for: %f%d%b'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias gg='git grep --color=auto -in'
 
 if [[ $OSTYPE == "cygwin" ]]; then
   export VISUAL="vim.exe"
