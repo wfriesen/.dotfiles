@@ -12,6 +12,10 @@ compinit
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.zsh/agnoster-zsh-theme/agnoster.zsh-theme
+
+# Allow agnoster to expand the prompt
+setopt promptsubst
 
 eval `dircolors ~/.dircolors`
 
