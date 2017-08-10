@@ -26,7 +26,6 @@ alias gg='git grep --color=auto -in'
 
 if [[ $OSTYPE == "cygwin" ]]; then
   export VISUAL="vim.exe"
-  export PATH="$PATH:$HOME/bin/windowswrappers"
   alias vim=$VISUAL
 else
   export VISUAL="vim"
