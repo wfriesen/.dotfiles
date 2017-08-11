@@ -64,3 +64,6 @@ bindkey '^[[Z' reverse-menu-complete
 
 # Remove / from WORDCHARS, so that deleting/moving by word stops at a /
 WORDCHARS=$WORDCHARS:s:/:
+
+# Unicode symbol to show at end of partial lines
+PROMPT_EOL_MARK=$(echo -n '%F{red}\u23ce')
