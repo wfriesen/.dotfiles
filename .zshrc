@@ -12,10 +12,14 @@ compinit
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.zsh/agnoster-zsh-theme/agnoster.zsh-theme
 
-# Agnoster is too slow on cygwin
-if [[ $OSTYPE != "cygwin" ]]; then
-  source ~/.zsh/agnoster-zsh-theme/agnoster.zsh-theme
+# Override agnoster prompt on cygwin. calls to vcs_info are too slow
+if [[ $OSTYPE == "cygwin" ]]; then
+  prompt_agnoster_precmd() {
+    # vcs_info
+    PROMPT='%{%f%b%k%}$(prompt_agnoster_main) '
+  }
 fi
 
 # Allow agnoster to expand the prompt
