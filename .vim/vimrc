@@ -122,6 +122,10 @@ nnoremap g# #
 vnoremap <silent> * "zy/<C-R>z<CR>
 vnoremap <silent> # "zy?<C-R>z<CR>
 
+" Shift and Control insensitive mapping
+nnoremap <C-w>t <C-w>T
+nnoremap <C-w><C-t> <C-w>T
+
 " Use Alt- for scrolling
 if has('gui_running')
   let s:alt_key_prefix="<A-"
