@@ -67,3 +67,5 @@ WORDCHARS=$WORDCHARS:s:/:
 
 # Unicode symbol to show at end of partial lines
 PROMPT_EOL_MARK=$(echo -n '%F{red}\u23ce')
+
+DEFAULT_USER=william
