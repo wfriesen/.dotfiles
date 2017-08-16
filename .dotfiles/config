@@ -24,12 +24,6 @@
 [remote "vim-undotree"]
 	url = https://github.com/mbbill/undotree.git
 	fetch = +refs/heads/*:refs/remotes/vim-undotree/*
-[remote "vim-vim-airline"]
-	url = https://github.com/vim-airline/vim-airline.git
-	fetch = +refs/heads/*:refs/remotes/vim-vim-airline/*
-[remote "vim-vim-airline-themes"]
-	url = https://github.com/vim-airline/vim-airline-themes.git
-	fetch = +refs/heads/*:refs/remotes/vim-vim-airline-themes/*
 [remote "vim-vim-colors-solarized"]
 	url = https://github.com/altercation/vim-colors-solarized.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-colors-solarized/*
@@ -93,3 +87,6 @@
 [remote "zsh-zsh-syntax-highlighting"]
   url = https://github.com/zsh-users/zsh-syntax-highlighting.git
   fetch = +refs/heads/*:refs/remotes/zsh-zsh-syntax-highlighting/*
+[remote "vim-lightline.vim"]
+  url = https://github.com/itchyny/lightline.vim.git
+  fetch = +refs/heads/*:refs/remotes/vim-lightline.vim/*

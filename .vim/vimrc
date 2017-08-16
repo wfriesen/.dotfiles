@@ -1,5 +1,10 @@
+" Has to be set before colorscheme, so that lightline picks up it's own colorscheme setting
+let g:lightline = {'colorscheme': 'solarized'}
+
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
+
+set showtabline=2 " Always show the tabline
 
 " Pretty colors
 syntax on
@@ -30,6 +35,7 @@ if has('gui_running')
   set guioptions-=T "toolbar
   set guioptions-=L "Left-hand scrollbar
   set guioptions+=c "Use console dialogs for simple choices
+  set guioptions-=e
 endif
 
 set backspace=indent,eol,start " Make backspace work like expected
@@ -56,7 +62,7 @@ set incsearch " Search as you type. <Esc> still cancels and returns
 set gdefault " Always use /g for :s commands
 set virtualedit=block " In visual block mode, allow the cursor to move anywhere
 set backupcopy=yes " Let's webpack pick up changes
-set showmode " Show the mode in command line. Airline shows it anyway, but it's just be empty otherwise
+set showmode " Show the mode in command line. statusline shows it anyway, but it'd just be empty otherwise
 
 set laststatus=2 " Always show status line
 
@@ -319,13 +325,32 @@ autocmd FileType *
   \   call SuperTabChain(&omnifunc, "<c-p>") |
   \ endif
 
-let g:airline_theme='tomorrow'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_close_button = 0 " Turn off the X to close a tab
-let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#show_splits = 1
-let g:airline#extensions#tabline#tab_nr_type = 2 " Show # of splits and tab number
+" lightline defaults from the help on powerline fonts. Re-formatted for niceness
+let g:lightline.component = {'lineinfo' : ' %3l:%-2v'}
+let g:lightline.component_function = {'readonly': 'LightlineReadonly'}
+let g:lightline.separator = {'left': '', 'right': ''}
+let g:lightline.subseparator = { 'left': '', 'right': ''}
+let g:lightline.subseparator.tab = {'active': [ 'tabnum', 'filename', 'modified' ]}
+let g:lightline.tabline = { 'left': [ [ 'tabs' ] ], }
+function! LightlineReadonly()
+  return &readonly ? '' : ''
+endfunction
+let g:ctrlp_status_func = {
+      \ 'main': 'CtrlPStatusFunc_main',
+      \ 'prog': 'CtrlPStatusFunc_prog',
+      \ }
+function! CtrlPStatusFunc_main(focus, byfname, regex, prev, item, next, marked)
+  return lightline#statusline(0)
+endfunction
+function! CtrlPStatusFunc_prog(str)
+  return lightline#statusline(0)
+endfunction
+let g:tagbar_status_func = 'TagbarStatusFunc'
+function! TagbarStatusFunc(current, sort, fname, ...) abort
+  return lightline#statusline(0)
+endfunction
+
+let g:lightline.tabline.right=[] " Don't show the 'X' close button
 
 " Reset some plugin windows to their defined sizes.
 function! g:ResizePluginWindow()
