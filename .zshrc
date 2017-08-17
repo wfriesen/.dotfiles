@@ -45,6 +45,11 @@ else
 fi
 alias vi=$VISUAL
 
+export LESS="-F" # Exit when less than a screens worth
+export LESS="-R $LESS" # Show colors
+export LESS="-X $LESS" # Don't clear the screen
+export LESS="-i $LESS" # Ignore case unless there are uppercase characters, like vim "smartcase"
+
 export PS1="%n@%m %F{green}%1 %(5~|%-1~/…/%3~|%4~)%F{reset_color}> "
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
