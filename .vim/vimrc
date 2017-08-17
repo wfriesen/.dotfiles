@@ -335,12 +335,16 @@ let g:lightline.active = {
 let g:lightline.component = {'lineinfo' : ' %3l:%-2v'}
 let g:lightline.component_function = {
       \ 'readonly': 'LightlineReadonly',
-      \ 'gitbranch': 'fugitive#head'
+      \ 'gitbranch': 'fugitive#head',
+      \ 'fullfilepath': 'LightlineFullfilepath'
       \ }
 let g:lightline.separator = {'left': '', 'right': ''}
 let g:lightline.subseparator = { 'left': '', 'right': ''}
 let g:lightline.subseparator.tab = {'active': [ 'tabnum', 'filename', 'modified' ]}
-let g:lightline.tabline = { 'left': [ [ 'tabs' ] ], }
+let g:lightline.tabline = {
+      \ 'left': [ [ 'tabs' ] ],
+      \ 'right': [ [ 'fullfilepath' ] ]
+      \ }
 function! LightlineReadonly()
   return &readonly ? '' : ''
 endfunction
@@ -358,8 +362,9 @@ let g:tagbar_status_func = 'TagbarStatusFunc'
 function! TagbarStatusFunc(current, sort, fname, ...) abort
   return lightline#statusline(0)
 endfunction
-
-let g:lightline.tabline.right=[] " Don't show the 'X' close button
+function! LightlineFullfilepath()
+  return expand('%:p')
+endfunction
 
 " Reset some plugin windows to their defined sizes.
 function! g:ResizePluginWindow()
