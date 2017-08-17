@@ -26,6 +26,7 @@ fi
 setopt promptsubst
 
 eval `dircolors ~/.dircolors`
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
