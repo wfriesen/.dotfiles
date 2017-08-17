@@ -12,3 +12,5 @@
 [alias]
   diffone = "!git difftool \"$1\"^..\"$1\""
   tlog = "!git-tlog $@"
+  d = diff --word-diff=color
+  dt = difftool
