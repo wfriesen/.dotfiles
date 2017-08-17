@@ -28,7 +28,6 @@ set number
 set relativenumber
 set cursorline
 
-" remove some gvim clutter
 if has('gui_running')
   set guioptions-=m "menubar
   set guioptions-=r "scrollbar
@@ -36,6 +35,7 @@ if has('gui_running')
   set guioptions-=L "Left-hand scrollbar
   set guioptions+=c "Use console dialogs for simple choices
   set guioptions-=e
+  set guicursor+=a:block " Always use block cursor in GUI mode
 endif
 
 set backspace=indent,eol,start " Make backspace work like expected
