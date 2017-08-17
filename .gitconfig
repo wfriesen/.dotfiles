@@ -14,3 +14,4 @@
   tlog = "!git-tlog $@"
   d = diff --word-diff=color
   dt = difftool
+  dc = diff --cached
