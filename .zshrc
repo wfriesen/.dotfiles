@@ -52,7 +52,7 @@ alias vi=$VISUAL
 export LESS="--quit-if-one-screen"
 export LESS="--R $LESS" # Show colors
 export LESS="-X $LESS" # Don't clear the screen
-export LESS="--long-prompt $LESS" # Show line numbers
+export LESS="--LONG-PROMPT $LESS" # Show line numbers currently displayed
 export LESS="--ignore-case $LESS"
 
 export PS1="%n@%m %F{green}%1 %(5~|%-1~/…/%3~|%4~)%F{reset_color}> "
