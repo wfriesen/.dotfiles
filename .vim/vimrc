@@ -340,7 +340,8 @@ let g:lightline.component_function = {
       \ 'readonly': 'LightlineReadonly',
       \ 'gitbranch': 'fugitive#head',
       \ 'fullfilepath': 'LightlineFullfilepath',
-      \ 'vorax': 'LightlineVorax'
+      \ 'vorax': 'LightlineVorax',
+      \ 'filename': 'LightlineFilename'
       \ }
 let g:lightline.separator = {'left': '', 'right': ''}
 let g:lightline.subseparator = { 'left': '', 'right': ''}
@@ -356,7 +357,22 @@ let g:ctrlp_status_func = {
       \ 'main': 'CtrlPStatusFunc_main',
       \ 'prog': 'CtrlPStatusFunc_prog',
       \ }
+
+function! LightlineFilename()
+  if expand('%:t') == 'ControlP'
+    return g:lightline.ctrlp_prev . ' ' . g:lightline.subseparator.left . ' ' .
+          \ g:lightline.ctrlp_item . ' ' . g:lightline.subseparator.left . ' ' .
+          \ g:lightline.ctrlp_next
+  else
+    return '' != expand('%:t') ? expand('%:t') : '[No Name]'
+  endif
+endfunction
+
 function! CtrlPStatusFunc_main(focus, byfname, regex, prev, item, next, marked)
+  let g:lightline.ctrlp_prev = a:prev
+  let g:lightline.ctrlp_item = a:item
+  let g:lightline.ctrlp_next = a:next
+  let g:lightline.ctrlp_marked = a:marked
   return lightline#statusline(0)
 endfunction
 function! CtrlPStatusFunc_prog(str)
