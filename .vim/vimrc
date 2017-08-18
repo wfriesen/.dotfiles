@@ -328,10 +328,10 @@ autocmd FileType *
   \   call SuperTabChain(&omnifunc, "<c-p>") |
   \ endif
 
-" lightline defaults from the help on powerline fonts. Re-formatted for niceness
 let g:lightline.active = {
       \ 'left': [
       \   [ 'mode', 'paste' ],
+      \   [ 'vorax' ],
       \   [ 'gitbranch', 'readonly', 'filename', 'modified' ]
       \ ]
       \ }
@@ -339,7 +339,8 @@ let g:lightline.component = {'lineinfo' : ' %3l:%-2v'}
 let g:lightline.component_function = {
       \ 'readonly': 'LightlineReadonly',
       \ 'gitbranch': 'fugitive#head',
-      \ 'fullfilepath': 'LightlineFullfilepath'
+      \ 'fullfilepath': 'LightlineFullfilepath',
+      \ 'vorax': 'LightlineVorax'
       \ }
 let g:lightline.separator = {'left': '', 'right': ''}
 let g:lightline.subseparator = { 'left': '', 'right': ''}
@@ -367,6 +368,13 @@ function! TagbarStatusFunc(current, sort, fname, ...) abort
 endfunction
 function! LightlineFullfilepath()
   return expand('%:p')
+endfunction
+function! LightlineVorax()
+  if vorax#utils#IsVoraxBuffer() || &ft == 'outputvorax'
+    return vorax#sqlplus#SessionOwner()
+  else
+    return ''
+  endif
 endfunction
 
 " Reset some plugin windows to their defined sizes.
