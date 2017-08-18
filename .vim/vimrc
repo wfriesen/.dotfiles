@@ -370,11 +370,7 @@ function! LightlineFullfilepath()
   return expand('%:p')
 endfunction
 function! LightlineVorax()
-  if vorax#utils#IsVoraxBuffer() || &ft == 'outputvorax'
-    return vorax#sqlplus#SessionOwner()
-  else
-    return ''
-  endif
+  return &ft == 'outputvorax' ? vorax#sqlplus#SessionOwner() : ''
 endfunction
 
 " Reset some plugin windows to their defined sizes.
