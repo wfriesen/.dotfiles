@@ -166,8 +166,8 @@ execute "nmap <silent> <C-c> \"" . s:clipboard_register . "y"
 nmap <silent> <leader>gs :Gstatus<CR>
 nmap <silent> <leader>ge :Gedit<CR>
 nmap <silent> <leader>gd :Gdiff<CR>
-nmap <silent> <leader>gv :GV<CR>
-nmap <silent> <leader>gl :GV!<CR>
+nmap <silent> <leader>gl :GV -20<CR>
+nmap <silent> <leader>gv :GV!<CR>
 
 " Wrap a paragraph in an inline view, limiting with "where rownum <= 10".
 function! g:WrapInRowLimiter()
