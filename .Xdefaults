@@ -56,4 +56,5 @@ xterm*color7:                S_base2
 xterm*color15:               S_base3
 
 xterm*faceName:Hack:size=16
+xterm*metaSendsEscape: true
 xterm*cursorColor:S_red
