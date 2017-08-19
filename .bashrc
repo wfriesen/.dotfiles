@@ -12,4 +12,5 @@ if [[ $OSTYPE == "cygwin" ]]; then
   export PATH="$PATH:$HOME/bin/windowswrappers"
 fi
 
+TERM=xterm-256color
 exec zsh
