@@ -54,3 +54,5 @@ xterm*color14:               S_base1
 !! white dark/light
 xterm*color7:                S_base2
 xterm*color15:               S_base3
+
+xterm*cursorColor:S_red
