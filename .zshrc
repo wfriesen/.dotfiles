@@ -40,6 +40,7 @@ alias grep='grep --color=auto'
 alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias gg='git grep --color=auto -in'
 alias cd-='cd -'
+alias pacup='pacaur -Syu'
 
 if [[ $OSTYPE == "cygwin" ]]; then
   export VISUAL="vim.exe"
