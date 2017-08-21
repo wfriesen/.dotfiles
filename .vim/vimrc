@@ -209,6 +209,11 @@ map <leader><C-P> <C-P><C-\>w
 
 let g:undotree_SetFocusWhenToggle=1 " Focus the undotree window when opening
 
+function! g:Undotree_CustomMap()
+  nmap <buffer> <C-k> <plug>UndotreeGoNextState
+  nmap <buffer> <C-j> <plug>UndotreeGoPreviousState
+endfunc
+
 " Don't let vorax clobber this mapping
 let g:vorax_key_connections_toggle='<leader>vpr'
 " Temporarily switch to the home directory when opening the VORAX connections
