@@ -209,10 +209,13 @@ map <leader><C-P> <C-P><C-\>w
 
 let g:undotree_SetFocusWhenToggle=1 " Focus the undotree window when opening
 
+" Move up/down the same way in some plugin windows
 function! g:Undotree_CustomMap()
   nmap <buffer> <C-k> <plug>UndotreeGoNextState
   nmap <buffer> <C-j> <plug>UndotreeGoPreviousState
 endfunc
+autocmd FileType GV nmap <buffer> <C-k> <C-p>
+autocmd FileType GV nmap <buffer> <C-j> <C-n>
 
 " Don't let vorax clobber this mapping
 let g:vorax_key_connections_toggle='<leader>vpr'
