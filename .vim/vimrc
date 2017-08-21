@@ -335,13 +335,19 @@ let g:lightline.active = {
       \   [ 'gitbranch', 'readonly', 'filename', 'modified' ]
       \ ]
       \ }
+let g:lightline.inactive = {
+      \ 'left': [ [ 'inactivefilename' ] ],
+      \ 'right': [ [ 'lineinfo' ],
+      \            [ 'percent' ] ]
+      \ }
 let g:lightline.component = {'lineinfo' : ' %3l:%-2v'}
 let g:lightline.component_function = {
       \ 'readonly': 'LightlineReadonly',
       \ 'gitbranch': 'fugitive#head',
       \ 'fullfilepath': 'LightlineFullfilepath',
       \ 'vorax': 'LightlineVorax',
-      \ 'filename': 'LightlineFilename'
+      \ 'filename': 'LightlineFilename',
+      \ 'inactivefilename': 'LightlineInactiveFilename'
       \ }
 let g:lightline.separator = {'left': '', 'right': ''}
 let g:lightline.subseparator = { 'left': '', 'right': ''}
@@ -365,6 +371,16 @@ function! LightlineFilename()
           \ g:lightline.ctrlp_next
   else
     return '' != expand('%:t') ? expand('%:t') : '[No Name]'
+  endif
+endfunction
+
+function! LightlineInactiveFilename()
+  let l:filename = LightlineFilename()
+  if &ft == 'outputvorax'
+    let l:voraxsession = vorax#sqlplus#SessionOwner()
+    return l:voraxsession == '@' ? l:filename : l:voraxsession
+  else
+    return l:filename
   endif
 endfunction
 
