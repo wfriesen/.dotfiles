@@ -160,7 +160,7 @@ endif
 execute "vnoremap <silent> <C-c> \"" . s:clipboard_register . "y"
 execute "inoremap <silent> <C-v> <C-R>" . s:clipboard_register
 execute "cnoremap <C-v> <C-R>" . s:clipboard_register
-" Yank to the system clipboard, can be used like <C-c>i( or <C-c>t$ etc.
+" Yank to the system clipboard, can be used like <C-c>i( and the like
 execute "nmap <silent> <C-c> \"" . s:clipboard_register . "y"
 
 nmap <silent> <leader>gs :Gstatus<CR>
