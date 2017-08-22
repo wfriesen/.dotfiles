@@ -367,7 +367,7 @@ let g:lightline.inactive = {
 let g:lightline.component = {'lineinfo' : ' %3l:%-2v'}
 let g:lightline.component_function = {
       \ 'readonly': 'LightlineReadonly',
-      \ 'gitbranch': 'fugitive#head',
+      \ 'gitbranch': 'LightlineFugitive',
       \ 'fullfilepath': 'LightlineFullfilepath',
       \ 'voraxright': 'LightlineVoraxRight',
       \ 'filename': 'LightlineFilename',
@@ -387,6 +387,14 @@ let g:ctrlp_status_func = {
       \ 'main': 'CtrlPStatusFunc_main',
       \ 'prog': 'CtrlPStatusFunc_prog',
       \ }
+
+function! LightlineFugitive()
+  if exists('*fugitive#head')
+    let branch = fugitive#head()
+    return branch !=# '' ? ' '.branch : ''
+  endif
+  return ''
+endfunction
 
 function! LightlineFilename()
   if expand('%:t') == 'ControlP'
