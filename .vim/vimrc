@@ -338,11 +338,25 @@ autocmd FileType *
   \   call SuperTabChain(&omnifunc, "<c-p>") |
   \ endif
 
+function! g:VoraxOutputFlags()
+  let funnel = ["", "VERTICAL", "PAGEZIP", "TABLEZIP"][vorax#output#GetFunnel()]
+  let append = g:vorax_output_window_append ? "APPEND" : ""
+  let sticky = g:vorax_output_window_sticky_cursor ? "STICKY" : ""
+  let heading = g:vorax_output_full_heading ? "HEADING" : ""
+  let top = g:vorax_output_cursor_on_top ? "TOP" : ""
+  return join(filter([funnel, append, sticky, heading, top], 'v:val != ""'), ' ')
+endfunction
+
 let g:lightline.active = {
       \ 'left': [
       \   [ 'mode', 'paste' ],
-      \   [ 'vorax' ],
       \   [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+      \ ],
+      \ 'right': [
+      \   [ 'voraxright' ],
+      \   [ 'lineinfo' ],
+      \   [ 'percent' ],
+      \   [ 'fileformat', 'fileencoding', 'filetype' ]
       \ ]
       \ }
 let g:lightline.inactive = {
@@ -355,7 +369,7 @@ let g:lightline.component_function = {
       \ 'readonly': 'LightlineReadonly',
       \ 'gitbranch': 'fugitive#head',
       \ 'fullfilepath': 'LightlineFullfilepath',
-      \ 'vorax': 'LightlineVorax',
+      \ 'voraxright': 'LightlineVoraxRight',
       \ 'filename': 'LightlineFilename',
       \ 'inactivefilename': 'LightlineInactiveFilename'
       \ }
@@ -411,8 +425,13 @@ endfunction
 function! LightlineFullfilepath()
   return expand('%:p')
 endfunction
-function! LightlineVorax()
-  return &ft == 'outputvorax' ? vorax#sqlplus#SessionOwner() : ''
+function! LightlineVoraxRight()
+  if &ft == 'outputvorax'
+    let l:limitrows = exists("g:vorax_limit_rows") ? " [LIMIT ROWS <=" . g:vorax_limit_rows . "]" : ""
+    return g:VoraxOutputFlags() . l:limitrows
+  else
+    return ''
+  endif
 endfunction
 
 " Reset some plugin windows to their defined sizes.
