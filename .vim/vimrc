@@ -437,7 +437,7 @@ function! TagbarStatusFunc(current, sort, fname, ...) abort
   return lightline#statusline(0)
 endfunction
 function! LightlineFullfilepath()
-  return expand('%:p')
+  return expand('%:.')
 endfunction
 function! LightlineVoraxRight()
   if &ft == 'outputvorax'
