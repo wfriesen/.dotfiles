@@ -2,7 +2,15 @@
 let g:lightline = {'colorscheme': 'solarized'}
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
+
+" Don't load vorax in Cygwin. It doesn't work, and just slows down lightline
+if has('win32unix')
+  set wildignore+=*/vorax4
+  execute pathogen#infect()
+  set wildignore-=*/vorax4
+else
+  execute pathogen#infect()
+endif
 
 set showtabline=2 " Always show the tabline
 
@@ -435,7 +443,9 @@ function! LightlineVoraxRight()
   endif
 endfunction
 function! LightlineVoraxTxn()
-  return '%{vorax#utils#IsOpenTxn() ? "!" . g:vorax_output_txn_marker : ""}'
+  if g:loaded_vorax
+    return '%{vorax#utils#IsOpenTxn() ? "!" . g:vorax_output_txn_marker : ""}'
+  endif
 endfunction
 
 " Reset some plugin windows to their defined sizes.
