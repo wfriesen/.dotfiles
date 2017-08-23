@@ -366,7 +366,7 @@ let g:lightline.inactive = {
       \ }
 let g:lightline.component = {'lineinfo' : ' %3l:%-2v'}
 let g:lightline.component_type = {
-      \ 'voraxtxn': 'error'
+      \ 'voraxtxn': 'warning'
       \ }
 let g:lightline.component_expand = {
       \ 'voraxtxn': 'LightlineVoraxTxn'
@@ -448,11 +448,7 @@ function! LightlineVoraxRight()
   endif
 endfunction
 function! LightlineVoraxTxn()
-  if &ft == 'outputvorax'
-    return '%{vorax#utils#IsOpenTxn() ? "!" . g:vorax_output_txn_marker : ""}'
-  else
-    return ''
-  endif
+  return '%{vorax#utils#IsOpenTxn() ? "!" . g:vorax_output_txn_marker : ""}'
 endfunction
 
 " Reset some plugin windows to their defined sizes.
