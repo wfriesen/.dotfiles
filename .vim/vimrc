@@ -349,20 +349,15 @@ endfunction
 
 let g:lightline.active = {
       \ 'left': [
-      \   [ 'mode', 'paste' ],
+      \   [ 'mode', 'paste', 'voraxtxn' ],
       \   [ 'gitbranch', 'readonly', 'filename', 'modified' ]
       \ ],
       \ 'right': [
-      \   [ 'voraxtxn', 'voraxright' ],
+      \   [ 'voraxright' ],
       \   [ 'lineinfo' ],
       \   [ 'percent' ],
       \   [ 'fileformat', 'fileencoding', 'filetype' ]
       \ ]
-      \ }
-let g:lightline.inactive = {
-      \ 'left': [ [ 'inactivefilename' ] ],
-      \ 'right': [ [ 'lineinfo' ],
-      \            [ 'percent' ] ]
       \ }
 let g:lightline.component = {'lineinfo' : ' %3l:%-2v'}
 let g:lightline.component_type = {
@@ -376,8 +371,7 @@ let g:lightline.component_function = {
       \ 'gitbranch': 'LightlineFugitive',
       \ 'fullfilepath': 'LightlineFullfilepath',
       \ 'voraxright': 'LightlineVoraxRight',
-      \ 'filename': 'LightlineFilename',
-      \ 'inactivefilename': 'LightlineInactiveFilename'
+      \ 'filename': 'LightlineFilename'
       \ }
 let g:lightline.separator = {'left': '', 'right': ''}
 let g:lightline.subseparator = { 'left': '', 'right': ''}
@@ -407,18 +401,11 @@ function! LightlineFilename()
     return g:lightline.ctrlp_prev . ' ' . g:lightline.subseparator.left . ' ' .
           \ g:lightline.ctrlp_item . ' ' . g:lightline.subseparator.left . ' ' .
           \ g:lightline.ctrlp_next
-  else
-    return '' != expand('%:t') ? expand('%:t') : '[No Name]'
-  endif
-endfunction
-
-function! LightlineInactiveFilename()
-  let l:filename = LightlineFilename()
-  if &ft == 'outputvorax'
+  elseif &ft == 'outputvorax'
     let l:voraxsession = vorax#sqlplus#SessionOwner()
     return l:voraxsession == '@' ? l:filename : l:voraxsession
   else
-    return l:filename
+    return '' != expand('%:t') ? expand('%:t') : '[No Name]'
   endif
 endfunction
 
