@@ -353,7 +353,7 @@ let g:lightline.active = {
       \   [ 'gitbranch', 'readonly', 'filename', 'modified' ]
       \ ],
       \ 'right': [
-      \   [ 'voraxright' ],
+      \   [ 'voraxtxn', 'voraxright' ],
       \   [ 'lineinfo' ],
       \   [ 'percent' ],
       \   [ 'fileformat', 'fileencoding', 'filetype' ]
@@ -365,6 +365,12 @@ let g:lightline.inactive = {
       \            [ 'percent' ] ]
       \ }
 let g:lightline.component = {'lineinfo' : ' %3l:%-2v'}
+let g:lightline.component_type = {
+      \ 'voraxtxn': 'error'
+      \ }
+let g:lightline.component_expand = {
+      \ 'voraxtxn': 'LightlineVoraxTxn'
+      \ }
 let g:lightline.component_function = {
       \ 'readonly': 'LightlineReadonly',
       \ 'gitbranch': 'LightlineFugitive',
@@ -437,6 +443,13 @@ function! LightlineVoraxRight()
   if &ft == 'outputvorax'
     let l:limitrows = exists("g:vorax_limit_rows") ? " [LIMIT ROWS <=" . g:vorax_limit_rows . "]" : ""
     return g:VoraxOutputFlags() . l:limitrows
+  else
+    return ''
+  endif
+endfunction
+function! LightlineVoraxTxn()
+  if &ft == 'outputvorax'
+    return '%{vorax#utils#IsOpenTxn() ? "!" . g:vorax_output_txn_marker : ""}'
   else
     return ''
   endif
