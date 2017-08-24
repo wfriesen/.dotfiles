@@ -1,8 +1,12 @@
 if [[ -z "$TMUX" ]]; then
   if tmux has-session; then
-    exec tmux a
+    if [[ `tmux list-clients | wc -l` == "0" ]]; then
+      exec tmux attach
+    else
+      exec tmux new-session
+    fi
   else
-    exec tmux
+    exec tmux new-session
   fi
 fi
 
