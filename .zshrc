@@ -1,9 +1,9 @@
 if [[ -z "$TMUX" ]]; then
   if tmux has-session; then
-    if [[ `tmux list-clients | wc -l` == "0" ]]; then
-      exec tmux attach
-    else
+    if [[ `tmux list-sessions | grep -Ev '\(attached\)$' | wc -l` == "0" ]]; then
       exec tmux new-session
+    else
+      exec tmux attach
     fi
   else
     exec tmux new-session
