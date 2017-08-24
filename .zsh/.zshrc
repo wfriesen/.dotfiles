@@ -20,7 +20,7 @@ else
 
   source ~/.zsh/colors.zsh
   source ~/.zsh/completion.zsh
-  source ~/.zsh/exports.zsh
+  source ~/.zsh/env.zsh
   source ~/.zsh/aliases.zsh
   source ~/.zsh/prompt.zsh
   source ~/.zsh/bindkeys.zsh
