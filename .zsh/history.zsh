@@ -1,4 +1,4 @@
-HISTFILE=$HOME/.zsh_history
+HISTFILE=$HOME/.zsh/.zsh_history
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 setopt hist_find_no_dups
