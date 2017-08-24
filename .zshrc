@@ -1,9 +1,10 @@
 if [[ -z "$TMUX" ]]; then
   if tmux has-session; then
-    if [[ `tmux list-sessions | grep -Ev '\(attached\)$' | wc -l` == "0" ]]; then
+    UNATTACHED_SESSION=`tmux list-sessions -F '#{session_attached} #{session_name}' | awk '/^0/ {print $2; exit}'`
+    if [[ -z "$UNATTACHED_SESSION" ]]; then
       exec tmux new-session
     else
-      exec tmux attach
+      exec tmux attach-session -t "$UNATTACHED_SESSION"
     fi
   else
     exec tmux new-session
