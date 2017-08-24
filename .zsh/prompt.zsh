@@ -10,3 +10,5 @@ fi
 setopt promptsubst
 
 export PS1="%n@%m %F{green}%1 %(5~|%-1~/…/%3~|%4~)%F{reset_color}> "
+
+DEFAULT_USER=william
