@@ -1,6 +1,9 @@
 autoload -U compinit
 compinit
 
+setopt menu_complete # Auto select first completion entry
+setopt auto_list # Always show completion list when ambiguous
+
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 zstyle ':completion:*' matcher-list '' \
