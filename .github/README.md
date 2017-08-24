@@ -4,8 +4,8 @@ Configuration files.
 
 Setup with:
 
-```fish
+```zsh
 git clone --bare https://github.com/wfriesen/.dotfiles.git $HOME/.dotfiles
-source .config/fish/config.fish
+source ~/.zshenv ~/.zsh/.zshrc
 dotfiles checkout -f
 ```
