@@ -1,4 +1,4 @@
-if [ $TERM != "screen-256color" ]; then
+if [[ -z "$TMUX" ]]; then
   if tmux has-session; then
     exec tmux a
   else
