@@ -233,21 +233,6 @@ autocmd FileType GV nmap <buffer> <C-j> <C-n>
 autocmd FileType gitcommit nmap <buffer> <C-k> <C-p>
 autocmd FileType gitcommit nmap <buffer> <C-j> <C-n>
 
-" Don't let vorax clobber this mapping
-let g:vorax_key_connections_toggle='<leader>vpr'
-" Temporarily switch to the home directory when opening the VORAX connections
-" window, so that it can find profiles.xml
-function! g:ToggleVORAXConnections()
-  if bufwinnr('__VORAX_CONNECTIONS__') == -1
-    :execute ':cd ~'
-    :execute ':VORAXConnectionsToggle'
-    :execute ':cd -'
-  else
-    :execute ':VORAXConnectionsToggle'
-  endif
-endfunction
-nmap <silent> <leader>pr :call g:ToggleVORAXConnections()<CR>
-
 " start gvim maximized. Simulates pressing Alt+Space x
 if has('win32')
   autocmd GUIEnter * simalt ~x
@@ -260,9 +245,11 @@ let g:startify_custom_header = [] " Turn off the cowsay fortune header
 if has('win32') && has('gui_running')
   let g:startify_session_dir = s:cygwin_home.'\.vim\session'
   let g:viminfo_location = s:cygwin_home.'\.vim\.viminfo'
+  let g:vorax_homedir = s:cygwin_home.'\.vim'
 else
   let g:startify_session_dir = '~/.vim/session'
   let g:viminfo_location = '~/.vim/.viminfo_cygwin'
+  let g:vorax_homedir = '~/.vim'
 endif
 let &viminfo = &viminfo . ',n' . g:viminfo_location
 
