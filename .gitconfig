@@ -20,3 +20,4 @@
   sl = stash list
   sp = stash pop
   ap = add -p
+  sh = show
