@@ -115,6 +115,10 @@ let mapleader = "\<Space>"
 
 set cedit=<C-l> " Open the command-line window
 
+" Set to defaults, so that later appends in this file won't constantly
+" increase it
+set viminfo='100,<50,s10,h,rA:,rB:
+
 " Move cursor in command line mode just like in bash and others. C-e and C-k are
 " already mapped by default to move to, and delete until, the end of the line
 cnoremap <C-a> <Home>
@@ -252,12 +256,15 @@ endif
 let g:startify_enable_special = 0 " Don't show <empty buffer> and <quit>
 let g:startify_session_sort = 1 " Sort sessions by modification time
 let g:startify_custom_header = [] " Turn off the cowsay fortune header
-" Keep session files in the same place in windows gvim and cygwin vim
+" Keep session and info files in the same place in windows gvim and cygwin vim
 if has('win32') && has('gui_running')
   let g:startify_session_dir = s:cygwin_home.'\.vim\session'
+  let g:viminfo_location = s:cygwin_home.'\.vim\.viminfo'
 else
   let g:startify_session_dir = '~/.vim/session'
+  let g:viminfo_location = '~/.vim/.viminfo_cygwin'
 endif
+let &viminfo = &viminfo . ',n' . g:viminfo_location
 
 " Show sessions at the top. Pressing CR immediately after starting loads the
 " latest session
