@@ -226,6 +226,8 @@ function! g:Undotree_CustomMap()
 endfunc
 autocmd FileType GV nmap <buffer> <C-k> <C-p>
 autocmd FileType GV nmap <buffer> <C-j> <C-n>
+autocmd FileType gitcommit nmap <buffer> <C-k> <C-p>
+autocmd FileType gitcommit nmap <buffer> <C-j> <C-n>
 
 " Don't let vorax clobber this mapping
 let g:vorax_key_connections_toggle='<leader>vpr'
