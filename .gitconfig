@@ -16,3 +16,7 @@
   dt = difftool
   dtc = difftool --cached
   dc = diff --cached
+  st = status
+  sl = stash list
+  sp = stash pop
+  ap = add -p
