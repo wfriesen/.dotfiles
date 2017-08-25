@@ -388,7 +388,7 @@ let g:lightline.subseparator = { 'left': '', 'right': ''}
 let g:lightline.subseparator.tab = {'active': [ 'tabnum', 'filename', 'modified' ]}
 let g:lightline.tabline = {
       \ 'left': [ [ 'tabs' ] ],
-      \ 'right': [ [ 'fullfilepath' ] ]
+      \ 'right': [ [ 'fullfilepath', 'modified' ] ]
       \ }
 function! LightlineReadonly()
   return &readonly ? '' : ''
