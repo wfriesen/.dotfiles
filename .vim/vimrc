@@ -244,11 +244,11 @@ let g:startify_custom_header = [] " Turn off the cowsay fortune header
 " Keep session and info files in the same place in windows gvim and cygwin vim
 if has('win32') && has('gui_running')
   let g:startify_session_dir = s:cygwin_home.'\.vim\session'
-  let g:viminfo_location = s:cygwin_home.'\.vim\.viminfo'
+  let g:viminfo_location = s:cygwin_home.'\.vim\.viminfo_windows'
   let g:vorax_homedir = s:cygwin_home.'\.vim'
 else
   let g:startify_session_dir = '~/.vim/session'
-  let g:viminfo_location = '~/.vim/.viminfo_cygwin'
+  let g:viminfo_location = expand('~/.vim/.viminfo')
   let g:vorax_homedir = expand('~/.vim')
 endif
 let &viminfo = &viminfo . ',n' . g:viminfo_location
