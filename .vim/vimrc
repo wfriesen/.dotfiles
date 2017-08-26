@@ -249,7 +249,7 @@ if has('win32') && has('gui_running')
 else
   let g:startify_session_dir = '~/.vim/session'
   let g:viminfo_location = '~/.vim/.viminfo_cygwin'
-  let g:vorax_homedir = '~/.vim'
+  let g:vorax_homedir = expand('~/.vim')
 endif
 let &viminfo = &viminfo . ',n' . g:viminfo_location
 
