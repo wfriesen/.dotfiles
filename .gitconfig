@@ -21,3 +21,4 @@
   sp = stash pop
   ap = add -p
   sh = show
+  cm = commit -m
