@@ -1,4 +1,5 @@
 xrdb -merge ~/.Xdefaults
 xsetroot -cursor_name left_ptr
+xbindkeys
 setxkbmap -option caps:swapescape
 feh --bg-fill ~/Pictures/Dark_Ivy.jpg
