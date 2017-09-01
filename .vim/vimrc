@@ -327,7 +327,7 @@ let g:vorax_plsql_associations=
 \  'JAVA_SOURCE' : 'jsp'}
 
 " Map q to quit windows
-autocmd FileType connvorax,explorervorax,outputvorax,help,diff nnoremap <buffer> q <C-w>q
+autocmd FileType connvorax,explorervorax,outputvorax,help,diff,qf nnoremap <buffer> q <C-w>q
 
 let g:ctrlp_working_path_mode='ra' " Start ctrlp from the VCS root (r). Fallback to directory of current file (a)
 let g:ctrlp_clear_cache_on_exit=0 " Keep the cache across sessions
