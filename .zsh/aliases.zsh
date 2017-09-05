@@ -10,6 +10,8 @@ alias mkdir='mkdir -p'
 alias type='type -a'
 alias du='du -sh'
 alias dirs='dirs -v'
+alias cp='cp --interactive'
+alias mv='mv --interactive'
 
 if [[ $OSTYPE == "cygwin" ]]; then
   alias vim=$VISUAL
