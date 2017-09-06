@@ -28,5 +28,5 @@ Config { font = "xft:Hack:size=12"
                         ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader% | %cpu% | %memory% | %wlp58s0% }{<fc=#ee9a00>%date%</fc> | %battery% "
+        , template = "%StdinReader% | %cpu% | %memory% }{%wlp58s0% |<fc=#ee9a00>%date%</fc> | %battery% "
         }
