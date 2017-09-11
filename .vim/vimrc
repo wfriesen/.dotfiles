@@ -360,7 +360,7 @@ endfunction
 let g:lightline.active = {
       \ 'left': [
       \   [ 'mode', 'paste', 'voraxtxn' ],
-      \   [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+      \   [ 'readonly', 'filename', 'modified' ]
       \ ],
       \ 'right': [
       \   [ 'voraxright' ],
@@ -378,7 +378,6 @@ let g:lightline.component_expand = {
       \ }
 let g:lightline.component_function = {
       \ 'readonly': 'LightlineReadonly',
-      \ 'gitbranch': 'LightlineFugitive',
       \ 'fullfilepath': 'LightlineFullfilepath',
       \ 'voraxright': 'LightlineVoraxRight',
       \ 'filename': 'LightlineFilename'
@@ -397,14 +396,6 @@ let g:ctrlp_status_func = {
       \ 'main': 'CtrlPStatusFunc_main',
       \ 'prog': 'CtrlPStatusFunc_prog',
       \ }
-
-function! LightlineFugitive()
-  if exists('*fugitive#head')
-    let branch = fugitive#head()
-    return branch !=# '' ? ' '.branch : ''
-  endif
-  return ''
-endfunction
 
 function! LightlineFilename()
   if expand('%:t') == 'ControlP'
