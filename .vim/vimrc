@@ -403,8 +403,7 @@ function! LightlineFilename()
           \ g:lightline.ctrlp_item . ' ' . g:lightline.subseparator.left . ' ' .
           \ g:lightline.ctrlp_next
   elseif &ft == 'outputvorax'
-    let l:voraxsession = vorax#sqlplus#SessionOwner()
-    return l:voraxsession == '@' ? l:filename : l:voraxsession
+    return vorax#sqlplus#SessionOwner()
   else
     return '' != expand('%:t') ? expand('%:t') : '[No Name]'
   endif
