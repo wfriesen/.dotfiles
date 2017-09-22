@@ -239,6 +239,7 @@ if has('win32')
 endif
 
 let g:gitgutter_max_signs = 1000
+let g:gitgutter_realtime = 0 " For speed, turn off update-as-you-type
 
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.jsx,*.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
