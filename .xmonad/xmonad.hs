@@ -17,3 +17,7 @@ main = do
                         , ppTitle = xmobarColor "green" "" . shorten 50
                         }
         }
+        `additionalKeys`
+        [
+          ((mod4Mask, xK_p), spawn "dmenu_run -fn 'Hack' -z")
+        ]
