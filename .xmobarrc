@@ -1,11 +1,11 @@
 Config { font = "xft:Hack:size=12"
         , borderColor = "black"
         , border = TopB
-        , bgColor = "black"
-        , fgColor = "grey"
+        , bgColor = "#002b36"
+        , fgColor = "#657b83"
         , position = TopW L 100
         , commands = [ Run Network "wlp58s0" [] 10
-                        , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                        , Run Cpu ["-L","3","-H","50","--normal","#657b83","--high","#657b83"] 10
                         , Run Memory ["-t","Mem: <usedratio>%"] 10
                         , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
                         , Run StdinReader
@@ -24,9 +24,8 @@ Config { font = "xft:Hack:size=12"
                                                 -- charged status
                                                 , "-i"	, "<fc=#006000>Charged</fc>"
                                       ] 50
-
                         ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader% | %cpu% | %memory% }{%wlp58s0% | %battery% | <fc=#ee9a00>%date%</fc>"
+        , template = "%StdinReader% | %cpu% | %memory% }{%wlp58s0% | %battery% | <fc=#93a1a1>%date%</fc>"
         }
