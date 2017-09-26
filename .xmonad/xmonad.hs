@@ -14,7 +14,7 @@ main = do
         , layoutHook = avoidStruts  $  layoutHook defaultConfig
         , logHook = dynamicLogWithPP xmobarPP
                         { ppOutput = hPutStrLn xmproc
-                        , ppTitle = xmobarColor "green" "" . shorten 50
+                        , ppTitle = xmobarColor "#93a1a1" "" . shorten 50
                         }
         }
         `additionalKeys`
