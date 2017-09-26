@@ -240,6 +240,9 @@ endif
 
 let g:gitgutter_max_signs = 1000
 
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.jsx,*.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
+
 let g:startify_enable_special = 0 " Don't show <empty buffer> and <quit>
 let g:startify_session_sort = 1 " Sort sessions by modification time
 let g:startify_custom_header = [] " Turn off the cowsay fortune header
