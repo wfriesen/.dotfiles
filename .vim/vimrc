@@ -146,6 +146,10 @@ vnoremap <silent> # "zy?<C-R>z<CR>
 nnoremap <C-w>t <C-w>T
 nnoremap <C-w><C-t> <C-w>T
 
+" More intuitive split window mappings
+nnoremap <C-w>\| <C-w>v
+nnoremap <C-w>_ <C-w>s
+
 " Use Alt- for scrolling
 if has('gui_running')
   let s:alt_key_prefix="<A-"
