@@ -12,9 +12,6 @@
 [remote "vim-ctrlp.vim"]
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
 	fetch = +refs/heads/*:refs/remotes/vim-ctrlp.vim/*
-[remote "vim-vim-fish"]
-	url = https://github.com/dag/vim-fish.git
-	fetch = +refs/heads/*:refs/remotes/vim-fish/*
 [remote "vim-supertab"]
 	url = https://github.com/ervandew/supertab.git
 	fetch = +refs/heads/*:refs/remotes/vim-supertab/*
