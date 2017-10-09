@@ -108,6 +108,8 @@ endif
 
 let g:netrw_liststyle=1 " Show file size and modification times
 
+let g:slime_target = "tmux"
+
 " Use space as leader
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
