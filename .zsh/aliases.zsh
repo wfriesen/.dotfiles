@@ -13,6 +13,17 @@ alias dirs='dirs -v'
 alias cp='cp --interactive'
 alias mv='mv --interactive'
 
+dotfiles-update-remotes() {
+  pushd $HOME
+  for remotename in $(awk '/^\[remote "vim-/ {while ($0 !~ /\s*url\s*=\s*.*/) {getline;} print $0}' .dotfiles/config \
+    | sed -e "s/^\s*url = https:\/\/github\.com\/.*\/\(.*\)\.git/\1/g")
+  do
+    echo Updating $remotename
+    eval dotfiles subtree pull --prefix .vim/bundle/$remotename vim-$remotename master --squash
+  done
+  popd
+}
+
 if [[ $OSTYPE == "cygwin" ]]; then
   alias vim=$VISUAL
 fi
