@@ -13,6 +13,14 @@ alias dirs='dirs -v'
 alias cp='cp --interactive'
 alias mv='mv --interactive'
 
+borgrsync() {
+  borg create \
+    -e ~/VirtualBox\ VMs \
+    -e ~/Downloads/borgignore \
+    -e ~/.vagrant.d \
+    --verbose --info --list --stats --compression=zlib,6 borgserver:./borg::\{now\} ~
+}
+
 dotfiles-update-remotes() {
   pushd $HOME
   for remotename in $(awk '/^\[remote "vim-/ {while ($0 !~ /\s*url\s*=\s*.*/) {getline;} print $0}' .dotfiles/config \
