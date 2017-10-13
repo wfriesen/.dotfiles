@@ -1,6 +1,7 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
@@ -11,7 +12,7 @@ main = do
 
     xmonad $ docks $ def
         { modMask = mod4Mask
-        , manageHook = manageDocks <+> manageHook def
+        , manageHook = ( isFullscreen --> doFullFloat ) <+> manageDocks <+> manageHook def
         , layoutHook = avoidStruts  $  layoutHook def
         , logHook = dynamicLogWithPP xmobarPP
                         { ppOutput = hPutStrLn xmproc
