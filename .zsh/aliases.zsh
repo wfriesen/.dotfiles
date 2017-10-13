@@ -15,9 +15,7 @@ alias mv='mv --interactive'
 
 borgrsync() {
   borg create \
-    -e ~/VirtualBox\ VMs \
-    -e ~/Downloads/borgignore \
-    -e ~/.vagrant.d \
+    --exclude-from ~/.borgexcludes \
     --verbose --info --list --stats --compression=zlib,6 borgserver:./borg::\{now\} ~
 }
 
