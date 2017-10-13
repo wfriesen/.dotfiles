@@ -4,7 +4,7 @@ Config { font = "xft:Hack:size=12"
         , bgColor = "#002b36"
         , fgColor = "#657b83"
         , position = TopW L 97
-        , commands = [ Run Network "wlp58s0" [] 10
+        , commands = [ Run DynNetwork [ "--template" , "<rx>kB/s ▼▲ <tx>kB/s" ] 10
                         , Run Cpu ["-L","3","-H","50","--normal","#657b83","--high","#657b83"] 10
                         , Run Memory ["-t","Mem: <usedratio>%"] 10
                         , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
@@ -27,5 +27,5 @@ Config { font = "xft:Hack:size=12"
                         ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader% | %cpu% | %memory% }{%wlp58s0% | %battery% | <fc=#93a1a1>%date%</fc>"
+        , template = "%StdinReader% | %cpu% | %memory% }{ %dynnetwork% | %battery% | <fc=#93a1a1>%date%</fc>"
         }
