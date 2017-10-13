@@ -3,7 +3,7 @@ Config { font = "xft:Hack:size=12"
         , border = TopB
         , bgColor = "#002b36"
         , fgColor = "#657b83"
-        , position = TopW L 100
+        , position = TopW L 97
         , commands = [ Run Network "wlp58s0" [] 10
                         , Run Cpu ["-L","3","-H","50","--normal","#657b83","--high","#657b83"] 10
                         , Run Memory ["-t","Mem: <usedratio>%"] 10
