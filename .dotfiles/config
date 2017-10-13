@@ -87,3 +87,6 @@
 [remote "vim-lightline.vim"]
   url = https://github.com/itchyny/lightline.vim.git
   fetch = +refs/heads/*:refs/remotes/vim-lightline.vim/*
+[remote "vim-vim-slime"]
+  url = https://github.com/jpalardy/vim-slime
+  fetch = +refs/heads/*:refs/remotes/vim-slime/*
