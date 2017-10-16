@@ -168,17 +168,8 @@ execute "nnoremap ".s:alt_key_prefix."k".s:alt_key_suffix." <C-y>"
 execute "nnoremap ".s:alt_key_prefix."J".s:alt_key_suffix." <C-d>"
 execute "nnoremap ".s:alt_key_prefix."K".s:alt_key_suffix." <C-u>"
 
-" Copy/paste to system clipboard with <C-c> and <C-v>
-if has('win32')
-  let s:clipboard_register="*"
-else
-  let s:clipboard_register="+"
-endif
-execute "vnoremap <silent> <C-c> \"" . s:clipboard_register . "y"
-execute "inoremap <silent> <C-v> <C-R>" . s:clipboard_register
-execute "cnoremap <C-v> <C-R>" . s:clipboard_register
-" Yank to the system clipboard, can be used like <C-c>i( and the like
-execute "nmap <silent> <C-c> \"" . s:clipboard_register . "y"
+" When no register given, yank to the clipboard
+set clipboard+=unnamed
 
 nmap <silent> <leader>gs :Gstatus<CR>
 nmap <silent> <leader>ge :Gedit<CR>
