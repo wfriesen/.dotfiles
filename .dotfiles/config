@@ -90,3 +90,6 @@
 [remote "vim-vim-slime"]
   url = https://github.com/jpalardy/vim-slime
   fetch = +refs/heads/*:refs/remotes/vim-slime/*
+[remote "vim-fzf.vim"]
+  url = https://github.com/junegunn/fzf.vim.git
+  fetch = +refs/heads/*:refs/remotes/fzf.vim/*
