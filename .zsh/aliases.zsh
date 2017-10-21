@@ -1,8 +1,10 @@
 # Prefix commands with \ to run the non-alias version, e.g. \ls
-alias ls='ls --color=auto --group-directories-first --human-readable -1'
-if [[ $OSTYPE == "cygwin" || $OSTYPE == "linux-gnu" ]]; then
-  alias ll='ls -lah'
+if [[ $OSTYPE == "linux-gnu" || $OSTYPE == "cygwin" ]]; then
+  alias ls='ls --color=auto --group-directories-first --human-readable -1'
+else # BSD
+  alias ls='ls -Glh' # colored, long, human-readable
 fi
+alias ll='ls -lah'
 alias grep='grep --color=auto'
 alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias gg='git grep --color=auto -in'
@@ -12,8 +14,8 @@ alias mkdir='mkdir -p'
 alias type='type -a'
 alias du='du -sh'
 alias dirs='dirs -v'
-alias cp='cp --interactive'
-alias mv='mv --interactive'
+alias cp='cp -i'
+alias mv='mv -i'
 alias pd='popd'
 
 borgrsync() {
