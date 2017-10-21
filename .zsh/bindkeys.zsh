@@ -7,3 +7,7 @@ bindkey '^[[Z' reverse-menu-complete
 # Home and End keys
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[4~" end-of-line
+
+if [ -e /usr/share/fzf/key-bindings.zsh ]; then
+  source /usr/share/fzf/key-bindings.zsh
+fi
