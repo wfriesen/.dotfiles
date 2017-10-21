@@ -1,6 +1,8 @@
 # Prefix commands with \ to run the non-alias version, e.g. \ls
 alias ls='ls --color=auto --group-directories-first --human-readable -1'
-alias ll='ls -lah'
+if [[ $OSTYPE == "cygwin" || $OSTYPE == "linux-gnu" ]]; then
+  alias ll='ls -lah'
+fi
 alias grep='grep --color=auto'
 alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias gg='git grep --color=auto -in'
@@ -34,5 +36,6 @@ dotfiles-update-remotes() {
 
 if [[ $OSTYPE == "cygwin" ]]; then
   alias vim=$VISUAL
+elif [[ $OSTYPE == "linux-gnu" ]]; then
+  alias vi=$VISUAL
 fi
-alias vi=$VISUAL
