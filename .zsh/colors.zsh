@@ -1,4 +1,7 @@
-eval `dircolors ~/.dircolors`
+if which dircolors &> /dev/null
+then
+  eval `dircolors ~/.dircolors`
+fi
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
 _gen_fzf_default_opts() {
