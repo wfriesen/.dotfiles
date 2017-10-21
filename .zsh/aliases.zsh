@@ -12,6 +12,7 @@ alias du='du -sh'
 alias dirs='dirs -v'
 alias cp='cp --interactive'
 alias mv='mv --interactive'
+alias pd='popd'
 
 borgrsync() {
   borg create \
