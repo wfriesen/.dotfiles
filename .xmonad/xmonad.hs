@@ -9,6 +9,8 @@ import System.IO
 import Graphics.X11.ExtraTypes.XF86
 
 main = do
+    spawn "trayer --edge top --align right --height 23 --widthtype request --transparent true --tint 0x002b36 --monitor 1 &"
+
     xmproc <- spawnPipe "xmobar"
 
     xmonad $ docks $ def
@@ -27,4 +29,5 @@ main = do
         , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 10%+")
         , ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 10%-")
         , ((0, xF86XK_AudioMute), spawn "amixer set Master toggle")
+        , ((mod4Mask, xK_q), spawn "killall trayer; xmonad --recompile; xmonad --restart")
         ]
