@@ -1,5 +1,6 @@
 Config { font = "xft:Hack:size=12"
         , borderColor = "black"
+        , pickBroadest = True
         , border = TopB
         , bgColor = "#002b36"
         , fgColor = "#657b83"
