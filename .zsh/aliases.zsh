@@ -15,6 +15,7 @@ alias mv='mv --interactive'
 
 borgrsync() {
   borg create \
+    --remote-path=borg1 \
     --exclude-from ~/.borgexcludes \
     --verbose --info --list --stats --compression=zlib,6 borgserver:./borg::\{now\} ~
 }
