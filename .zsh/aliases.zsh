@@ -2,7 +2,7 @@
 if [[ $OSTYPE == "linux-gnu" || $OSTYPE == "cygwin" ]]; then
   alias ls='ls --color=auto --group-directories-first --human-readable -1'
 else # BSD
-  alias ls='ls -Gh1' # colored, human-readable, 1-per-line
+  alias ls='ls -G1' # colored, 1-per-line
 fi
 alias ll='ls -lah'
 alias grep='grep --color=auto'
