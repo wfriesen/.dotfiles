@@ -79,7 +79,7 @@
   url = https://github.com/zsh-users/zsh-autosuggestions.git
   fetch = +refs/heads/*:refs/remotes/zsh-autosuggestions/*
 [remote "zsh-zsh-history-substring-search"]
-  url = https://github.com/zsh-users/zsf-history-substring-search.git
+  url = https://github.com/zsh-users/zsh-history-substring-search.git
   fetch = +refs/heads/*:refs/remotes/zsh-zsh-history-substring-search/*
 [remote "zsh-zsh-syntax-highlighting"]
   url = https://github.com/zsh-users/zsh-syntax-highlighting.git
