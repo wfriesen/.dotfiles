@@ -33,6 +33,14 @@ dotfiles-update-remotes() {
     echo Updating $remotename
     eval dotfiles subtree pull --prefix .vim/bundle/$remotename vim-$remotename master --squash
   done
+
+  for remotename in $(awk '/^\[remote "zsh-/ {while ($0 !~ /\s*url\s*=\s*.*/) {getline;} print $0}' .dotfiles/config \
+    | sed -e "s/^\s*url = https:\/\/github\.com\/.*\/\(.*\)\.git/\1/g")
+  do
+    echo Updating $remotename
+    eval dotfiles subtree pull --prefix .zsh/$remotename zsh-$remotename master --squash
+  done
+
   popd
 }
 
