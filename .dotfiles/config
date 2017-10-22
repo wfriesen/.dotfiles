@@ -75,6 +75,9 @@
 [remote "vim-vim-git"]
 	url = https://github.com/tpope/vim-git.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-git/*
+[remote "zsh-agnoster-zsh-theme"]
+  url = https://github.com/agnoster/agnoster-zsh-theme.git
+  fetch = +refs/heads/*:refs/remotes/zsh-agnoster-zsh-theme/*
 [remote "zsh-zsh-autosuggestions"]
   url = https://github.com/zsh-users/zsh-autosuggestions.git
   fetch = +refs/heads/*:refs/remotes/zsh-autosuggestions/*
