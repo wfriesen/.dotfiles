@@ -5,7 +5,7 @@
 " Name Of File: prettier.vim
 "  Description: A vim plugin wrapper for prettier, pre-configured with custom default prettier settings.
 "   Maintainer: Mitermayer Reis <mitermayer.reis at gmail.com>
-"      Version: 0.2.3
+"      Version: 0.2.4
 "        Usage: Use :help vim-prettier-usage, or visit https://github.com/prettier/vim-prettier
 "
 "==========================================================================================================
@@ -256,7 +256,7 @@ function! s:Get_Prettier_Exec_Args(config) abort
           \ ' --config-precedence ' .
           \ get(a:config, 'configPrecedence', g:prettier#config#config_precedence) .
           \ ' --stdin-filepath ' .
-          \ simplify(expand("%:t")) .
+          \ simplify(expand("%:p")) .
           \ ' --stdin '
   return l:cmd
 endfunction
