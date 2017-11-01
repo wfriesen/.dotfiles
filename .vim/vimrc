@@ -173,7 +173,7 @@ set clipboard+=unnamed
 
 nmap <silent> <leader>gs :Gstatus<CR>
 nmap <silent> <leader>ge :Gedit<CR>
-nmap <silent> <leader>gd :Gdiff<CR>
+nmap <silent> <leader>gd :tabedit % \| :Gdiff<CR>
 nmap <silent> <leader>gl :GV -20<CR>
 nmap <silent> <leader>gv :GV!<CR>
 
