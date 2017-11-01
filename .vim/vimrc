@@ -201,6 +201,8 @@ nnoremap <silent> <leader>zM :call g:WindoReturn(":normal zM")<CR>
 nnoremap <silent> <leader>zr :call g:WindoReturn(":normal zr")<CR>
 nnoremap <silent> <leader>zm :call g:WindoReturn(":normal zm")<CR>
 
+nnoremap <silent> <leader>wq :windo q<CR>
+
 nmap <silent> <leader>u :UndotreeToggle<CR>
 nmap <silent> <leader>t :TagbarToggle<CR>
 nmap [c <Plug>GitGutterPrevHunk
