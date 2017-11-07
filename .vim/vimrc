@@ -59,6 +59,7 @@ set shiftwidth=2
 set shiftround " round indents to multiples of shiftwidth
 set smarttab
 set autoindent
+set nojoinspaces
 
 " Ignore case, except if the entered search pattern contains upper case chars
 set ignorecase
