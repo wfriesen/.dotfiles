@@ -1,5 +1,5 @@
 # Prefix commands with \ to run the non-alias version, e.g. \ls
-if [[ $OSTYPE == "linux-gnu" || $OSTYPE == "cygwin" ]]; then
+if [[ $OSTYPE == linux-gnu* || $OSTYPE == "cygwin" ]]; then
   alias ls='ls --color=auto --group-directories-first --human-readable -1'
 else # BSD
   alias ls='ls -G1' # colored, 1-per-line
