@@ -64,6 +64,7 @@ set nojoinspaces
 " Ignore case, except if the entered search pattern contains upper case chars
 set ignorecase
 set smartcase
+set infercase
 
 set hlsearch " Highlight search matches
 set incsearch " Search as you type. <Esc> still cancels and returns
