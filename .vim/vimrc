@@ -150,7 +150,7 @@ nnoremap <C-w>t <C-w>T
 nnoremap <C-w><C-t> <C-w>T
 
 " More intuitive split window mappings
-nnoremap <C-w>\| <C-w>v
+nnoremap <C-w><Bar> <C-w>v
 nnoremap <C-w>_ <C-w>s
 
 " Use Alt- for scrolling
@@ -175,7 +175,7 @@ set clipboard+=unnamed
 
 nmap <silent> <leader>gs :Gstatus<CR>
 nmap <silent> <leader>ge :Gedit<CR>
-nmap <silent> <leader>gd :tabedit % \| :Gdiff<CR>
+nmap <silent> <leader>gd :tabedit % <Bar> :Gdiff<CR>
 nmap <silent> <leader>gl :GV -20<CR>
 nmap <silent> <leader>gv :GV!<CR>
 
