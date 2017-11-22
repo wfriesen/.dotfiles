@@ -387,6 +387,10 @@ let g:lightline.active = {
       \   [ 'fileformat', 'fileencoding', 'filetype' ]
       \ ]
       \ }
+let g:lightline.inactive = {
+      \ 'left': [ [ 'filename', 'modified' ] ],
+      \ 'right': [ [ 'lineinfo' ],
+      \            [ 'percent' ] ] }
 let g:lightline.component = {'lineinfo' : ' %3l:%-2v'}
 let g:lightline.component_type = {
       \ 'voraxtxn': 'warning'
