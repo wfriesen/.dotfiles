@@ -35,6 +35,8 @@ set lazyredraw " Execute macros faster by not redrawing the screen constantly
 set number
 set cursorline
 
+set noequalalways
+
 if has('gui_running')
   set guioptions-=m "menubar
   set guioptions-=r "scrollbar
