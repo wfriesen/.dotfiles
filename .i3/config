@@ -177,3 +177,9 @@ bindsym $mod+b exec chromium
 bindsym XF86AudioRaiseVolume exec amixer set Master 10%+
 bindsym XF86AudioLowerVolume exec amixer set Master 10%-
 bindsym XF86AudioMute exec amixer set Master toggle
+
+exec mons -a
+exec nm-applet
+exec dropbox
+exec redshift-gtk
+exec xss-lock -- i3lock -i ~/Pictures/arch-linux.png
