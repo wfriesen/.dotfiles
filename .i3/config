@@ -173,3 +173,7 @@ client.unfocused        #002b36 #073642 #839496 #073642
 client.urgent           #002b36 #dc322f #fdf6e3 #002b36
 
 bindsym $mod+b exec chromium
+
+bindsym XF86AudioRaiseVolume exec amixer set Master 10%+
+bindsym XF86AudioLowerVolume exec amixer set Master 10%-
+bindsym XF86AudioMute exec amixer set Master toggle
