@@ -9,6 +9,7 @@
   filename = magenta
 [log]
   date = iso-local
+  follow
 [alias]
   diffone = "!git difftool \"$1\"^..\"$1\""
   tlog = "!git-tlog $@"
