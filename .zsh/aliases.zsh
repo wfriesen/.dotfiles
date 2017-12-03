@@ -19,6 +19,7 @@ alias dirs='dirs -v'
 alias cp='cp -i'
 alias mv='mv -i'
 alias pd='popd'
+alias gopen='gio open'
 
 borgrsync() {
   borg create \
