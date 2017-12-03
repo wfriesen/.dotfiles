@@ -21,6 +21,12 @@ alias mv='mv -i'
 alias pd='popd'
 alias gopen='gio open'
 
+if [[ $OSTYPE == "cygwin" ]]; then
+  alias vim=$VISUAL
+elif [[ $OSTYPE == linux-gnu* ]]; then
+  alias vi=$VISUAL
+fi
+
 borgrsync() {
   borg create \
     --remote-path=borg1 \
@@ -46,9 +52,3 @@ dotfiles-update-remotes() {
 
   popd
 }
-
-if [[ $OSTYPE == "cygwin" ]]; then
-  alias vim=$VISUAL
-elif [[ $OSTYPE == "linux-gnu" ]]; then
-  alias vi=$VISUAL
-fi
