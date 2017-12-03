@@ -27,6 +27,7 @@ main = do
         `additionalKeys`
         [
           ((mod4Mask, xK_p), spawn "dmenu_run -fn 'Hack' -z")
+        , ((mod4Mask, xK_b), spawn "chromium")
         , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 10%+")
         , ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 10%-")
         , ((0, xF86XK_AudioMute), spawn "amixer set Master toggle")
