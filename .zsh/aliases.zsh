@@ -10,6 +10,8 @@ alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias gg='git grep --color=auto -in'
 alias cd-='cd -'
 alias pacup='pacaur -Syu'
+alias pacin='pacaur -S'
+alias pacrm='pacaur -Rns'
 alias mkdir='mkdir -p'
 alias type='type -a'
 alias du='du -sh'
