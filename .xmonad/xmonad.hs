@@ -1,4 +1,5 @@
 import XMonad
+import XMonad.Layout.NoBorders
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
@@ -17,7 +18,7 @@ main = do
         { modMask = mod4Mask
         , manageHook = ( isFullscreen --> doFullFloat ) <+> manageDocks <+> manageHook def
         , handleEventHook = fullscreenEventHook
-        , layoutHook = avoidStruts  $  layoutHook def
+        , layoutHook = avoidStruts  $  smartBorders  $  layoutHook def
         , logHook = dynamicLogWithPP xmobarPP
                         { ppOutput = hPutStrLn xmproc
                         , ppTitle = xmobarColor "#93a1a1" "" . shorten 50
