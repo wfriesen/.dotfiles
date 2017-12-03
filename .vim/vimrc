@@ -181,17 +181,6 @@ nmap <silent> <leader>gd :tabedit % <Bar> :Gdiff<CR>
 nmap <silent> <leader>gl :GV -20<CR>
 nmap <silent> <leader>gv :GV!<CR>
 
-" Wrap a paragraph in an inline view, limiting with "where rownum <= 10".
-function! g:WrapInRowLimiter()
-  :execute ":normal! mz{owith q as ("
-  :normal! }k
-  :s/;$//
-  :normal! o)select	*from qwhere rownum <= 10;
-  :normal! `zll
-  :execute ":normal >i("
-endfunction
-nmap <silent> <leader>lr :call g:WrapInRowLimiter()<CR>
-
 " execute docmd in all windows, then return cursor to the original window
 function! g:WindoReturn(docmd)
   let l:current_winnr = winnr()
