@@ -2,15 +2,7 @@
 let g:lightline = {'colorscheme': 'solarized'}
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-
-" Don't load vorax in Cygwin. It doesn't work, and just slows down lightline
-if has('win32unix')
-  set wildignore+=*/vorax4
-  execute pathogen#infect()
-  set wildignore-=*/vorax4
-else
-  execute pathogen#infect()
-endif
+execute pathogen#infect()
 
 set showtabline=2 " Always show the tabline
 
@@ -201,14 +193,6 @@ nmap <silent> <leader>t :TagbarToggle<CR>
 nmap [c <Plug>GitGutterPrevHunk
 nmap ]c <Plug>GitGutterNextHunk
 
-" VORAX. Jump to the header row of the output window
-" can then jump to the next/previous column with ; and ,
-nmap <silent> <leader>H gg/^\( \)\?-<CR>kztjf<Space>
-
-nmap <silent> <C-Enter> :VORAXExecCurrent<CR>
-nmap <silent> <F5> :VORAXCompile<CR>
-imap <silent> <C-Enter> <Esc>:VORAXExecCurrent<CR>
-
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -261,11 +245,9 @@ let g:startify_custom_header = [] " Turn off the cowsay fortune header
 if has('win32') && has('gui_running')
   let g:startify_session_dir = s:cygwin_home.'\.vim\session'
   let g:viminfo_location = s:cygwin_home.'\.vim\.viminfo_windows'
-  let g:vorax_homedir = s:cygwin_home.'\.vim'
 else
   let g:startify_session_dir = '~/.vim/session'
   let g:viminfo_location = expand('~/.vim/.viminfo')
-  let g:vorax_homedir = expand('~/.vim')
 endif
 let &viminfo = &viminfo . ',n' . g:viminfo_location
 
@@ -317,32 +299,8 @@ let g:tagbar_width=30
 
 let g:AutoPairsCenterLine=0 " Don't do zz after CR
 
-let g:vorax_output_window_size=20
-let g:vorax_dbexplorer_size=32
-let g:vorax_cmanager_size=30
-
-let g:vorax_key_sql_select_current='<leader>vs'
-let g:vorax_key_describe='<F4>'
-let g:vorax_key_describe_verbose='<S-F4>'
-
-let g:vorax_output_full_heading=1 " Set VORAX output window to show full headings
-
-let g:vorax_output_show_open_txn=1 " Show marker in status line when in an open transaction
-
-let g:vorax_plsql_associations=
-\ {'FUNCTION' : 'fnc',
-\  'PROCEDURE' : 'prc',
-\  'TRIGGER' : 'trg',
-\  'PACKAGE_SPEC' : 'pks',
-\  'PACKAGE_BODY' : 'pkb',
-\  'PACKAGE' : 'pkg',
-\  'TYPE_SPEC' : 'tps',
-\  'TYPE_BODY' : 'tpb',
-\  'TYPE' : 'typ',
-\  'JAVA_SOURCE' : 'jsp'}
-
 " Map q to quit windows
-autocmd FileType connvorax,explorervorax,outputvorax,help,diff,qf nnoremap <buffer> q <C-w>q
+autocmd FileType help,diff,qf nnoremap <buffer> q <C-w>q
 
 let g:ctrlp_working_path_mode='ra' " Start ctrlp from the VCS root (r). Fallback to directory of current file (a)
 let g:ctrlp_clear_cache_on_exit=0 " Keep the cache across sessions
@@ -359,22 +317,12 @@ autocmd FileType *
   \   call SuperTabChain(&omnifunc, "<c-p>") |
   \ endif
 
-function! g:VoraxOutputFlags()
-  let funnel = ["", "VERTICAL", "PAGEZIP", "TABLEZIP"][vorax#output#GetFunnel()]
-  let append = g:vorax_output_window_append ? "APPEND" : ""
-  let sticky = g:vorax_output_window_sticky_cursor ? "STICKY" : ""
-  let heading = g:vorax_output_full_heading ? "HEADING" : ""
-  let top = g:vorax_output_cursor_on_top ? "TOP" : ""
-  return join(filter([funnel, append, sticky, heading, top], 'v:val != ""'), ' ')
-endfunction
-
 let g:lightline.active = {
       \ 'left': [
-      \   [ 'mode', 'paste', 'voraxtxn' ],
+      \   [ 'mode', 'paste', ],
       \   [ 'readonly', 'filename', 'modified' ]
       \ ],
       \ 'right': [
-      \   [ 'voraxright' ],
       \   [ 'lineinfo' ],
       \   [ 'percent' ],
       \   [ 'fileformat', 'fileencoding', 'filetype' ]
@@ -385,16 +333,9 @@ let g:lightline.inactive = {
       \ 'right': [ [ 'lineinfo' ],
       \            [ 'percent' ] ] }
 let g:lightline.component = {'lineinfo' : ' %3l:%-2v'}
-let g:lightline.component_type = {
-      \ 'voraxtxn': 'warning'
-      \ }
-let g:lightline.component_expand = {
-      \ 'voraxtxn': 'LightlineVoraxTxn'
-      \ }
 let g:lightline.component_function = {
       \ 'readonly': 'LightlineReadonly',
       \ 'fullfilepath': 'LightlineFullfilepath',
-      \ 'voraxright': 'LightlineVoraxRight',
       \ 'filename': 'LightlineFilename'
       \ }
 let g:lightline.separator = {'left': '', 'right': ''}
@@ -417,8 +358,6 @@ function! LightlineFilename()
     return g:lightline.ctrlp_prev . ' ' . g:lightline.subseparator.left . ' ' .
           \ g:lightline.ctrlp_item . ' ' . g:lightline.subseparator.left . ' ' .
           \ g:lightline.ctrlp_next
-  elseif &ft == 'outputvorax'
-    return vorax#sqlplus#SessionOwner()
   else
     return '' != expand('%:t') ? expand('%:t') : '[No Name]'
   endif
@@ -441,26 +380,10 @@ endfunction
 function! LightlineFullfilepath()
   return '' != expand('%:.') ? expand('%:.') : '[No Name]'
 endfunction
-function! LightlineVoraxRight()
-  if &ft == 'outputvorax'
-    let l:limitrows = exists("g:vorax_limit_rows") ? " [LIMIT ROWS <=" . g:vorax_limit_rows . "]" : ""
-    return g:VoraxOutputFlags() . l:limitrows
-  else
-    return ''
-  endif
-endfunction
-function! LightlineVoraxTxn()
-  if g:loaded_vorax
-    return '%{vorax#utils#IsOpenTxn() ? "!" . g:vorax_output_txn_marker : ""}'
-  endif
-endfunction
 
 " Reset some plugin windows to their defined sizes.
 function! g:ResizePluginWindow()
   let l:plugin_window_types_resize_cmd = {
-  \ 'connvorax': 'vertical resize' . g:vorax_cmanager_size,
-  \ 'explorervorax': 'vertical resize' . g:vorax_dbexplorer_size,
-  \ 'outputvorax': 'resize' . g:vorax_output_window_size,
   \ 'tagbar': 'vertical resize' . g:tagbar_width
   \ }
 
