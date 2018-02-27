@@ -16,10 +16,12 @@ highlight LineNr guifg=#586e75 ctermfg=10
 highlight CursorLineNr guifg=#839496 ctermfg=12
 highlight Cursor guibg=#dc322f
 
-if has('win32')
-  set guifont=Hack:h12
-else
-  set guifont=Hack\ 16
+if has("gui_running")
+  if has('win32')
+    set guifont=Consolas:h11
+  else
+    set guifont=Hack\ 16
+  endif
 endif
 
 set lazyredraw " Execute macros faster by not redrawing the screen constantly
