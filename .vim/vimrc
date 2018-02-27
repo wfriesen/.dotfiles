@@ -87,22 +87,8 @@ set completeopt+=menu " Use popup menu, even if there's only one match
 set completeopt+=menuone " Show even when there's only one match
 set completeopt+=preview " Show some extra info (types, filenames, etc)
 
-if has('win32') && has('gui_running')
-  if expand('$CYGWIN_PATH') == '$CYGWIN_PATH'
-    echoerr "$CYGWIN_PATH must be set when running from windows"
-  else
-    let s:cygwin_home = expand('$CYGWIN_PATH/home/$USERNAME')
-  endif
-endif
-
-" Store persistent undo history in the same place across gvim and cygwin vim
-" Requires Windows to have the $CYGWIN_PATH variable set manually
 set undofile
-if has('win32') && has('gui_running')
-  let &undodir = expand(s:cygwin_home.'\.vim\undo')
-else
-  let &undodir = expand('$HOME/.vim/undo')
-endif
+let &undodir = expand('$HOME/.vim/undo')
 
 let g:netrw_liststyle=1 " Show file size and modification times
 
@@ -240,15 +226,8 @@ let g:syntastic_auto_loc_list = 1 " Auto-open/close the error list
 let g:startify_enable_special = 0 " Don't show <empty buffer> and <quit>
 let g:startify_session_sort = 1 " Sort sessions by modification time
 let g:startify_custom_header = [] " Turn off the cowsay fortune header
-" Keep session and info files in the same place in windows gvim and cygwin vim
-if has('win32') && has('gui_running')
-  let g:startify_session_dir = s:cygwin_home.'\.vim\session'
-  let g:viminfo_location = s:cygwin_home.'\.vim\.viminfo_windows'
-else
-  let g:startify_session_dir = '~/.vim/session'
-  let g:viminfo_location = expand('~/.vim/.viminfo')
-endif
-let &viminfo = &viminfo . ',n' . g:viminfo_location
+let g:startify_session_dir = '~/.vim/session'
+let &viminfo = &viminfo . ',n' . expand('~/.vim/.viminfo')
 
 " Show sessions at the top. Pressing CR immediately after starting loads the
 " latest session
