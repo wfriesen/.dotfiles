@@ -30,6 +30,7 @@ CONTENTS                                                     *startify-contents*
     COMMANDS ....................................... |startify-commands|
     MAPPINGS ....................................... |startify-mappings|
     COLORS ......................................... |startify-colors|
+    MISC ........................................... |startify-misc|
     FAQ ............................................ |startify-faq|
     EXAMPLE ........................................ |startify-example|
 
@@ -69,15 +70,18 @@ Startify basically provides two things:
 
    And you can define your own custom ascii art header now!
 
-2) It eases handling of loading and saving sessions by only working with a
-   certain directory. These commands are used for convenience:
+2) The plugin eases the handling of loading and saving sessions by putting
+   sessions in a central directory.
 
-      :SLoad       load a session
-      :SSave       save a session
-      :SDelete[!]  delete a session
-      :SClose      close a session
+      :SLoad       load a session    |startify-:SLoad|
+      :SSave[!]    save a session    |startify-:SSave|
+      :SDelete[!]  delete a session  |startify-:SDelete|
+      :SClose      close a session   |startify-:SClose|
 
-    If ! is given, you won't get prompted.
+   If ! is given, you won't get prompted.
+
+   It also supports session persistence, so once a session is loaded, it gets
+   saved automatically when Vim is quit: |g:startify_session_persistence|
 
 ==============================================================================
 OPTIONS                                                       *startify-options*
@@ -513,17 +517,23 @@ NOTE: There is no sanitizing going on, so you should know what you're doing!
 ------------------------------------------------------------------------------
                                                       *g:startify_custom_header*
 >
-    let g:startify_custom_header = startify#fortune#get_random_quote()
+    let g:startify_custom_header = 'startify#fortune#cowsay()'
 <
-This is a list of strings to be shown before everything else. Every string
-will be written on its own line, hence you can use empty strings for blank
-lines.
+Define your own header.
 
-Static example:~
->
-    let g:startify_custom_header = ['line 1', '', 'line 3']
-<
-Static example #2:~
+This option takes a `list of strings`, whereas each string will be put on its
+own line. If it is a simple `string`, it should evaluate to a list of strings.
+
+Helper functions:~
+
+    startify#fortune#quote()       random quote
+    startify#fortune#boxed(...)    random quote in a box
+    startify#fortune#cowsay(...)   random quote in a box + cow
+
+The last two functions optionally take a quote in the list of strings format.
+They also return a list of strings, suitable for this option.
+
+Example #1:~
 >
     let g:startify_custom_header = [
             \ '                                 ________  __ __        ',
@@ -535,21 +545,13 @@ Static example #2:~
             \ '     \/__/    \/_/\/_/\/_/\/_/    \//  \/_/     \/_/    ',
             \ ]
 <
-Dynamic example:~
+Example #2:~
 >
     let g:startify_custom_header =
             \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val')
 <
-If you go for a dynamic header, you might find the following functions useful:
+Example #3:~
 
-    startify#fortune#quote()     raw random quote
-    startify#fortune#boxed(...)  opt list or formatted random quote in a box
-    startify#fortune#cowsay()    formatted random quote in a box + cow
-
-Try them like this:
->
-    :echo join(startify#fortune#cowsay(), "\n")
-<
 Let's assume you like the default boxed random quote, but not the ASCII art
 cow. You'd rather have another small ASCII art come before the quote. No
 problem!
@@ -587,7 +589,7 @@ Also have a look at |startify-faq-08|.
                                                *g:startify_custom_header_quotes*
 
 If you don't set |g:startify_custom_header|, the internal cowsay implementation
-with shipped random quotes will be used.
+with predefined random quotes will be used.
 
 To use your own quotes, set this option to a list of quotes. Each quote is
 either another list or a |Funcref| (see |expr-lambda|) that returns a list.
@@ -599,6 +601,11 @@ Each element of the inner lists is put on an own line in the custom header.
         \ ['quote #2', 'using', 'three lines'],
         \ {-> systemlist('echo quote #3')}
         \ ]
+<
+If you want the predefined quotes as well, use this:
+>
+  let g:startify_custom_header_quotes =
+      \ startify#fortune#predefined_quotes() + [['quote 1', 'quote 2']]
 <
 ------------------------------------------------------------------------------
                                                       *g:startify_custom_footer*
@@ -640,11 +647,13 @@ $PWD and $OLDPWD are ignored.
 ==============================================================================
 AUTOCMD                                                       *startify-autocmd*
 
-In case you want to alter the startify buffer to cause all kinds of mayhem, an
-user autocmd is issued. You can hook into it like this:
+When the Startify buffer is fully set up, it emits an User event. You can hook
+into that to customize Startify even further:
 >
     autocmd User Startified let &l:stl = ' This statusline rocks!'
 <
+Or use it to disable single mappings: |startify-faq-16|.
+
 NOTE: Autocmds don't nest by default. If you use any command that triggers new
 events, be sure to add "nested": |autocmd-nested|.
 
@@ -658,11 +667,14 @@ Open the startify buffer.
                                                                *startify-:SSave*
                                                              *startify-:SDelete*
 >
-    :SSave [session]
-    :SDelete [session]
+    :SSave[!] [session]
+    :SDelete[!] [session]
 <
 Save or delete a session. If you don't specify a session name, it will prompt
 you for one.
+
+Use `:SSave!` or `:SDelete!` to always overwrite or delete an existing session.
+
                                                                *startify-:SLoad*
 >
     :SLoad [session]
@@ -759,6 +771,26 @@ Example: (my terminal emulator supports 256 colors)
     highlight StartifySpecial ctermfg=240
 <
 ==============================================================================
+MISC                                                             *startify-misc*
+
+Changing the entry format:~
+
+You can create a function `StartifyEntryFormat()` which returns a string that
+gets evaluated in Startify. In that string, `entry_path` and `absolute_path`
+will be replaced by their respective values.
+
+`absolute_path` is self-explaining and `entry_path` is the same path but
+potentially shortened, depending on options like |g:startify_relative_path|.
+
+Let us assume you have vim-devicons installed. That plugin has a function
+`WebDevIconsGetFileTypeSymbol()` which returns an icon depending on the given
+file. Prepend the logo to each Startify entry by putting this in your vimrc:
+>
+    function! StartifyEntryFormat()
+        return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+    endfunction
+<
+==============================================================================
 FAQ                                                               *startify-faq*
 
     |startify-faq-01|  I don't want the start screen to use cursorline!
@@ -775,6 +807,9 @@ FAQ                                                               *startify-faq*
     |startify-faq-11|  How to use the output of a command as header?
     |startify-faq-12|  There is an empty window with vim-plug!
     |startify-faq-13|  How to disable random quotes header?
+    |startify-faq-14|  NERDTree with NERDTreeTabs does not work in gvim!
+    |startify-faq-15|  Startify is cluttered with help files!
+    |startify-faq-16|  How to disable single mappings?
 
 ------------------------------------------------------------------------------
                                                                *startify-faq-01*
@@ -957,6 +992,38 @@ How to disable random quotes header?~
 <
 See |g:startify_custom_header|.
 
+------------------------------------------------------------------------------
+                                                               *startify-faq-14*
+NERDTree with NERDTreeTabs does not work in gvim!~
+
+Mind that `https://github.com/jistr/vim-nerdtree-tabs` is no longer maintained
+and has quite some issues.
+
+Anyway, this particular issue can be resolved in different ways. See:
+
+    https://github.com/mhinz/vim-startify/issues/24
+
+------------------------------------------------------------------------------
+                                                               *startify-faq-15*
+Startify is cluttered with help files!~
+
+Everytime you use |:h|, you open a file from the Vim runtime directory or of
+an installed plugin. By default, Startify detects these files and skips them.
+
+This works for most use cases, but not for all.
+
+If the default fails for you and the Startify buffer is cluttered with help
+files, add that path to the skiplist yourself: |g:startify_skiplist|.
+
+------------------------------------------------------------------------------
+                                                               *startify-faq-16*
+How to disable single mappings?~
+
+Use |startify-autocmd|:
+>
+    autocmd User Startified for key in ['b','s','t','v'] |
+          \ execute 'nunmap <buffer>' key | endfor
+<
 ==============================================================================
 EXAMPLE                                                       *startify-example*
 
