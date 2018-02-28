@@ -27,6 +27,7 @@ endif
 set lazyredraw " Execute macros faster by not redrawing the screen constantly
 
 set number
+set relativenumber
 set cursorline
 
 set noequalalways
