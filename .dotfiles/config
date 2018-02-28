@@ -93,6 +93,6 @@
 [remote "vim-fzf.vim"]
   url = https://github.com/junegunn/fzf.vim.git
   fetch = +refs/heads/*:refs/remotes/fzf.vim/*
-[remote "YankRing.vim"]
+[remote "vim-YankRing.vim"]
   url = https://github.com/vim-scripts/YankRing.vim.git
   fetch = +refs/heads/*:refs/remotes/YankRing.vim/*
