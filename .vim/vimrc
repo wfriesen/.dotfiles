@@ -198,7 +198,8 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>h :History<CR>
 nnoremap <leader>l :BLines<CR>
 
-nnoremap <leader>y :YRShow<CR>
+let g:yankring_replace_n_pkey = '<leader>y' " Don't clobber the ctrlp mapping
+nnoremap <leader>p :YRShow<CR>
 
 let g:undotree_SetFocusWhenToggle=1 " Focus the undotree window when opening
 
