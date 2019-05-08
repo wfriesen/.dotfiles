@@ -13,4 +13,9 @@ if [[ $OSTYPE == "cygwin" ]]; then
 fi
 
 export TERM='xterm-256color'
-exec zsh
+
+if [[ $OSTYPE == freebsd* ]]; then
+  zsh
+else
+  exec zsh
+fi
