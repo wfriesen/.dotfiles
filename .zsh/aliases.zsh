@@ -24,7 +24,7 @@ alias rscp='rsync --archive --partial --progress'
 
 if [[ $OSTYPE == "cygwin" ]]; then
   alias vim=$VISUAL
-elif [[ $OSTYPE == linux-gnu* ]]; then
+elif [[ $OSTYPE == linux-gnu* || $OSTYPE == freebsd* ]]; then
   alias vi=$VISUAL
 fi
 
