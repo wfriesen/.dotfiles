@@ -11,6 +11,7 @@ source_settings() {
   source ~/.zsh/prompt.zsh
   source ~/.zsh/bindkeys.zsh
   source ~/.zsh/history.zsh
+  source ~/.zsh/overrides.zsh
 }
 
 if [[ $OSTYPE == freebsd* ]]; then
