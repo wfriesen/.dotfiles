@@ -226,6 +226,7 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.jsx,*.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
 
 let g:syntastic_auto_loc_list = 1 " Auto-open/close the error list
+let g:syntastic_python_checkers = ['pylint']
 
 let g:startify_enable_special = 0 " Don't show <empty buffer> and <quit>
 let g:startify_session_sort = 1 " Sort sessions by modification time
