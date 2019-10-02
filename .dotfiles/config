@@ -99,3 +99,6 @@
 [remote "vim-ctrlsf.vim"]
   url = https://github.com/dyng/ctrlsf.vim.git
   fetch = +refs/heads/*:refs/remotes/ctrlsf.vim.git/*
+[remote "vim-dbext.vim"]
+  url = https://github.com/vim-scripts/dbext.vim.git
+  fetch = +refs/heads/*:refs/remotes/dbext.vim.git/*
