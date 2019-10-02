@@ -9,3 +9,5 @@ if [[ $OSTYPE == "cygwin" ]]; then
 else
   export VISUAL="vim"
 fi
+
+export PATH="$HOME/bin:$PATH"
