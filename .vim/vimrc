@@ -284,6 +284,14 @@ let g:AutoPairsCenterLine=0 " Don't do zz after CR
 " Map q to quit windows
 autocmd FileType help,diff,qf nnoremap <buffer> q <C-w>q
 
+nmap <leader>F <Plug>CtrlSFPrompt
+let g:ctrlsf_default_view_mode = 'compact'
+let g:ctrlsf_auto_focus = {"at" : "start"}
+let g:ctrlsf_auto_close = {
+  \ "normal" : 0,
+  \ "compact": 0
+  \ }
+
 let g:ctrlp_working_path_mode='ra' " Start ctrlp from the VCS root (r). Fallback to directory of current file (a)
 let g:ctrlp_clear_cache_on_exit=0 " Keep the cache across sessions
 let g:ctrlp_open_multiple_files='t' " Open multiple files in tabs, rather than new splits
