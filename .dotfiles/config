@@ -102,3 +102,6 @@
 [remote "vim-dbext.vim"]
   url = https://github.com/vim-scripts/dbext.vim.git
   fetch = +refs/heads/*:refs/remotes/dbext.vim.git/*
+[remote "vim-vim-grepper"]
+  url = https://github.com/mhinz/vim-grepper.git
+  fetch = +refs/heads/*:refs/remotes/vim-grepper/*
