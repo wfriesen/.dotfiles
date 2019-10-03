@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
+PS1='\e[32m\u@\h \e[33m\w\e[0m\n$([[ $? -eq 0 ]] || echo "\e[31m")$\e[0m '
 
 if [[ $OSTYPE == "cygwin" ]]; then
   export PATH="$PATH:$HOME/bin/windowswrappers"
