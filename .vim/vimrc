@@ -94,6 +94,7 @@ let &undodir = expand('$HOME/.vim/undo')
 let g:netrw_liststyle=1 " Show file size and modification times
 
 let g:slime_target = "tmux"
+let g:slime_no_mappings = 1 " Default mappings of <C-c><C-c> slow down using it for cancelling
 map <leader>ss :SlimeSend<CR>
 
 " Use space as leader
