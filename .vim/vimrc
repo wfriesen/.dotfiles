@@ -94,6 +94,7 @@ let &undodir = expand('$HOME/.vim/undo')
 let g:netrw_liststyle=1 " Show file size and modification times
 
 let g:slime_target = "tmux"
+map <leader>ss :SlimeSend<CR>
 
 " Use space as leader
 nnoremap <Space> <Nop>
