@@ -105,3 +105,6 @@
 [remote "vim-vim-grepper"]
   url = https://github.com/mhinz/vim-grepper.git
   fetch = +refs/heads/*:refs/remotes/vim-grepper/*
+[remote "vim-vim-maven-plugin"]
+  url = https://github.com/mikelue/vim-maven-plugin
+  fetch = +refs/heads/*:refs/remotes/vim-maven-plugin/*
