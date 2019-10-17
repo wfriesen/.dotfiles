@@ -215,6 +215,8 @@ autocmd FileType GV nmap <buffer> <C-j> <C-n>
 autocmd FileType gitcommit nmap <buffer> <C-k> <C-p>
 autocmd FileType gitcommit nmap <buffer> <C-j> <C-n>
 
+autocmd FileType java setlocal shiftwidth=4 softtabstop=4
+
 " start gvim maximized. Simulates pressing Alt+Space x
 if has('win32')
   autocmd GUIEnter * simalt ~x
