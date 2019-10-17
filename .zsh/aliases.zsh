@@ -28,13 +28,6 @@ elif [[ $OSTYPE == linux-gnu* || $OSTYPE == freebsd* ]]; then
   alias vi=$VISUAL
 fi
 
-borgrsync() {
-  borg create \
-    --remote-path=borg1 \
-    --exclude-from ~/.borgexcludes \
-    --verbose --info --list --stats --compression=zlib,6 borgserver:./borg::\{now\} ~
-}
-
 dotfiles-update-remotes() {
   pushd $HOME
   for remotename in $(awk '/^\[remote "vim-/ {while ($0 !~ /\s*url\s*=\s*.*/) {getline;} print $0}' .dotfiles/config \
