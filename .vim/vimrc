@@ -4,6 +4,15 @@ let g:lightline = {'colorscheme': 'solarized'}
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
+if has('linux')
+  call glaive#Install()
+  Glaive codefmt google_java_executable="google-java-format --aosp"
+
+  augroup autoformat_settings
+    autocmd FileType java AutoFormatBuffer google-java-format
+  augroup END
+endif
+
 set showtabline=2 " Always show the tabline
 
 " Pretty colors
