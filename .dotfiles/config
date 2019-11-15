@@ -108,3 +108,12 @@
 [remote "vim-vim-maven-plugin"]
   url = https://github.com/mikelue/vim-maven-plugin
   fetch = +refs/heads/*:refs/remotes/vim-maven-plugin/*
+[remote "vim-vim-maktaba"]
+  url = https://github.com/google/vim-maktaba
+  fetch = +refs/heads/*:refs/remotes/vim-maktaba/*
+[remote "vim-vim-codefmt"]
+  url = https://github.com/google/vim-codefmt
+  fetch = +refs/heads/*:refs/remotes/vim-codefmt/*
+[remote "vim-glaive"]
+  url = https://github.com/google/vim-glaive
+  fetch = +refs/heads/*:refs/remotes/vim-glaive/*
