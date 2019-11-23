@@ -390,14 +390,4 @@ function! LightlineFullfilepath()
   return '' != expand('%:.') ? expand('%:.') : '[No Name]'
 endfunction
 
-" Reset some plugin windows to their defined sizes.
-function! g:ResizePluginWindow()
-  let l:plugin_window_types_resize_cmd = {
-  \ 'tagbar': 'vertical resize' . g:tagbar_width
-  \ }
 
-  if has_key(l:plugin_window_types_resize_cmd, &ft)
-    :execute l:plugin_window_types_resize_cmd[&ft]
-  endif
-endfunction
-nmap <silent> <leader>r :call g:WindoReturn(":call g:ResizePluginWindow()")<CR>
