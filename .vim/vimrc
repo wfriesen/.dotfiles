@@ -390,4 +390,40 @@ function! LightlineFullfilepath()
   return '' != expand('%:.') ? expand('%:.') : '[No Name]'
 endfunction
 
+if executable('java') && filereadable(expand('~/bin/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar'))
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'eclipse.jdt.ls',
+        \ 'cmd': {server_info->[
+        \     'java',
+        \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+        \     '-Dosgi.bundles.defaultStartLevel=4',
+        \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
+        \     '-Dlog.level=ALL',
+        \     '-noverify',
+        \     '-Dfile.encoding=UTF-8',
+        \     '-Xmx1G',
+        \     '-jar',
+        \     expand('~/bin/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar'),
+        \     '-configuration',
+        \     expand('~/bin/eclipse.jdt.ls/config_linux/'),
+        \     '-data',
+        \     getcwd()
+        \ ]},
+        \ 'whitelist': ['java'],
+        \ })
+endif
+
+autocmd FileType java nmap gd <plug>(lsp-definition)
+autocmd FileType java nmap gr <plug>(lsp-references)
+autocmd FileType java setlocal omnifunc=lsp#complete
+
+" Macro to generate java import statement.
+" Yank the word under cursor, go to top of file, move one paragraph
+" down, insert 'import ', paste the word, move to the beginning of
+" the word, go to it's definition, go to top of file and search
+" 'package'. Go to end of line, then beginning of WORD, yank until
+" a ; character, close the window, Paste, append a dot (.), then jump
+" back to where we were.
+"
+" yiwgg}oimport ";B]gg/package$Byt;qPa.
 
