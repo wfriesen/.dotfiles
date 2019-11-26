@@ -14,6 +14,33 @@ endif
 augroup autoformat_settings
   autocmd FileType java AutoFormatBuffer google-java-format
 augroup END
+
+augroup sql_settings
+  au!
+  autocmd BufNewFile,BufRead *.vw set filetype=sql
+
+  " Use /*..*/ style comments instead of --
+  autocmd FileType sql setlocal commentstring=/\*\ %s\ \*/
+
+  function! g:ExecuteSQLBuffer()
+    let pos = getpos(".")
+    :1,$DBExecRangeSQL
+    call setpos(".", pos)
+  endfunction
+  autocmd FileType sql nmap <F5> :call g:ExecuteSQLBuffer()<CR>
+
+augroup END
+
+augroup java_settings
+  autocmd FileType java setlocal shiftwidth=4 softtabstop=4
+  autocmd FileType java nmap <F5> :Make compile<CR>
+
+  " Re-write Windows paths
+  if !has('linux')
+    autocmd FileType java set shellpipe=2>&1\|sed\ 's#\]\ \/D:#\]\ \/d#g'\|\ tee
+  endif
+augroup END
+
 set showtabline=2 " Always show the tabline
 
 set shortmess-=S " Show search count in command line
@@ -227,8 +254,6 @@ autocmd FileType GV nmap <buffer> <C-j> <C-n>
 autocmd FileType gitcommit nmap <buffer> <C-k> <C-p>
 autocmd FileType gitcommit nmap <buffer> <C-j> <C-n>
 
-autocmd FileType java setlocal shiftwidth=4 softtabstop=4
-
 " start gvim maximized. Simulates pressing Alt+Space x
 if has('win32')
   autocmd GUIEnter * simalt ~x
@@ -260,9 +285,6 @@ let g:startify_list_order = [
         \ ['   MRU in CWD'],
         \ 'dir',
         \ ]
-
-" Use /*..*/ style comments instead of --
-autocmd FileType sql setlocal commentstring=/\*\ %s\ \*/
 
 " Change order to put variables at the top, since that's usually where they are
 " defined anyway
