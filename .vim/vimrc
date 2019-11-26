@@ -4,15 +4,16 @@ let g:lightline = {'colorscheme': 'solarized'}
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
+call glaive#Install()
 if has('linux')
-  call glaive#Install()
   Glaive codefmt google_java_executable="google-java-format --aosp"
-
-  augroup autoformat_settings
-    autocmd FileType java AutoFormatBuffer google-java-format
-  augroup END
+else
+  Glaive codefmt google_java_executable="java -jar ~/bin/google-java-format.jar --aosp"
 endif
 
+augroup autoformat_settings
+  autocmd FileType java AutoFormatBuffer google-java-format
+augroup END
 set showtabline=2 " Always show the tabline
 
 set shortmess-=S " Show search count in command line
