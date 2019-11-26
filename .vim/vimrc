@@ -488,3 +488,5 @@ xnoremap <unique> <silent> { :<C-U>call ParagraphMove(-1, 1, v:count)<CR>
 "
 " yiwgg}oimport ";B]gg/package$Byt;qPa.
 
+" Detect the sqlplus Windows binary from within Git Bash
+let g:dbext_default_use_win32_filenames = 1
