@@ -201,8 +201,6 @@ execute "nnoremap ".s:alt_key_prefix."K".s:alt_key_suffix." <C-u>"
 nmap <silent> <leader>gs :Gstatus<CR>
 nmap <silent> <leader>ge :Gedit<CR>
 nmap <silent> <leader>gd :tabedit % <Bar> :Gdiff<CR>
-nmap <silent> <leader>gl :GV -20<CR>
-nmap <silent> <leader>gv :GV!<CR>
 
 " execute docmd in all windows, then return cursor to the original window
 function! g:WindoReturn(docmd)
@@ -224,25 +222,6 @@ nmap <silent> <leader>t :TagbarToggle<CR>
 nmap [c <Plug>GitGutterPrevHunk
 nmap ]c <Plug>GitGutterNextHunk
 
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>h :History<CR>
-nnoremap <leader>l :BLines<CR>
-
 let g:yankring_replace_n_pkey = '<leader>y' " Don't clobber the ctrlp mapping
 nnoremap <leader>p :YRShow<CR>
 
@@ -253,8 +232,6 @@ function! g:Undotree_CustomMap()
   nmap <buffer> <C-k> <plug>UndotreeGoNextState
   nmap <buffer> <C-j> <plug>UndotreeGoPreviousState
 endfunc
-autocmd FileType GV nmap <buffer> <C-k> <C-p>
-autocmd FileType GV nmap <buffer> <C-j> <C-n>
 autocmd FileType gitcommit nmap <buffer> <C-k> <C-p>
 autocmd FileType gitcommit nmap <buffer> <C-j> <C-n>
 
