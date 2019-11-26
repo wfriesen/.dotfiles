@@ -27,18 +27,12 @@
 [remote "vim-vim-gitgutter"]
 	url = https://github.com/airblade/vim-gitgutter.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-gitgutter/*
-[remote "vim-vim-multiple-cursors"]
-	url = https://github.com/terryma/vim-multiple-cursors.git
-	fetch = +refs/heads/*:refs/remotes/vim-vim-multiple-cursors/*
 [remote "vim-vim-surround"]
 	url = https://github.com/tpope/vim-surround.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-surround/*
 [remote "vim-vim-commentary"]
 	url = https://github.com/tpope/vim-commentary.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-commentary/*
-[remote "vim-vim-jsx"]
-	url = https://github.com/mxw/vim-jsx.git
-	fetch = +refs/heads/*:refs/remotes/vim-vim-jsx/*
 [remote "vim-vim-javascript"]
 	url = https://github.com/pangloss/vim-javascript.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-javascript/*
@@ -48,9 +42,6 @@
 [remote "vim-vim-fugitive"]
 	url = https://github.com/tpope/vim-fugitive.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-fugitive/*
-[remote "vim-gv.vim"]
-	url = https://github.com/junegunn/gv.vim.git
-	fetch = +refs/heads/*:refs/remotes/vim-gv.vim/*
 [remote "vim-vim-startify"]
 	url = https://github.com/mhinz/vim-startify.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-startify/*
@@ -87,9 +78,6 @@
 [remote "vim-vim-slime"]
   url = https://github.com/jpalardy/vim-slime.git
   fetch = +refs/heads/*:refs/remotes/vim-slime/*
-[remote "vim-fzf.vim"]
-  url = https://github.com/junegunn/fzf.vim.git
-  fetch = +refs/heads/*:refs/remotes/fzf.vim/*
 [remote "vim-YankRing.vim"]
   url = https://github.com/vim-scripts/YankRing.vim.git
   fetch = +refs/heads/*:refs/remotes/YankRing.vim/*
@@ -99,9 +87,6 @@
 [remote "vim-dbext.vim"]
   url = https://github.com/vim-scripts/dbext.vim.git
   fetch = +refs/heads/*:refs/remotes/dbext.vim.git/*
-[remote "vim-vim-grepper"]
-  url = https://github.com/mhinz/vim-grepper.git
-  fetch = +refs/heads/*:refs/remotes/vim-grepper/*
 [remote "vim-vim-maven-plugin"]
   url = https://github.com/mikelue/vim-maven-plugin
   fetch = +refs/heads/*:refs/remotes/vim-maven-plugin/*
