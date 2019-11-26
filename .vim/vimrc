@@ -117,6 +117,7 @@ set wildignorecase " Case insensitive filename matching
 " Exclude these folders from ctrlp
 set wildignore+=*/node_modules/*
 set wildignore+=*/$tf/*
+set wildignore+=*/target/*
 
 set isfname-=@-@ " Strip out @ from file names. Useful for sqlplus files that call others with @@filename.sql
 
