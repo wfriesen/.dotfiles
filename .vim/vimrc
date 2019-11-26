@@ -61,6 +61,15 @@ if has("gui_running")
   else
     set guifont=Hack\ 16
   endif
+
+  set guioptions-=m "menubar
+  set guioptions-=r "scrollbar
+  set guioptions-=T "toolbar
+  set guioptions-=L "Left-hand scrollbar
+  set guioptions+=c "Use console dialogs for simple choices
+  set guioptions-=e
+  set guicursor+=a:block " Always use block cursor in GUI mode
+
 endif
 
 set lazyredraw " Execute macros faster by not redrawing the screen constantly
@@ -70,16 +79,6 @@ set relativenumber
 set cursorline
 
 set noequalalways
-
-if has('gui_running')
-  set guioptions-=m "menubar
-  set guioptions-=r "scrollbar
-  set guioptions-=T "toolbar
-  set guioptions-=L "Left-hand scrollbar
-  set guioptions+=c "Use console dialogs for simple choices
-  set guioptions-=e
-  set guicursor+=a:block " Always use block cursor in GUI mode
-endif
 
 set backspace=indent,eol,start " Make backspace work like expected
 
