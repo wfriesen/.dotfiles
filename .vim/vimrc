@@ -126,6 +126,7 @@ set completeopt=
 set completeopt+=menu " Use popup menu, even if there's only one match
 set completeopt+=menuone " Show even when there's only one match
 set completeopt+=preview " Show some extra info (types, filenames, etc)
+set completeopt+=noinsert
 
 set undofile
 let &undodir = expand('$HOME/.vim/undo')
@@ -341,13 +342,15 @@ let g:ctrlp_types = ['fil', 'mru', 'buf'] " Re-order modes. After opening CtrlP,
 
 let g:SuperTabCrMapping=1 " Finish completion with CR
 let g:SuperTabClosePreviewOnPopupClose=1
-"
+
 " Use omni-completion when possible
 let g:SuperTabDefaultCompletionType="context"
 autocmd FileType *
   \ if &omnifunc != '' |
   \   call SuperTabChain(&omnifunc, "<c-p>") |
   \ endif
+" Cycle the expected way
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 let g:lightline.active = {
       \ 'left': [
