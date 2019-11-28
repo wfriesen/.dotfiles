@@ -1,9 +1,9 @@
 [core]
 	repositoryformatversion = 0
-	filemode = true
+	filemode = false
 	bare = true
 [remote "origin"]
-	url = git@github.com:wfriesen/.dotfiles.git
+	url = https://github.com/wfriesen/.dotfiles.git
 [status]
 	showUntrackedFiles = no
 [branch "master"]
