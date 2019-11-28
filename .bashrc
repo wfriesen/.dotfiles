@@ -21,4 +21,5 @@ if command -v zsh >/dev/null 2>&1; then
   fi
 else
   source ~/.zsh/aliases.zsh
+  source ~/.zsh/env.zsh
 fi
