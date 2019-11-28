@@ -163,6 +163,9 @@ nnoremap # g#
 nnoremap g* *
 nnoremap g# #
 
+" Easier searching for things like attribute-names-with-hyphens
+autocmd FileType xml setlocal iskeyword+=-
+
 " Make * and # in visual mode work like in normal mode
 vnoremap <silent> * "zy/<C-R>z<CR>
 vnoremap <silent> # "zy?<C-R>z<CR>
