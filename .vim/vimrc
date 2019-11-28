@@ -121,7 +121,6 @@ set completeopt=
 set completeopt+=menu " Use popup menu, even if there's only one match
 set completeopt+=menuone " Show even when there's only one match
 set completeopt+=preview " Show some extra info (types, filenames, etc)
-set completeopt+=noinsert
 
 set undofile
 let &undodir = expand('$HOME/.vim/undo')
