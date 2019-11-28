@@ -34,11 +34,6 @@ augroup END
 augroup java_settings
   autocmd FileType java setlocal shiftwidth=4 softtabstop=4
   autocmd FileType java nmap <F5> :Make compile<CR>
-
-  " Re-write Windows paths
-  if !has('linux')
-    autocmd FileType java set shellpipe=2>&1\|sed\ 's#\]\ \/D:#\]\ \/d#g'\|\ tee
-  endif
 augroup END
 
 set showtabline=2 " Always show the tabline
