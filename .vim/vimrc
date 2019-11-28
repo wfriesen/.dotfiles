@@ -489,3 +489,6 @@ xnoremap <unique> <silent> { :<C-U>call ParagraphMove(-1, 1, v:count)<CR>
 
 " Detect the sqlplus Windows binary from within Git Bash
 let g:dbext_default_use_win32_filenames = 1
+
+map ]q :cnext<CR>
+map [q :cprevious<CR>
