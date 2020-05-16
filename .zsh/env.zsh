@@ -7,7 +7,11 @@ export LESS="--ignore-case $LESS"
 if [[ $OSTYPE == "cygwin" ]]; then
   export VISUAL="vim.exe"
 else
-  export VISUAL="vim"
+  if ! [[ `command -v vim` ]]; then
+    export VISUAL="vi"
+  else
+    export VISUAL="vim"
+  fi
 fi
 
 export PATH="$HOME/bin:$PATH"
