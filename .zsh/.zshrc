@@ -14,24 +14,20 @@ source_settings() {
   source ~/.zsh/overrides.zsh
 }
 
-if [[ $OSTYPE == freebsd* ]]; then
-  source_settings
-else
-  # If we're not already in tmux, try to connect to an
-  # unattached tmux session, otherwise start a new one
-  if [[ -z "$TMUX" ]]; then
-    if ! tmux has-session; then
-      exec tmux new-session
-    else
-      UNATTACHED_SESSION=`tmux list-sessions -F '#{session_attached} #{session_name}' | awk '/^0/ {print $2; exit}'`
-      if [[ "$UNATTACHED_SESSION" ]]; then
-        exec tmux attach-session -t "$UNATTACHED_SESSION"
-      else
-        exec tmux new-session
-      fi
-    fi
+# If we're not already in tmux, try to connect to an
+# unattached tmux session, otherwise start a new one
+if [[ -z "$TMUX" ]]; then
+  if ! tmux has-session; then
+    exec tmux new-session
   else
-    # If we're in tmux, load all my plugins and settings
-    source_settings
+    UNATTACHED_SESSION=`tmux list-sessions -F '#{session_attached} #{session_name}' | awk '/^0/ {print $2; exit}'`
+    if [[ "$UNATTACHED_SESSION" ]]; then
+      exec tmux attach-session -t "$UNATTACHED_SESSION"
+    else
+      exec tmux new-session
+    fi
   fi
+else
+  # If we're in tmux, load all my plugins and settings
+  source_settings
 fi
