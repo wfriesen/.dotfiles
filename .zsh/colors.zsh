@@ -1,4 +1,4 @@
-if which dircolors &> /dev/null
+if command -v dircolors &> /dev/null
 then
   eval `dircolors ~/.dircolors`
 fi
