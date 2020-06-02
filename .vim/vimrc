@@ -17,6 +17,8 @@ augroup autoformat_settings
   autocmd FileType java AutoFormatBuffer google-java-format
 augroup END
 
+autocmd BufNewFile,BufRead Jenkinsfile set filetype=groovy
+
 augroup sql_settings
   au!
   autocmd BufNewFile,BufRead *.vw set filetype=sql
