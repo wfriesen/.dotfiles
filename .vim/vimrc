@@ -10,7 +10,7 @@ call glaive#Install()
 if has('linux')
   Glaive codefmt google_java_executable="google-java-format --aosp"
 else
-  Glaive codefmt google_java_executable="java -jar ~/bin/google-java-format.jar --aosp"
+  Glaive codefmt google_java_executable="java -jar ~/bin/google-java-format.jar --aosp --skip-sorting-imports"
 endif
 
 augroup autoformat_settings
