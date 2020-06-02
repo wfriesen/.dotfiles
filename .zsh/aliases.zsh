@@ -9,7 +9,7 @@ alias grep='grep --color=auto'
 alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias gg='git grep --color=auto -in'
 alias cd-='cd -'
-alias pacup='sudo true && yay -Syu'
+alias pacup='sudo true && yay -Syu && paccache --remove'
 alias pacin='sudo true && yay -S'
 alias pacrm='sudo true && yay -Rns'
 alias mkdir='mkdir -p'
