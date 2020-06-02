@@ -21,6 +21,9 @@ alias mv='mv -i'
 alias pd='popd'
 alias gopen='gio open'
 alias rscp='rsync --archive --partial --progress'
+if [[ $OSTYPE == "cygwin" ]]; then
+  alias ssh='ssh -F ~/.ssh/config'
+fi
 
 if [[ $OSTYPE == "cygwin" ]]; then
   alias vim=$VISUAL
