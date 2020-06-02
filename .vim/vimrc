@@ -269,6 +269,8 @@ let g:startify_list_order = [
         \ 'files',
         \ ['   MRU in CWD'],
         \ 'dir',
+        \ ['   Bookmarks'],
+        \ 'bookmarks'
         \ ]
 
 " Change order to put variables at the top, since that's usually where they are
