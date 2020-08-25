@@ -13,5 +13,6 @@ else
     export VISUAL="vim"
   fi
 fi
+export EDITOR=$VISUAL
 
 export PATH="$HOME/bin:$PATH"
