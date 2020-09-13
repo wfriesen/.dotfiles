@@ -108,3 +108,6 @@
 [remote "vim-vim-dispatch"]
   url = https://github.com/tpope/vim-dispatch
   fetch = +refs/heads/*:refs/remotes/vim-dispatch/*
+[remote "vim-vim-lsc"]
+  url = https://github.com/natebosch/vim-lsc.git
+  fetch = +refs/heads/*:refs/remotes/vim-lsc/*
