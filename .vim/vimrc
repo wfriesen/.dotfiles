@@ -4,6 +4,8 @@ let g:lightline = {'colorscheme': 'solarized'}
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
+let g:lsc_server_commands = { 'python' : 'pyls'}
+
 packadd! matchit
 
 call glaive#Install()
