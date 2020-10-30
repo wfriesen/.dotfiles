@@ -108,3 +108,6 @@
 [remote "vim-vim-lsc"]
   url = https://github.com/natebosch/vim-lsc.git
   fetch = +refs/heads/*:refs/remotes/vim-lsc/*
+[remote "vim-vim-sneak"]
+  url = https://github.com/justinmk/vim-sneak.git
+  fetch = +refs/heads/*:refs/remotes/vim-sneak/*
