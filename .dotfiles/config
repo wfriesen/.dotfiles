@@ -111,3 +111,6 @@
 [remote "vim-vim-sneak"]
   url = https://github.com/justinmk/vim-sneak.git
   fetch = +refs/heads/*:refs/remotes/vim-sneak/*
+[remote "vim-vim-dadbod"]
+  url = https://github.com/tpope/vim-dadbod.git
+  fetch = +refs/heads/*:refs/remotes/vim-dadbod/*
