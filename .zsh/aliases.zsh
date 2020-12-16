@@ -1,5 +1,5 @@
 # Prefix commands with \ to run the non-alias version, e.g. \ls
-if [[ $OSTYPE == linux-gnu* || $OSTYPE == "cygwin" ]]; then
+if [[ $OSTYPE == linux-gnu* || $OSTYPE == "msys" ]]; then
   alias ls='ls --color=auto --group-directories-first --human-readable -1'
 else # BSD
   alias ls='ls -G1' # colored, 1-per-line
@@ -21,11 +21,11 @@ alias mv='mv -i'
 alias pd='popd'
 alias gopen='gio open'
 alias rscp='rsync --archive --partial --progress'
-if [[ $OSTYPE == "cygwin" ]]; then
+if [[ $OSTYPE == "msys" ]]; then
   alias ssh='ssh -F ~/.ssh/config'
 fi
 
-if [[ $OSTYPE == "cygwin" ]]; then
+if [[ $OSTYPE == "msys" ]]; then
   alias vim=$VISUAL
 elif [[ $OSTYPE == linux-gnu* || $OSTYPE == freebsd* ]]; then
   alias vi=$VISUAL
