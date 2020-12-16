@@ -109,6 +109,8 @@ set virtualedit=block " In visual block mode, allow the cursor to move anywhere
 set backupcopy=yes " Let's webpack pick up changes
 set showmode " Show the mode in command line. statusline shows it anyway, but it'd just be empty otherwise
 
+set path+=** " Recursive :find
+
 set laststatus=2 " Always show status line
 
 set wildmenu " Show matches when invoking command line completion
