@@ -112,6 +112,7 @@ set showmode " Show the mode in command line. statusline shows it anyway, but it
 set laststatus=2 " Always show status line
 
 set wildmenu " Show matches when invoking command line completion
+set wildmode=full
 set wildignorecase " Case insensitive filename matching
 
 " Exclude these folders from ctrlp
