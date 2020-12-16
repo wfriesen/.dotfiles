@@ -6,7 +6,7 @@ else # BSD
 fi
 alias ll='ls -lah'
 alias grep='grep --color=auto'
-alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias dotfiles='git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
 alias gg='git grep --color=auto -in'
 alias cd-='cd -'
 alias pacup='pamac upgrade -a && pamac clean --keep 3'
