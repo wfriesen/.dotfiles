@@ -4,20 +4,12 @@ let g:lightline = {'colorscheme': 'solarized'}
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
-let g:lsc_server_commands = { 'python' : 'pyls'}
+let g:lsc_server_commands = {
+      \ 'python' : 'pyls',
+      \ 'java': 'java-language-server'
+      \ }
 
 packadd! matchit
-
-call glaive#Install()
-if has('linux')
-  Glaive codefmt google_java_executable="google-java-format --aosp"
-else
-  Glaive codefmt google_java_executable="java -jar ~/bin/google-java-format.jar --aosp --skip-sorting-imports"
-endif
-
-augroup autoformat_settings
-  autocmd FileType java AutoFormatBuffer google-java-format
-augroup END
 
 autocmd BufNewFile,BufRead Jenkinsfile set filetype=groovy
 
@@ -35,11 +27,6 @@ augroup sql_settings
   endfunction
   autocmd FileType sql nmap <F5> :call g:ExecuteSQLBuffer()<CR>
 
-augroup END
-
-augroup java_settings
-  autocmd FileType java setlocal shiftwidth=4 softtabstop=4
-  autocmd FileType java nmap <F5> :Make compile<CR>
 augroup END
 
 set showtabline=2 " Always show the tabline
@@ -413,33 +400,6 @@ endfunction
 function! LightlineFullfilepath()
   return '' != expand('%:.') ? expand('%:.') : '[No Name]'
 endfunction
-
-if executable('java') && filereadable(expand('~/bin/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar'))
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'eclipse.jdt.ls',
-        \ 'cmd': {server_info->[
-        \     'java',
-        \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-        \     '-Dosgi.bundles.defaultStartLevel=4',
-        \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
-        \     '-Dlog.level=ALL',
-        \     '-noverify',
-        \     '-Dfile.encoding=UTF-8',
-        \     '-Xmx1G',
-        \     '-jar',
-        \     expand('~/bin/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar'),
-        \     '-configuration',
-        \     expand('~/bin/eclipse.jdt.ls/config_linux/'),
-        \     '-data',
-        \     getcwd()
-        \ ]},
-        \ 'whitelist': ['java'],
-        \ })
-endif
-
-autocmd FileType java nmap gd <plug>(lsp-definition)
-autocmd FileType java nmap gr <plug>(lsp-references)
-autocmd FileType java setlocal omnifunc=lsp#complete
 
 " https://github.com/dbakker/vim-paragraph-motion/blob/master/plugin/paragraphmotion.vim
 " Based on: http://stackoverflow.com/questions/1853025/make-and-ignore-lines-containing-only-whitespace
