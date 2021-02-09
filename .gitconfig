@@ -24,3 +24,5 @@
   sh = show
   cm = commit -m
   plog = log --all --graph --decorate --oneline
+[init]
+  defaultBranch = master
