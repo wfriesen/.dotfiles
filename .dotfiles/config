@@ -114,3 +114,6 @@
 [remote "vim-vim-dadbod"]
   url = https://github.com/tpope/vim-dadbod.git
   fetch = +refs/heads/*:refs/remotes/vim-dadbod/*
+[remote "vim-kotlin-vim"]
+  url = https://github.com/udalov/kotlin-vim.git
+  fetch = +refs/heads/*:refs/remotes/kotlin-vim/*
