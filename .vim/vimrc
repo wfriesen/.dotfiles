@@ -29,6 +29,7 @@ augroup sql_settings
 
 augroup END
 
+set scrolloff=0
 set showtabline=2 " Always show the tabline
 
 set shortmess-=S " Show search count in command line
