@@ -224,12 +224,6 @@ let g:gitgutter_map_keys = 0
 let g:gitgutter_max_signs = 1000
 let g:gitgutter_realtime = 0 " For speed, turn off update-as-you-type
 
-let g:syntastic_auto_loc_list = 1 " Auto-open/close the error list
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_python_pylint_args = ['--max-line-length=88']
-let g:syntastic_quiet_messages = { "level": "warnings" }
-let g:syntastic_python_pylint_quiet_messages = { "level" : [] }
-
 let g:startify_enable_special = 0 " Don't show <empty buffer> and <quit>
 let g:startify_session_sort = 1 " Sort sessions by modification time
 let g:startify_custom_header = [] " Turn off the cowsay fortune header

@@ -42,9 +42,6 @@
 [remote "vim-vim-vinegar"]
 	url = https://github.com/tpope/vim-vinegar.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-vinegar/*
-[remote "vim-syntastic"]
-	url = https://github.com/vim-syntastic/syntastic.git
-	fetch = +refs/heads/*:refs/remotes/vim-syntastic/*
 [remote "vim-vim-git"]
 	url = https://github.com/tpope/vim-git.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-git/*
