@@ -17,13 +17,6 @@ augroup sql_settings
   " Use /*..*/ style comments instead of --
   autocmd FileType sql setlocal commentstring=/\*\ %s\ \*/
 
-  function! g:ExecuteSQLBuffer()
-    let pos = getpos(".")
-    :1,$DBExecRangeSQL
-    call setpos(".", pos)
-  endfunction
-  autocmd FileType sql nmap <F5> :call g:ExecuteSQLBuffer()<CR>
-
 augroup END
 
 set scrolloff=0
@@ -107,8 +100,6 @@ set wildignore+=*/node_modules/*
 set wildignore+=*/$tf/*
 set wildignore+=*/target/*
 
-set isfname-=@-@ " Strip out @ from file names. Useful for sqlplus files that call others with @@filename.sql
-
 set sessionoptions-=options " Keeping this on seems to break loading sessions when using plugins
 
 set completeopt=
@@ -120,13 +111,6 @@ set undofile
 let &undodir = expand('$HOME/.vim/undo')
 
 let g:netrw_liststyle=1 " Show file size and modification times
-
-let g:slime_target = "tmux"
-let g:slime_no_mappings = 1 " Default mappings of <C-c><C-c> slow down using it for cancelling
-map <leader>ss :SlimeSend<CR>
-
-command! MvnWriteCompile :w | Mvn compile | redraw!
-nnoremap <leader>mc :MvnWriteCompile<CR>
 
 " Use space as leader
 nnoremap <Space> <Nop>
@@ -235,9 +219,6 @@ let g:gitgutter_map_keys = 0
 let g:gitgutter_max_signs = 1000
 let g:gitgutter_realtime = 0 " For speed, turn off update-as-you-type
 
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.jsx,*.js,*.json,*.css,*.scss,*.less,*.graphql Prettier
-
 let g:syntastic_auto_loc_list = 1 " Auto-open/close the error list
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_python_pylint_args = ['--max-line-length=88']
@@ -315,9 +296,6 @@ if !exists('g:ctrlsf_ackprg') && filereadable(expand('$HOME/bin/ack'))
   let g:ctrlsf_ackprg = expand('$HOME/bin/ack')
 endif
 
-let g:grepper = {}
-let g:grepper.dir = 'repo'
-
 let g:ctrlp_working_path_mode='ra' " Start ctrlp from the VCS root (r). Fallback to directory of current file (a)
 let g:ctrlp_clear_cache_on_exit=0 " Keep the cache across sessions
 let g:ctrlp_open_multiple_files='t' " Open multiple files in tabs, rather than new splits
@@ -366,6 +344,7 @@ let g:lightline.tabline = {
 function! LightlineReadonly()
   return &readonly ? '' : ''
 endfunction
+
 let g:ctrlp_status_func = {
       \ 'main': 'CtrlPStatusFunc_main',
       \ 'prog': 'CtrlPStatusFunc_prog',
@@ -448,19 +427,6 @@ xnoremap <unique> <silent> } :<C-U>call ParagraphMove( 1, 1, v:count)<CR>
 nnoremap <unique> <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
 onoremap <unique> <silent> { :<C-U>call ParagraphMove(-1, 0, v:count)<CR>
 xnoremap <unique> <silent> { :<C-U>call ParagraphMove(-1, 1, v:count)<CR>
-
-" Macro to generate java import statement.
-" Yank the word under cursor, go to top of file, move one paragraph
-" down, insert 'import ', paste the word, move to the beginning of
-" the word, go to it's definition, go to top of file and search
-" 'package'. Go to end of line, then beginning of WORD, yank until
-" a ; character, close the window, Paste, append a dot (.), then jump
-" back to where we were.
-"
-" yiwgg}oimport ";B]gg/package$Byt;qPa.
-
-" Detect the sqlplus Windows binary from within Git Bash
-let g:dbext_default_use_win32_filenames = 1
 
 map ]q :cnext<CR>
 map [q :cprevious<CR>
