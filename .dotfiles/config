@@ -72,9 +72,6 @@
 [remote "vim-ctrlsf.vim"]
   url = https://github.com/dyng/ctrlsf.vim.git
   fetch = +refs/heads/*:refs/remotes/ctrlsf.vim.git/*
-[remote "vim-vim-maven-plugin"]
-  url = https://github.com/mikelue/vim-maven-plugin
-  fetch = +refs/heads/*:refs/remotes/vim-maven-plugin/*
 [remote "vim-async.vim"]
   url = https://github.com/prabirshrestha/async.vim
   fetch = +refs/heads/*:refs/remotes/async.vim/*
