@@ -1,9 +1,6 @@
 " Has to be set before colorscheme, so that lightline picks up it's own colorscheme setting
 let g:lightline = {'colorscheme': 'solarized'}
 
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
-
 let g:lsc_server_commands = {
       \ 'python' : 'pyls',
       \ 'java': 'java-language-server'
