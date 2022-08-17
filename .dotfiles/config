@@ -81,3 +81,6 @@
 [remote "vim-vim-lsc"]
   url = https://github.com/natebosch/vim-lsc.git
   fetch = +refs/heads/*:refs/remotes/vim-lsc/*
+[remote "vim-vim-repeat"]
+  url = https://github.com/tpope/vim-repeat.git
+  fetch = +refs/heads/*:refs/remotes/vim-repeat/*
