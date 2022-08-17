@@ -19,6 +19,8 @@ augroup sql_settings
 
 augroup END
 
+set mouse=n " Enable mouse. Much easier to click on tabs
+
 set swapfile
 set directory=~/.vim/swap//
 
