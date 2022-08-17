@@ -21,9 +21,6 @@
 [remote "vim-vim-colors-solarized"]
 	url = https://github.com/altercation/vim-colors-solarized.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-colors-solarized/*
-[remote "vim-vim-gitgutter"]
-	url = https://github.com/airblade/vim-gitgutter.git
-	fetch = +refs/heads/*:refs/remotes/vim-vim-gitgutter/*
 [remote "vim-vim-surround"]
 	url = https://github.com/tpope/vim-surround.git
 	fetch = +refs/heads/*:refs/remotes/vim-vim-surround/*

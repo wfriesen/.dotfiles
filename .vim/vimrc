@@ -199,8 +199,6 @@ nnoremap <silent> <leader>wq :windo q<CR>
 
 nmap <silent> <leader>u :UndotreeToggle<CR>
 nmap <silent> <leader>t :TagbarToggle<CR>
-nmap [c <Plug>GitGutterPrevHunk
-nmap ]c <Plug>GitGutterNextHunk
 
 let g:yankring_replace_n_pkey = '<leader>y' " Don't clobber the ctrlp mapping
 nnoremap <leader>p :YRShow<CR>
@@ -219,10 +217,6 @@ autocmd FileType gitcommit nmap <buffer> <C-j> <C-n>
 if has('win32')
   autocmd GUIEnter * simalt ~x
 endif
-
-let g:gitgutter_map_keys = 0
-let g:gitgutter_max_signs = 1000
-let g:gitgutter_realtime = 0 " For speed, turn off update-as-you-type
 
 let g:startify_enable_special = 0 " Don't show <empty buffer> and <quit>
 let g:startify_session_sort = 1 " Sort sessions by modification time
