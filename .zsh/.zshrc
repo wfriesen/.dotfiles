@@ -1,5 +1,4 @@
 source_settings() {
-  source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
   source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
   source ~/.zsh/agnoster-zsh-theme/agnoster.zsh-theme
@@ -12,6 +11,7 @@ source_settings() {
   source ~/.zsh/bindkeys.zsh
   source ~/.zsh/history.zsh
   source ~/.zsh/overrides.zsh
+  source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # Must be sourced last
 }
 
 # If we're not already in tmux, try to connect to an
