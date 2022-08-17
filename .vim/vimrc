@@ -377,6 +377,18 @@ function! LightlineFullfilepath()
   return '' != expand('%:.') ? expand('%:.') : '[No Name]'
 endfunction
 
+set grepprg=egrep\ -Iinr\ $*\ /dev/null
+function g:MyGrep(args)
+  if !isdirectory(split(a:args)[-1])
+    echoerr 'Specify a directory as last argument'
+  else
+    execute 'grep! ' . a:args
+    copen
+  endif
+endfunction
+command -nargs=1 -complete=file MyGrep call MyGrep(<f-args>)
+nnoremap <leader>gg :MyGrep<Space>
+
 " https://github.com/dbakker/vim-paragraph-motion/blob/master/plugin/paragraphmotion.vim
 " Based on: http://stackoverflow.com/questions/1853025/make-and-ignore-lines-containing-only-whitespace
 
