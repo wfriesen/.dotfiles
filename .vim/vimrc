@@ -280,21 +280,6 @@ let g:AutoPairsCenterLine=0 " Don't do zz after CR
 " Map q to quit windows
 autocmd FileType help,diff,qf nnoremap <buffer> q <C-w>q
 
-nmap <leader>F <Plug>CtrlSFPrompt
-let g:ctrlsf_ignore_dir = ['target', 'jdt.ls-java-project']
-let g:ctrlsf_populate_qflist = 1
-let g:ctrlsf_default_view_mode = 'compact'
-let g:ctrlsf_auto_focus = {"at" : "start"}
-let g:ctrlsf_auto_close = {
-  \ "normal" : 0,
-  \ "compact": 0
-  \ }
-let g:ctrlsf_absolute_file_path = 1
-let g:ctrlsf_default_root = 'project'
-if !exists('g:ctrlsf_ackprg') && filereadable(expand('$HOME/bin/ack'))
-  let g:ctrlsf_ackprg = expand('$HOME/bin/ack')
-endif
-
 let g:ctrlp_working_path_mode='ra' " Start ctrlp from the VCS root (r). Fallback to directory of current file (a)
 let g:ctrlp_clear_cache_on_exit=0 " Keep the cache across sessions
 let g:ctrlp_open_multiple_files='t' " Open multiple files in tabs, rather than new splits
@@ -387,7 +372,7 @@ function g:MyGrep(args)
   endif
 endfunction
 command -nargs=1 -complete=file MyGrep call MyGrep(<f-args>)
-nnoremap <leader>gg :MyGrep<Space>
+nnoremap <leader>F :MyGrep<Space>
 
 " https://github.com/dbakker/vim-paragraph-motion/blob/master/plugin/paragraphmotion.vim
 " Based on: http://stackoverflow.com/questions/1853025/make-and-ignore-lines-containing-only-whitespace

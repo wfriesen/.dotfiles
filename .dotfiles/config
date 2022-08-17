@@ -63,9 +63,6 @@
 [remote "vim-YankRing.vim"]
   url = https://github.com/vim-scripts/YankRing.vim.git
   fetch = +refs/heads/*:refs/remotes/YankRing.vim/*
-[remote "vim-ctrlsf.vim"]
-  url = https://github.com/dyng/ctrlsf.vim.git
-  fetch = +refs/heads/*:refs/remotes/ctrlsf.vim.git/*
 [remote "vim-async.vim"]
   url = https://github.com/prabirshrestha/async.vim.git
   fetch = +refs/heads/*:refs/remotes/async.vim/*
