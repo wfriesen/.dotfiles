@@ -73,10 +73,10 @@
   url = https://github.com/dyng/ctrlsf.vim.git
   fetch = +refs/heads/*:refs/remotes/ctrlsf.vim.git/*
 [remote "vim-async.vim"]
-  url = https://github.com/prabirshrestha/async.vim
+  url = https://github.com/prabirshrestha/async.vim.git
   fetch = +refs/heads/*:refs/remotes/async.vim/*
 [remote "vim-vim-dispatch"]
-  url = https://github.com/tpope/vim-dispatch
+  url = https://github.com/tpope/vim-dispatch.git
   fetch = +refs/heads/*:refs/remotes/vim-dispatch/*
 [remote "vim-vim-lsc"]
   url = https://github.com/natebosch/vim-lsc.git
