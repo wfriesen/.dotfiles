@@ -19,6 +19,9 @@ augroup sql_settings
 
 augroup END
 
+set swapfile
+set directory=~/.vim/swap//
+
 set scrolloff=0
 set showtabline=2 " Always show the tabline
 
