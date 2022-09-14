@@ -69,3 +69,6 @@
 [remote "vim-vim-repeat"]
   url = https://github.com/tpope/vim-repeat.git
   fetch = +refs/heads/*:refs/remotes/vim-repeat/*
+[remote "vim-vim-paragraph-motion"]
+  url = https://github.com/dbakker/vim-paragraph-motion.git
+  fetch = +refs/heads/*:refs/remotes/vim-paragraph-motion/*
