@@ -72,3 +72,6 @@
 [remote "vim-vim-paragraph-motion"]
   url = https://github.com/dbakker/vim-paragraph-motion.git
   fetch = +refs/heads/*:refs/remotes/vim-paragraph-motion/*
+[remote "vim-matchit"]
+  url = https://github.com/chrisbra/matchit.git
+  fetch = +refs/heads/*:refs/remotes/matchit/*
