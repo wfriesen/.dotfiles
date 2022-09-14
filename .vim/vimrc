@@ -6,8 +6,6 @@ let g:lsc_server_commands = {
       \ 'java': 'java-language-server'
       \ }
 
-packadd! matchit
-
 autocmd BufNewFile,BufRead Jenkinsfile set filetype=groovy
 
 augroup sql_settings
