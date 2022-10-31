@@ -200,7 +200,6 @@ nnoremap <silent> <leader>zm :call g:WindoReturn(":normal zm")<CR>
 nnoremap <silent> <leader>wq :windo q<CR>
 
 nmap <silent> <leader>u :UndotreeToggle<CR>
-nmap <silent> <leader>t :TagbarToggle<CR>
 
 let g:yankring_replace_n_pkey = '<leader>y' " Don't clobber the ctrlp mapping
 nnoremap <leader>p :YRShow<CR>
