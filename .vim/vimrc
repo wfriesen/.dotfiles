@@ -357,7 +357,7 @@ function! LightlineFullfilepath()
   return '' != expand('%:.') ? expand('%:.') : '[No Name]'
 endfunction
 
-set grepprg=egrep\ -Iinr\ --exclude-dir=.git\ --exclude-dir=.svn\ $*\ /dev/null
+set grepprg=grep\ -IEinr\ --exclude-dir=.git\ --exclude-dir=.svn\ $*\ /dev/null
 function g:MyGrep(args)
   if !isdirectory(split(a:args)[-1]) && !filereadable(expand(split(a:args)[-1], 0, 1)[-1])
     echoerr 'Specify a file/directory/glob as last argument'
