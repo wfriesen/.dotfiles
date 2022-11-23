@@ -3,6 +3,8 @@
   name = William Friesen
 [diff]
   tool = diffmerge
+[color "status"]
+  changed = yellow
 [color "grep"]
   linenumber = green
   match = bold red
