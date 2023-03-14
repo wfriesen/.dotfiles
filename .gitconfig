@@ -25,6 +25,6 @@
   ap = add -p
   sh = show
   cm = commit -m
-  plog = log --all --graph --decorate --oneline
+  plog = log --all --graph --decorate --oneline -m
 [init]
   defaultBranch = master
