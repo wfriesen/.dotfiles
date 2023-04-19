@@ -180,6 +180,8 @@ execute "nnoremap ".s:alt_key_prefix."k".s:alt_key_suffix." <C-y>"
 execute "nnoremap ".s:alt_key_prefix."J".s:alt_key_suffix." <C-d>"
 execute "nnoremap ".s:alt_key_prefix."K".s:alt_key_suffix." <C-u>"
 
+set diffopt=internal,filler,closeoff,vertical
+
 nmap <silent> <leader>gs :Gstatus<CR>
 nmap <silent> <leader>ge :Gedit<CR>
 nmap <silent> <leader>gd :tabedit % <Bar> :Gdiff<CR>
