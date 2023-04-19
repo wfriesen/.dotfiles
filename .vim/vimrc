@@ -182,9 +182,9 @@ execute "nnoremap ".s:alt_key_prefix."K".s:alt_key_suffix." <C-u>"
 
 set diffopt=internal,filler,closeoff,vertical
 
-nmap <silent> <leader>gs :Gstatus<CR>
+nmap <silent> <leader>gs :G<CR>
 nmap <silent> <leader>ge :Gedit<CR>
-nmap <silent> <leader>gd :tabedit % <Bar> :Gdiff<CR>
+nmap <silent> <leader>gd :Gdiffsplit<CR>
 
 " execute docmd in all windows, then return cursor to the original window
 function! g:WindoReturn(docmd)
