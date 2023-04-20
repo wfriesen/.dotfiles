@@ -295,4 +295,4 @@ function g:MyGrep(args)
   endif
 endfunction
 command -nargs=1 -complete=file MyGrep call MyGrep(<f-args>)
-nnoremap <leader>F :MyGrep<Space>
+nnoremap <leader>f :MyGrep<Space>
