@@ -102,6 +102,7 @@ let mapleader = "\<Space>"
 " Set to defaults, so that later appends in this file won't constantly
 " increase it
 set viminfo='100,<50,s10,h,rA:,rB:
+let &viminfo = &viminfo . ',n' . expand('~/.vim/.viminfo')
 
 " Move cursor in command line mode just like in bash and others. C-e and C-k are
 " already mapped by default to move to, and delete until, the end of the line
@@ -183,7 +184,6 @@ let g:startify_enable_special = 0 " Don't show <empty buffer> and <quit>
 let g:startify_session_sort = 1 " Sort sessions by modification time
 let g:startify_custom_header = [] " Turn off the cowsay fortune header
 let g:startify_session_dir = '~/.vim/session'
-let &viminfo = &viminfo . ',n' . expand('~/.vim/.viminfo')
 
 " Show sessions at the top. Pressing CR immediately after starting loads the
 " latest session
