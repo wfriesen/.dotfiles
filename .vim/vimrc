@@ -8,14 +8,12 @@ let g:lsc_server_commands = {
 
 autocmd BufNewFile,BufRead Jenkinsfile set filetype=groovy
 
-augroup sql_settings
-  au!
-  autocmd BufNewFile,BufRead *.vw set filetype=sql
+autocmd BufNewFile,BufRead *.fnc,*.prc,*.tpb,*.tps,*.trg,*.vw set filetype=sql
 
-  " Use /*..*/ style comments instead of --
-  autocmd FileType sql setlocal commentstring=/\*\ %s\ \*/
+" Use /*..*/ style comments instead of --
+autocmd FileType sql setlocal commentstring=/\*\ %s\ \*/
 
-augroup END
+let g:sql_type_default = 'plsql'
 
 set mouse=n " Enable mouse. Much easier to click on tabs
 
