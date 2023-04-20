@@ -2,8 +2,7 @@
 let g:lightline = {'colorscheme': 'solarized'}
 
 let g:lsc_server_commands = {
-      \ 'python' : 'pyls',
-      \ 'java': 'java-language-server'
+      \ 'python' : 'pyls'
       \ }
 
 autocmd BufNewFile,BufRead Jenkinsfile set filetype=groovy
@@ -34,23 +33,6 @@ colorscheme solarized
 highlight LineNr guifg=#586e75 ctermfg=10
 highlight CursorLineNr guifg=#839496 ctermfg=12
 highlight Cursor guibg=#dc322f
-
-if has("gui_running")
-  if has('win32')
-    set guifont=Consolas:h11
-  else
-    set guifont=Hack\ 16
-  endif
-
-  set guioptions-=m "menubar
-  set guioptions-=r "scrollbar
-  set guioptions-=T "toolbar
-  set guioptions-=L "Left-hand scrollbar
-  set guioptions+=c "Use console dialogs for simple choices
-  set guioptions-=e
-  set guicursor+=a:block " Always use block cursor in GUI mode
-
-endif
 
 set lazyredraw " Execute macros faster by not redrawing the screen constantly
 
@@ -117,8 +99,6 @@ let g:netrw_liststyle=1 " Show file size and modification times
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
 
-set cedit=<C-l> " Open the command-line window
-
 " Set to defaults, so that later appends in this file won't constantly
 " increase it
 set viminfo='100,<50,s10,h,rA:,rB:
@@ -184,21 +164,6 @@ nmap <silent> <leader>gs :G<CR>
 nmap <silent> <leader>ge :Gedit<CR>
 nmap <silent> <leader>gd :Gdiffsplit<CR>
 
-" execute docmd in all windows, then return cursor to the original window
-function! g:WindoReturn(docmd)
-  let l:current_winnr = winnr()
-  execute ":windo ".a:docmd
-  execute l:current_winnr."wincmd w"
-endfunction
-
-" Fold operations on all windows in the current tab page
-nnoremap <silent> <leader>zR :call g:WindoReturn(":normal zR")<CR>
-nnoremap <silent> <leader>zM :call g:WindoReturn(":normal zM")<CR>
-nnoremap <silent> <leader>zr :call g:WindoReturn(":normal zr")<CR>
-nnoremap <silent> <leader>zm :call g:WindoReturn(":normal zm")<CR>
-
-nnoremap <silent> <leader>wq :windo q<CR>
-
 nmap <silent> <leader>u :UndotreeToggle<CR>
 
 let g:yankring_replace_n_pkey = '<leader>y' " Don't clobber the ctrlp mapping
@@ -213,11 +178,6 @@ function! g:Undotree_CustomMap()
 endfunc
 autocmd FileType gitcommit nmap <buffer> <C-k> <C-p>
 autocmd FileType gitcommit nmap <buffer> <C-j> <C-n>
-
-" start gvim maximized. Simulates pressing Alt+Space x
-if has('win32')
-  autocmd GUIEnter * simalt ~x
-endif
 
 let g:startify_enable_special = 0 " Don't show <empty buffer> and <quit>
 let g:startify_session_sort = 1 " Sort sessions by modification time
@@ -237,38 +197,6 @@ let g:startify_list_order = [
         \ ['   Bookmarks'],
         \ 'bookmarks'
         \ ]
-
-" Change order to put variables at the top, since that's usually where they are
-" defined anyway
-let g:tagbar_type_sql = {
-    \ 'kinds' : [
-        \ 'P:packages:1',
-        \ 'v:variables',
-        \ 'd:prototypes',
-        \ 'c:cursors',
-        \ 'f:functions',
-        \ 'F:record fields',
-        \ 'L:block label',
-        \ 'p:procedures',
-        \ 's:subtypes',
-        \ 't:tables',
-        \ 'T:triggers',
-        \ 'i:indexes',
-        \ 'e:events',
-        \ 'U:publications',
-        \ 'R:services',
-        \ 'D:domains',
-        \ 'V:views',
-        \ 'n:synonyms',
-        \ 'x:MobiLink Table Scripts',
-        \ 'y:MobiLink Conn Scripts',
-        \ 'z:MobiLink Properties',
-    \ ],
-\ }
-let g:tagbar_compact=1 " Don't show help, just tags
-let g:tagbar_autofocus=1 " Focus tagbar when opening
-let g:tagbar_sort=0 " Sort by file position, not alphabetically
-let g:tagbar_width=30
 
 let g:AutoPairsCenterLine=0 " Don't do zz after CR
 
