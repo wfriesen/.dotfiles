@@ -2,7 +2,7 @@
   email = wfriesen@gmail.com
   name = William Friesen
 [diff]
-  tool = diffmerge
+  tool = vimdiff
 [color "status"]
   changed = yellow
 [color "grep"]
