@@ -15,6 +15,7 @@ autocmd FileType sql setlocal commentstring=/\*\ %s\ \*/
 let g:sql_type_default = 'plsql'
 
 autocmd FileType python setlocal foldmethod=indent
+autocmd FileType python normal zR
 
 set mouse=n " Enable mouse. Much easier to click on tabs
 
