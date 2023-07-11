@@ -2,6 +2,12 @@
 
 Configuration files.
 
+Install:
+
+- bash
+- zsh
+- tmux
+
 Setup with:
 
 ```zsh
