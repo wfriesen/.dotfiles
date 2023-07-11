@@ -4,6 +4,7 @@ let g:lightline = {'colorscheme': 'solarized'}
 let g:lsc_server_commands = {
       \ 'python' : 'pyls'
       \ }
+let g:lsc_auto_map = {'defaults': v:true, 'GoToDefinition': 'gd'}
 
 autocmd BufNewFile,BufRead Jenkinsfile set filetype=groovy
 
