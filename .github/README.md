@@ -7,6 +7,8 @@ Install:
 - bash
 - zsh
 - tmux
+- xclip (for copying from tmux)
+- gvim (arch only includes clipboard support with the gvim version of cli vim)
 
 Setup with:
 
