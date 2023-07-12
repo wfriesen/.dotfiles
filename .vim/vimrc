@@ -11,6 +11,9 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {'python': ['black']}
 let g:ale_linters = {'python': ['flake8', 'mypy']}
 
+nnoremap [a :ALEPrevious<CR>
+nnoremap ]a :ALENext<CR>
+
 autocmd BufNewFile,BufRead Jenkinsfile set filetype=groovy
 
 autocmd BufNewFile,BufRead *.fnc,*.prc,*.tpb,*.tps,*.trg,*.vw set filetype=sql
