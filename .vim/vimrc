@@ -6,6 +6,11 @@ let g:lsc_server_commands = {
       \ }
 let g:lsc_auto_map = {'defaults': v:true, 'GoToDefinition': 'gd'}
 
+let g:ale_virtualtext_cursor = 0
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {'python': ['black']}
+let g:alte_linters = {'python': ['pylint']}
+
 autocmd BufNewFile,BufRead Jenkinsfile set filetype=groovy
 
 autocmd BufNewFile,BufRead *.fnc,*.prc,*.tpb,*.tps,*.trg,*.vw set filetype=sql
