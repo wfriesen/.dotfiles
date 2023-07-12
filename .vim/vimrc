@@ -2,7 +2,7 @@
 let g:lightline = {'colorscheme': 'solarized'}
 
 let g:lsc_server_commands = {
-      \ 'python' : 'pyls'
+      \ 'python' : 'pylsp'
       \ }
 let g:lsc_auto_map = {'defaults': v:true, 'GoToDefinition': 'gd'}
 
