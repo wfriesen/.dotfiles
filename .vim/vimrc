@@ -9,7 +9,7 @@ let g:lsc_auto_map = {'defaults': v:true, 'GoToDefinition': 'gd'}
 let g:ale_virtualtext_cursor = 0
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {'python': ['black']}
-let g:ale_linters = {'python': ['pylint']}
+let g:ale_linters = {'python': ['flake8', 'mypy']}
 
 autocmd BufNewFile,BufRead Jenkinsfile set filetype=groovy
 
