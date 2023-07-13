@@ -1,16 +1,11 @@
 " Has to be set before colorscheme, so that lightline picks up it's own colorscheme setting
 let g:lightline = {'colorscheme': 'solarized'}
 
-let g:lsc_server_commands = {
-      \ 'python' : 'pylsp'
-      \ }
-let g:lsc_auto_map = {'defaults': v:true, 'GoToDefinition': 'gd'}
-
 let g:ale_virtualtext_cursor = 0
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {'python': ['black']}
 let g:ale_linters = {
-      \ 'python': ['flake8', 'mypy'],
+      \ 'python': ['flake8', 'mypy', 'pylsp'],
       \ 'bash': ['shellcheck']
       \ }
 
