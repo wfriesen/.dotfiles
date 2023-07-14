@@ -10,8 +10,8 @@ let g:ale_linters = {
       \ }
 let g:ale_echo_msg_format = '%linter%: %s'
 
-nnoremap <silent> [a :ALEPrevious<CR>
-nnoremap <silent> ]a :ALENext<CR>
+nnoremap <silent> [l :ALEPrevious<CR>
+nnoremap <silent> ]l :ALENext<CR>
 
 autocmd BufNewFile,BufRead Jenkinsfile set filetype=groovy
 
