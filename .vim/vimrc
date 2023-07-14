@@ -8,6 +8,7 @@ let g:ale_linters = {
       \ 'python': ['flake8', 'mypy', 'pylsp'],
       \ 'bash': ['shellcheck']
       \ }
+let g:ale_echo_msg_format = '%linter%: %s'
 
 nnoremap <silent> [a :ALEPrevious<CR>
 nnoremap <silent> ]a :ALENext<CR>
