@@ -1,3 +1,5 @@
+set encoding=utf-8
+scriptencoding utf-8
 " Has to be set before colorscheme, so that lightline picks up it's own colorscheme setting
 let g:lightline = {'colorscheme': 'solarized'}
 
@@ -13,17 +15,22 @@ let g:ale_echo_msg_format = '%linter%: %s'
 nnoremap <silent> [l :ALEPrevious<CR>
 nnoremap <silent> ]l :ALENext<CR>
 
-autocmd BufNewFile,BufRead Jenkinsfile set filetype=groovy
+augroup jenkinsfiletype
+  autocmd BufNewFile,BufRead Jenkinsfile set filetype=groovy
+augroup END
 
-autocmd BufNewFile,BufRead *.fnc,*.prc,*.tpb,*.tps,*.trg,*.vw set filetype=sql
-
-" Use /*..*/ style comments instead of --
-autocmd FileType sql setlocal commentstring=/\*\ %s\ \*/
+augroup sqlfiletype
+  autocmd BufNewFile,BufRead *.fnc,*.prc,*.tpb,*.tps,*.trg,*.vw set filetype=sql
+  " Use /*..*/ style comments instead of --
+  autocmd FileType sql setlocal commentstring=/\*\ %s\ \*/
+augroup END
 
 let g:sql_type_default = 'plsql'
 
-autocmd FileType python setlocal foldmethod=indent
-autocmd FileType python normal zR
+augroup pythonsettings
+  autocmd FileType python setlocal foldmethod=indent
+  autocmd FileType python normal zR
+augroup END
 
 set mouse=n " Enable mouse. Much easier to click on tabs
 
@@ -59,7 +66,6 @@ set hidden " Allow hidden buffers with unsaved changes
 
 " Formatting options
 set fileformats=unix,dos
-set encoding=utf-8
 set tabstop=2
 set softtabstop=0
 set expandtab
@@ -138,8 +144,10 @@ nnoremap g# #
 nnoremap ]q :cnext<CR>
 nnoremap [q :cprevious<CR>
 
-" Easier searching for things like attribute-names-with-hyphens
-autocmd FileType xml setlocal iskeyword+=-
+augroup xmlsettings
+  " Easier searching for things like attribute-names-with-hyphens
+  autocmd FileType xml setlocal iskeyword+=-
+augroup END
 
 " Make * and # in visual mode work like in normal mode
 vnoremap <silent> * "zy/<C-R>z<CR>
@@ -155,20 +163,20 @@ nnoremap <C-w>_ <C-w>s
 
 " Use Alt- for scrolling
 if has('gui_running')
-  let s:alt_key_prefix="<A-"
-  let s:alt_key_suffix=">"
+  let s:alt_key_prefix='<A-'
+  let s:alt_key_suffix='>'
 else
-  let s:alt_key_prefix=""
-  let s:alt_key_suffix=""
+  let s:alt_key_prefix=''
+  let s:alt_key_suffix=''
 endif
-execute "nnoremap ".s:alt_key_prefix."l".s:alt_key_suffix." zl"
-execute "nnoremap ".s:alt_key_prefix."h".s:alt_key_suffix." zh"
-execute "nnoremap ".s:alt_key_prefix."L".s:alt_key_suffix." 100zl"
-execute "nnoremap ".s:alt_key_prefix."H".s:alt_key_suffix." 100zh"
-execute "nnoremap ".s:alt_key_prefix."j".s:alt_key_suffix." <C-e>"
-execute "nnoremap ".s:alt_key_prefix."k".s:alt_key_suffix." <C-y>"
-execute "nnoremap ".s:alt_key_prefix."J".s:alt_key_suffix." <C-d>"
-execute "nnoremap ".s:alt_key_prefix."K".s:alt_key_suffix." <C-u>"
+execute 'nnoremap '.s:alt_key_prefix.'l'.s:alt_key_suffix.' zl'
+execute 'nnoremap '.s:alt_key_prefix.'h'.s:alt_key_suffix.' zh'
+execute 'nnoremap '.s:alt_key_prefix.'L'.s:alt_key_suffix.' 100zl'
+execute 'nnoremap '.s:alt_key_prefix.'H'.s:alt_key_suffix.' 100zh'
+execute 'nnoremap '.s:alt_key_prefix.'j'.s:alt_key_suffix.' <C-e>'
+execute 'nnoremap '.s:alt_key_prefix.'k'.s:alt_key_suffix.' <C-y>'
+execute 'nnoremap '.s:alt_key_prefix.'J'.s:alt_key_suffix.' <C-d>'
+execute 'nnoremap '.s:alt_key_prefix.'K'.s:alt_key_suffix.' <C-u>'
 
 set diffopt=internal,filler,closeoff,vertical
 
@@ -188,8 +196,11 @@ function! g:Undotree_CustomMap()
   nmap <buffer> <C-k> <plug>UndotreeGoNextState
   nmap <buffer> <C-j> <plug>UndotreeGoPreviousState
 endfunc
-autocmd FileType gitcommit nmap <buffer> <C-k> <C-p>
-autocmd FileType gitcommit nmap <buffer> <C-j> <C-n>
+
+augroup gitmapping
+  autocmd FileType gitcommit nmap <buffer> <C-k> <C-p>
+  autocmd FileType gitcommit nmap <buffer> <C-j> <C-n>
+augroup END
 
 let g:startify_enable_special = 0 " Don't show <empty buffer> and <quit>
 let g:startify_session_sort = 1 " Sort sessions by modification time
@@ -211,8 +222,10 @@ let g:startify_list_order = [
 
 let g:AutoPairsCenterLine=0 " Don't do zz after CR
 
-" Map q to quit windows
-autocmd FileType help,diff,qf nnoremap <buffer> q <C-w>q
+augroup quitmapping
+  " Map q to quit windows
+  autocmd FileType help,diff,qf nnoremap <buffer> q <C-w>q
+augroup END
 
 let g:ctrlp_working_path_mode='ra' " Start ctrlp from the VCS root (r). Fallback to directory of current file (a)
 let g:ctrlp_clear_cache_on_exit=0 " Keep the cache across sessions
@@ -223,13 +236,15 @@ let g:SuperTabCrMapping=1 " Finish completion with CR
 let g:SuperTabClosePreviewOnPopupClose=1
 
 " Use omni-completion when possible
-let g:SuperTabDefaultCompletionType="context"
-autocmd FileType *
+let g:SuperTabDefaultCompletionType='context'
+augroup supertabfunc
+  autocmd FileType *
   \ if &omnifunc != '' |
   \   call SuperTabChain(&omnifunc, "<c-p>") |
   \ endif
+augroup END
 " Cycle the expected way
-let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabDefaultCompletionType = '<c-n>'
 
 let g:lightline.active = {
       \ 'left': [
@@ -269,12 +284,12 @@ let g:ctrlp_status_func = {
       \ }
 
 function! LightlineFilename()
-  if expand('%:t') == 'ControlP'
+  if expand('%:t') ==# 'ControlP'
     return g:lightline.ctrlp_prev . ' ' . g:lightline.subseparator.left . ' ' .
           \ g:lightline.ctrlp_item . ' ' . g:lightline.subseparator.left . ' ' .
           \ g:lightline.ctrlp_next
   else
-    return '' != expand('%:t') ? expand('%:t') : '[No Name]'
+    return '' !=# expand('%:t') ? expand('%:t') : '[No Name]'
   endif
 endfunction
 
@@ -293,7 +308,7 @@ function! TagbarStatusFunc(current, sort, fname, ...) abort
   return lightline#statusline(0)
 endfunction
 function! LightlineFullfilepath()
-  return '' != expand('%:.') ? expand('%:.') : '[No Name]'
+  return '' !=# expand('%:.') ? expand('%:.') : '[No Name]'
 endfunction
 
 set grepprg=grep\ -IEinr\ --exclude-dir=.git\ --exclude-dir=.svn\ $*\ /dev/null
