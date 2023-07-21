@@ -43,6 +43,8 @@ set showtabline=2 " Always show the tabline
 
 set shortmess-=S " Show search count in command line
 
+set wrap
+
 " Pretty colors
 syntax on
 filetype plugin indent on
