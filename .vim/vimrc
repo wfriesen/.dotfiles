@@ -32,11 +32,6 @@ augroup END
 
 let g:sql_type_default = 'plsql'
 
-augroup pythonsettings
-  autocmd FileType python setlocal foldmethod=indent
-  autocmd FileType python normal zR
-augroup END
-
 set mouse=n " Enable mouse. Much easier to click on tabs
 
 set swapfile
@@ -243,12 +238,24 @@ let g:SuperTabCrMapping=1 " Finish completion with CR
 let g:SuperTabClosePreviewOnPopupClose=1
 
 " Use omni-completion when possible
-let g:SuperTabDefaultCompletionType='context'
-augroup supertabfunc
+function! SupertabOmnifunc()
   autocmd FileType *
   \ if &omnifunc != '' |
-  \   call SuperTabChain(&omnifunc, "<c-p>") |
+  \   call SuperTabChain(&omnifunc, "<c-n>") |
   \ endif
+endfunction
+
+augroup pythonsettings
+  autocmd FileType python setlocal foldmethod=indent
+  autocmd FileType python normal zR
+  autocmd FileType python set complete-=i
+  autocmd FileType python set omnifunc=ale#completion#OmniFunc
+  autocmd FileType python call SupertabOmnifunc()
+augroup END
+
+let g:SuperTabDefaultCompletionType='context'
+augroup supertabfunc
+  call SupertabOmnifunc()
 augroup END
 " Cycle the expected way
 let g:SuperTabDefaultCompletionType = '<c-n>'
