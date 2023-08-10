@@ -16,3 +16,5 @@ fi
 export EDITOR=$VISUAL
 
 export PATH="$HOME/bin:$PATH"
+
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
