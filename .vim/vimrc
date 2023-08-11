@@ -325,14 +325,10 @@ function! LightlineFullfilepath()
   return '' !=# expand('%:.') ? expand('%:.') : '[No Name]'
 endfunction
 
-set grepprg=grep\ -IEinr\ --exclude-dir=.git\ --exclude-dir=.svn\ $*\ /dev/null
+set grepprg=rg\ --vimgrep\ $*
 function g:MyGrep(args)
-  if !isdirectory(split(a:args)[-1]) && !filereadable(expand(split(a:args)[-1], 0, 1)[-1])
-    echoerr 'Specify a file/directory/glob as last argument'
-  else
-    execute 'grep! ' . a:args
-    copen
-  endif
+  execute 'grep! ' . a:args
+  copen
 endfunction
 command -nargs=1 -complete=file MyGrep call MyGrep(<f-args>)
 nnoremap <leader>f :MyGrep<Space>
