@@ -1,5 +1,5 @@
 HISTFILE=$HOME/.zsh/.zsh_history
-HISTSIZE=10000
+HISTSIZE=100000
 SAVEHIST=$HISTSIZE
 setopt hist_find_no_dups
 
