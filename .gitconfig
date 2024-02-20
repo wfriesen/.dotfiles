@@ -31,3 +31,5 @@
   defaultBranch = master
 [merge]
   conflictstyle = zdiff3
+[commit]
+  verbose = true
