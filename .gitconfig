@@ -2,6 +2,7 @@
   email = wfriesen@gmail.com
   name = William Friesen
 [diff]
+  algorithm = histogram
   tool = vimdiff
 [color "status"]
   changed = yellow
