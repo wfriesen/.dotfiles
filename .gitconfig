@@ -33,3 +33,5 @@
   conflictstyle = zdiff3
 [commit]
   verbose = true
+[help]
+  autocorrect = prompt
