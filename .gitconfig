@@ -29,3 +29,5 @@
   plog = log --all --graph --decorate --oneline -m
 [init]
   defaultBranch = master
+[merge]
+  conflictstyle = zdiff3
