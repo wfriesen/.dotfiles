@@ -20,7 +20,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias pd='popd'
 alias gopen='gio open'
-alias rscp='rsync --archive --partial --progress'
+alias rscp='rsync --copy-links --archive --partial --progress'
 if [[ $OSTYPE == "msys" ]]; then
   alias ssh='ssh -F ~/.ssh/config'
 fi
